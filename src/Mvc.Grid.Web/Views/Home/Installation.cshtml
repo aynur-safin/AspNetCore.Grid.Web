@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "MVC.Grid installation";
+}
+
+<div class="docs content-block">
+    <div class="widget">
+        <div class="widget-header">
+            <i class="fa fa-bars"></i>
+            Installation
+            <span class="widget-buttons">
+                <i class="content-toggle"></i>
+            </span>
+        </div>
+        <div class="widget-content">
+            <p>
+                Install MVC.Grid package from nuget.
+            </p>
+            <pre>> Install-Package NonFactors.Grid.Mvc6</pre>
+            <p>
+                Register mvc grid at start up
+            </p>
+            <pre>services.AddMvcGrid();</pre>
+            <p>
+                Include grid styling sheet, they can be found at {Username}/.dnx/packages/NonFactors.Grid.Mvc6.
+            </p>
+            <pre>&lt;link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet" /&gt;</pre>
+            <p>
+                Include grid scripts after rendering grid html or at the end of the page.
+            </p>
+            <pre>&lt;script src="~/Scripts/MvcGrid/mvc-grid.js" /&gt;</pre>
+            <p>
+                Initialize MVC.Grid instances
+            </p>
+            <pre>$('.mvc-grid').mvcgrid();</pre>
+        </div>
+    </div>
+</div>
