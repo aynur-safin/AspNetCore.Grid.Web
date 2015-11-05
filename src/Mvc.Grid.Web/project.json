@@ -11,6 +11,10 @@
     "NonFactors.Grid.Mvc6": "0.8.0-beta8"
   },
 
+  "compilationOptions": {
+    "warningsAsErrors": true
+  },
+
   "commands": {
     "web": "Microsoft.AspNet.Server.Kestrel"
   },
