@@ -99,7 +99,7 @@
     }
 
     CustomBooleanFilter.prototype = {
-        render: <span class="kwd">function</span> (popup, filter) {
+        render: <span class="kwd">function</span> (grid, popup, filter) {
             <span class="kwd">var</span> lang = $.fn.mvcgrid.lang.Boolean;
             lang.NotSpecified = <span class="str">'NotSpecified'</span>;
 
@@ -179,7 +179,7 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
         }
 
         CustomBooleanFilter.prototype = {
-            render: function (popup, filter) {
+            render: function (grid, popup, filter) {
                 var lang = $.fn.mvcgrid.lang.Boolean;
                 lang.NotSpecified = 'NotSpecified';
 

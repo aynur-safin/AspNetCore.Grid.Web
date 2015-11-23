@@ -82,7 +82,7 @@
     }
 
     CustomTextFilter.prototype = {
-        render: <span class="kwd">function</span> (popup, filter) {
+        render: <span class="kwd">function</span> (grid, popup, filter) {
             popup.html(
                 <span class="str">'&lt;div class="popup-arrow"&gt;&lt;/div&gt;'</span> +
                 <span class="str">'&lt;div class="popup-content"&gt;'</span> +
@@ -182,7 +182,7 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
         }
 
         CustomTextFilter.prototype = {
-            render: function (popup, filter) {
+            render: function (grid, popup, filter) {
                 popup.html(
                     '<div class="popup-arrow"></div>' +
                     '<div class="popup-content">' +
