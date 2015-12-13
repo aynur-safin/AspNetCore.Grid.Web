@@ -1,4 +1,4 @@
-Official [MVC6.Grid](https://github.com/NonFactors/MVC6.Grid) website, used for examples and documentation.
+Official [MVC6.Grid](http://mvc6-grid.azurewebsites.net/) website, used for examples and documentation.
 
 ![Semantic](https://img.shields.io/badge/sem-ver-lightgrey.svg?style=plastic)
 ![Docs](https://img.shields.io/github/release/NonFactors/MVC6.Grid.Web.svg?style=plastic&label=docs)
