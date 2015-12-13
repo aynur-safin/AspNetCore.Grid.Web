@@ -1,8 +1,7 @@
-﻿using NonFactors.Mvc.Grid;
-using NonFactors.Mvc.Grid.Web.Models;
+﻿using NonFactors.Mvc.Grid.Web.Models;
 using System.Linq;
 
-namespace Mvc.Grid.Web.Processors
+namespace NonFactors.Mvc.Grid.Web.Processors
 {
     public class ShortNameProcessor : IGridProcessor<PersonModel>
     {

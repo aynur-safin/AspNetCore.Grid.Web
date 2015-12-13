@@ -2,7 +2,7 @@
 using NonFactors.Mvc.Grid.Web.Context;
 using System.Threading;
 
-namespace Mvc.Grid.Web.Controllers
+namespace NonFactors.Mvc.Grid.Web.Controllers
 {
     public class JavascriptController : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc;
 using NonFactors.Mvc.Grid.Web.Context;
 
-namespace Mvc.Grid.Web.Controllers
+namespace NonFactors.Mvc.Grid.Web.Controllers
 {
     public class PagerController : Controller
     {

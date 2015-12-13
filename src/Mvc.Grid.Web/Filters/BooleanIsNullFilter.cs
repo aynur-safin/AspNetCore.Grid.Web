@@ -1,7 +1,6 @@
-﻿using NonFactors.Mvc.Grid;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
-namespace Mvc.Grid.Web.Filters
+namespace NonFactors.Mvc.Grid.Web.Filters
 {
     public class BooleanIsNullFilter : BaseGridFilter
     {

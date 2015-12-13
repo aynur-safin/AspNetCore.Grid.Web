@@ -2,11 +2,10 @@
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Mvc.Grid.Web.Filters;
-using NonFactors.Mvc.Grid;
+using NonFactors.Mvc.Grid.Web.Filters;
 using System;
 
-namespace Mvc.Grid.Web
+namespace NonFactors.Mvc.Grid.Web
 {
     public class Startup
     {
