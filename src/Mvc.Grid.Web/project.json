@@ -5,6 +5,7 @@
   "dependencies": {
     "NonFactors.Grid.Mvc6": "0.9.0-rc1-final",
 
+    "EPPlus": "4.0.4",
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
     "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
     "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",

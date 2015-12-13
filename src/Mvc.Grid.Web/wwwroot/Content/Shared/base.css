@@ -84,13 +84,14 @@ body {
     float: right;
 }
 
-    .widget-buttons i {
+    .widget-buttons a, i {
         display: inline-block;
         cursor: pointer;
         padding: 0 5px;
+        color: white;
     }
 
-        .widget-buttons i:hover {
+        .widget-buttons a:hover, i:hover {
             color: #DDDDDD;
         }
 
