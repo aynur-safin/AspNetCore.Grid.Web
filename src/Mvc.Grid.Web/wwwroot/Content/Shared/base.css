@@ -35,20 +35,11 @@ body {
 
     .sidebar-search input {
         background: rgba(255, 255, 255, 0.2);
-        padding: 13px 55px 13px 13px;
         border-style: none;
         text-align: center;
         color: #000000;
+        padding: 7px;
         width: 100%;
-    }
-
-    .sidebar-search .search-icon {
-        background: #CDCDCD;
-        position: absolute;
-        padding: 15px;
-        height: 100%;
-        right: 0;
-        top: 0;
     }
 
 .sidebar {
