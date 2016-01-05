@@ -35,6 +35,18 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult GlobalSearch()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult GridSearchPartial(String search)
+        {
+            return PartialView("_AjaxSearchGrid", PeopleRepository.GetPeople(search));
+        }
+
+        [HttpGet]
         public ActionResult Filtering()
         {
             return View(PeopleRepository.GetPeople());

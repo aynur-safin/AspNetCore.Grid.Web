@@ -1,13 +1,16 @@
 ﻿using NonFactors.Mvc.Grid.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NonFactors.Mvc.Grid.Web.Context
 {
     public static class PeopleRepository
     {
-        public static IEnumerable<PersonModel> GetPeople()
+        public static IEnumerable<PersonModel> GetPeople(String search = "")
         {
+            search = (search ?? "").ToLower();
+
             return new List<PersonModel>
             {
                 new PersonModel
@@ -108,7 +111,12 @@ namespace NonFactors.Mvc.Grid.Web.Context
                     Birthday = new DateTime(1988, 01, 05),
                     IsWorking = true
                 }
-            };
+            }.Where(person =>
+                    person.Age.ToString().Contains(search) ||
+                    person.Name.ToLower().Contains(search) ||
+                    person.Surname.ToLower().Contains(search) ||
+                    person.Birthday.ToString().Contains(search))
+            .ToList();
         }
     }
 }
