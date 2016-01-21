@@ -116,6 +116,10 @@ body {
         border: 0 none;
     }
 
+    .table > tbody > tr > td {
+        vertical-align: middle;
+    }
+
 .docs .widget-header {
     background: rgba(54, 52, 52, 0.67);
 }

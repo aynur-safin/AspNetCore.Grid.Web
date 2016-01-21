@@ -21,7 +21,29 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
                     Age = (Int32)(DateTime.Now - new DateTime(1988, 01, 05)).TotalDays / 365,
                     Birthday = new DateTime(1988, 01, 05),
-                    IsWorking = false
+                    IsWorking = false,
+
+                    Children = new List<PersonModel>
+                    {
+                        new PersonModel
+                        {
+                            Id = 11,
+                            Name = "Katy",
+                            Surname = "Crosswave",
+
+                            Age = (Int32)(DateTime.Now - new DateTime(2015, 01, 05)).TotalDays / 365,
+                            Birthday = new DateTime(2015, 01, 05)
+                        },
+                        new PersonModel
+                        {
+                            Id = 12,
+                            Name = "Kate",
+                            Surname = "Crosswave",
+
+                            Age = (Int32)(DateTime.Now - new DateTime(2015, 01, 05)).TotalDays / 365,
+                            Birthday = new DateTime(2015, 01, 05)
+                        }
+                    }
                 },
                 new PersonModel
                 {
@@ -30,7 +52,9 @@ namespace NonFactors.Mvc.Grid.Web.Context
                     Surname = "Lisel",
 
                     Age = (Int32)(DateTime.Now - new DateTime(1978, 05, 06)).TotalDays / 365,
-                    Birthday = new DateTime(1978, 05, 06)
+                    Birthday = new DateTime(1978, 05, 06),
+
+                    Children = new List<PersonModel>()
                 },
                 new PersonModel
                 {
@@ -40,7 +64,9 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
                     Age = (Int32)(DateTime.Now - new DateTime(1990, 11, 19)).TotalDays / 365,
                     Birthday = new DateTime(1990, 11, 19),
-                    IsWorking = true
+                    IsWorking = true,
+
+                    Children = new List<PersonModel>()
                 },
                 new PersonModel
                 {
@@ -50,7 +76,9 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
                     Age = (Int32)(DateTime.Now - new DateTime(1970, 08, 11)).TotalDays / 365,
                     Birthday = new DateTime(1970, 08, 11),
-                    IsWorking = false
+                    IsWorking = false,
+
+                    Children = new List<PersonModel>()
                 },
                 new PersonModel
                 {
@@ -59,7 +87,9 @@ namespace NonFactors.Mvc.Grid.Web.Context
                     Surname = "Scranton",
 
                     Age = (Int32)(DateTime.Now - new DateTime(1985, 10, 10)).TotalDays / 365,
-                    Birthday = new DateTime(1985, 10, 10)
+                    Birthday = new DateTime(1985, 10, 10),
+
+                    Children = new List<PersonModel>()
                 },
                 new PersonModel
                 {
@@ -69,7 +99,9 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
                     Age = (Int32)(DateTime.Now - new DateTime(2000, 07, 01)).TotalDays / 365,
                     Birthday = new DateTime(2000, 07, 01),
-                    IsWorking = false
+                    IsWorking = false,
+
+                    Children = new List<PersonModel>()
                 },
                 new PersonModel
                 {
@@ -79,7 +111,20 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
                     Age = (Int32)(DateTime.Now - new DateTime(1966, 04, 17)).TotalDays / 365,
                     Birthday = new DateTime(1966, 04, 17),
-                    IsWorking = true
+                    IsWorking = true,
+
+                    Children = new List<PersonModel>
+                    {
+                        new PersonModel
+                        {
+                            Id = 71,
+                            Name = "Jake",
+                            Surname = "Cosmides",
+
+                            Age = (Int32)(DateTime.Now - new DateTime(2014, 07, 14)).TotalDays / 365,
+                            Birthday = new DateTime(2014, 07, 14)
+                        }
+                    }
                 },
                 new PersonModel
                 {
@@ -89,7 +134,9 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
                     Age = (Int32)(DateTime.Now - new DateTime(1999, 08, 20)).TotalDays / 365,
                     Birthday = new DateTime(1999, 08, 20),
-                    IsWorking = false
+                    IsWorking = false,
+
+                    Children = new List<PersonModel>()
                 },
                 new PersonModel
                 {
@@ -99,7 +146,9 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
                     Age = (Int32)(DateTime.Now - new DateTime(1997, 03, 13)).TotalDays / 365,
                     Birthday = new DateTime(1997, 03, 13),
-                    IsWorking = false
+                    IsWorking = false,
+
+                    Children = new List<PersonModel>()
                 },
                 new PersonModel
                 {
@@ -109,7 +158,38 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
                     Age = (Int32)(DateTime.Now - new DateTime(1988, 01, 05)).TotalDays / 365,
                     Birthday = new DateTime(1988, 01, 05),
-                    IsWorking = true
+                    IsWorking = true,
+
+                    Children = new List<PersonModel>
+                    {
+                        new PersonModel
+                        {
+                            Id = 101,
+                            Name = "Nick",
+                            Surname = "Tremblay",
+
+                            Age = (Int32)(DateTime.Now - new DateTime(2013, 06, 08)).TotalDays / 365,
+                            Birthday = new DateTime(2013, 06, 08)
+                        },
+                        new PersonModel
+                        {
+                            Id = 102,
+                            Name = "Nike",
+                            Surname = "Tremblay",
+
+                            Age = (Int32)(DateTime.Now - new DateTime(2014, 12, 12)).TotalDays / 365,
+                            Birthday = new DateTime(2014, 12, 12)
+                        },
+                        new PersonModel
+                        {
+                            Id = 103,
+                            Name = "Norbert",
+                            Surname = "Tremblay",
+
+                            Age = (Int32)(DateTime.Now - new DateTime(2015, 05, 23)).TotalDays / 365,
+                            Birthday = new DateTime(2015, 05, 23)
+                        }
+                    }
                 }
             }.Where(person =>
                     person.Age.ToString().Contains(search) ||

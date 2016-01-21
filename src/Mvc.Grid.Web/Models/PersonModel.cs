@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NonFactors.Mvc.Grid.Web.Models
 {
@@ -11,5 +12,7 @@ namespace NonFactors.Mvc.Grid.Web.Models
         public Int32 Age { get; set; }
         public DateTime Birthday { get; set; }
         public Boolean? IsWorking { get; set; }
+
+        public IList<PersonModel> Children { get; set; }
     }
 }
