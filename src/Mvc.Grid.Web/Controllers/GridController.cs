@@ -149,6 +149,10 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
             grid.Columns.Add(model => model.Birthday).Titled("Birth date");
             grid.Columns.Add(model => model.IsWorking).Titled("Employed");
 
+            grid.Pager = new GridPager<PersonModel>(grid);
+            grid.Processors.Add(grid.Pager);
+            grid.Pager.RowsPerPage = 6;
+
             foreach (IGridColumn column in grid.Columns)
             {
                 column.IsFilterable = true;

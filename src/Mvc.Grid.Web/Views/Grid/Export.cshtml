@@ -85,6 +85,10 @@
     grid.Columns.Add(model =&gt; model.Birthday).Titled(<span class="str">"Birth date"</span>);
     grid.Columns.Add(model =&gt; model.IsWorking).Titled(<span class="str">"Employed"</span>);
 
+    grid.Pager = <span class="kwd">new</span> <span class="cls">GridPager</span>&lt;<span class="cls">PersonModel</span>&gt;(grid);
+    grid.Processors.Add(grid.Pager);
+    grid.Pager.RowsPerPage = 6;
+
     <span class="kwd">foreach</span> (<span class="cls">IGridColumn</span> column <span class="kwd">in</span> grid.Columns)
     {
         column.IsFilterable = <span class="kwd">true</span>;
