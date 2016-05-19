@@ -200,14 +200,6 @@ pre {
         border-color: rgba(131, 174, 211, 1);
     }
 
-.mvc-grid-header-title {
-    vertical-align: sub;
-}
-
-.mvc-grid-sort {
-    vertical-align: middle;
-}
-
 .grid-search {
     background-color: rgba(255, 255, 255, 0.7);
     margin-left: 15px;

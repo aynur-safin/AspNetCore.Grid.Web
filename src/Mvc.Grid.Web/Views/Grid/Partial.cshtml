@@ -112,7 +112,7 @@
 @@model IGrid&lt;PersonModel&gt;
 
 &lt;div class="mvc-grid" data-name="@@Model.Name"&gt;
-    &lt;table class="table mvc-grid-table @@Model.CssClasses"&gt;
+    &lt;table class="table @@Model.CssClasses"&gt;
         &lt;thead&gt;
             &lt;tr&gt;
                 &lt;th&gt;&lt;/th&gt;
@@ -121,9 +121,9 @@
                     String filterableClass = column.IsFilterable == true ? "filterable" : null;
                     String sortableClass = column.IsSortable == true ? "sortable" : null;
 
-                    &lt;th class="mvc-grid-header @@filterableClass @@sortableClass @@column.CssClasses"
+                    &lt;th class="@@filterableClass @@sortableClass @@column.CssClasses"
                         data-name="@@column.Name"
-                        data-filterable="@@column.IsFilterable"
+                        data-filter="@@column.IsFilterable"
                         data-filter-name="@@column.FilterName"
                         data-filter-multi="@@column.IsMultiFilterable"
                         data-filter-first-type="@@column.Filter?.First?.Type"
@@ -131,7 +131,7 @@
                         data-filter-operator="@@column.Filter?.Operator"
                         data-filter-second-type="@@column.Filter?.Second?.Type"
                         data-filter-second-val="@@column.Filter?.Second?.Value"
-                        data-sortable="@@column.IsSortable"
+                        data-sort="@@column.IsSortable"
                         data-sort-order="@@column.SortOrder"
                         data-sort-first="@@column.FirstSortOrder"&gt;
                         &lt;span class="mvc-grid-header-title"&gt;@@column.Title&lt;/span&gt;
@@ -153,7 +153,7 @@
             {
                 foreach (IGridRow&lt;PersonModel&gt; row in Model.Rows)
                 {
-                    &lt;tr class="mvc-grid-row @@row.CssClasses"&gt;
+                    &lt;tr class="@@row.CssClasses"&gt;
                         &lt;td&gt;Parent&lt;/td&gt;
                         @@foreach (IGridColumn column in Model.Columns)
                         {
@@ -164,7 +164,7 @@
                     @@for (int i = 0; i &lt; row.Model.Children.Count; i++)
                     {
                         GridRow&lt;PersonModel&gt; child = new GridRow&lt;PersonModel&gt;(row.Model.Children[i]);
-                        &lt;tr class="mvc-grid-row row-child"&gt;
+                        &lt;tr class="row-child"&gt;
                             @@if (i == 0)
                             {
                                 &lt;td rowspan="@@row.Model.Children.Count"&gt;Children&lt;/td&gt;
@@ -180,7 +180,7 @@
             else
             {
                 &lt;tr&gt;
-                    &lt;td class="mvc-grid-table-empty" colspan="@@Model.Columns.Count()"&gt;
+                    &lt;td class="mvc-grid-empty" colspan="@@Model.Columns.Count()"&gt;
                         @@Model.EmptyText
                     &lt;/td&gt;
                 &lt;/tr&gt;

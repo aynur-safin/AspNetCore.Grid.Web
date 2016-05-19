@@ -153,38 +153,40 @@
         },
 
         init: <span class="kwd">function</span> (grid, column, popup) {
-            this.bindValue(grid, column, popup);
-            this.bindApply(grid, column, popup);
-            this.bindCancel(grid, column, popup);
+            <span class="kwd">this</span>.bindValue(grid, column, popup);
+            <span class="kwd">this</span>.bindApply(grid, column, popup);
+            <span class="kwd">this</span>.bindCancel(grid, column, popup);
         },
         bindValue: <span class="kwd">function</span> (grid, column, popup) {
-            <span class="kwd">var</span> values = popup.find(<span class="str">'.first-filter .mvc-grid-boolean-filter li'</span>);
-            values.bind(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
-                <span class="kwd">var</span> item = $(this);
-                column.filter.first.val = item.data(<span class="str">'value'</span>);
-
+            <span class="kwd">var</span> values = popup.find(<span class="str">'.first-filter li'</span>);
+            values.on(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
+                $(<span class="kwd">this</span>).addClass(<span class="str">'active'</span>).siblings().removeClass(<span class="str">'active'</span>);
+            });
+        },
+        bindApply: <span class="kwd">function</span> (grid, column, popup) {
+            <span class="kwd">var</span> apply = popup.find(<span class="str">'.mvc-grid-apply'</span>);
+            apply.on(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
+                popup.removeClass(<span class="str">'open'</span>);
+                column.filter.first.val = popup.find(<span class="str">'.first-filter .active'</span>).data(<span class="str">'value'</span>);
                 <span class="kwd">if</span> (column.filter.first.val == <span class="str">'NotSpecified'</span>) {
                     column.filter.first.type = <span class="str">'Is'</span>;
                 } <span class="kwd">else</span> {
                     column.filter.first.type = <span class="str">'Equals'</span>;
                 }
 
-                item.siblings().removeClass(<span class="str">'active'</span>);
-                item.addClass(<span class="str">'active'</span>);
-            });
-        },
-        bindApply: <span class="kwd">function</span> (grid, column, popup) {
-            <span class="kwd">var</span> apply = popup.find(<span class="str">'.mvc-grid-apply'</span>);
-            apply.bind(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
-                popup.removeClass(<span class="str">'open'</span>);
-                grid.reload(grid, grid.formFilterQuery(grid, column));
+                grid.applyFilter(grid, column);
+                grid.reload(grid);
             });
         },
         bindCancel: <span class="kwd">function</span> (grid, column, popup) {
             <span class="kwd">var</span> cancel = popup.find(<span class="str">'.mvc-grid-cancel'</span>);
-            cancel.bind(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
+            cancel.on(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
                 popup.removeClass(<span class="str">'open'</span>);
-                grid.reload(grid, grid.formFilterQueryWithout(grid, column));
+
+                if (column.filter.first.type) {
+                    grid.cancelFilter(grid, column);
+                    grid.reload(grid);
+                }
             });
         }
     };;
@@ -238,33 +240,35 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                 this.bindCancel(grid, column, popup);
             },
             bindValue: function (grid, column, popup) {
-                var values = popup.find('.first-filter .mvc-grid-boolean-filter li');
-                values.bind('click.mvcgrid', function () {
-                    var item = $(this);
-                    column.filter.first.val = item.data('value');
-
+                var values = popup.find('.first-filter li');
+                values.on('click.mvcgrid', function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+            },
+            bindApply: function (grid, column, popup) {
+                var apply = popup.find('.mvc-grid-apply');
+                apply.on('click.mvcgrid', function () {
+                    popup.removeClass('open');
+                    column.filter.first.val = popup.find('.first-filter .active').data('value');
                     if (column.filter.first.val == 'NotSpecified') {
                         column.filter.first.type = 'Is';
                     } else {
                         column.filter.first.type = 'Equals';
                     }
 
-                    item.siblings().removeClass('active');
-                    item.addClass('active');
-                });
-            },
-            bindApply: function (grid, column, popup) {
-                var apply = popup.find('.mvc-grid-apply');
-                apply.bind('click.mvcgrid', function () {
-                    popup.removeClass('open');
-                    grid.reload(grid, grid.formFilterQuery(grid, column));
+                    grid.applyFilter(grid, column);
+                    grid.reload(grid);
                 });
             },
             bindCancel: function (grid, column, popup) {
                 var cancel = popup.find('.mvc-grid-cancel');
-                cancel.bind('click.mvcgrid', function () {
+                cancel.on('click.mvcgrid', function () {
                     popup.removeClass('open');
-                    grid.reload(grid, grid.formFilterQueryWithout(grid, column));
+
+                    if (column.filter.first.type) {
+                        grid.cancelFilter(grid, column);
+                        grid.reload(grid);
+                    }
                 });
             }
         };;

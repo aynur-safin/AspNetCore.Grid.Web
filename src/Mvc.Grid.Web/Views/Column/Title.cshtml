@@ -18,6 +18,8 @@
                 .Grid(Model)
                 .Build(columns =>
                 {
+                    columns.Add(model => Html.CheckBox("Check_" + model.Id)).Titled(Html.CheckBox("CheckAll"));
+
                     columns.Add(model => model.Name).Titled("Name");
                     columns.Add(model => model.Surname).Titled("Surname");
 
@@ -49,6 +51,8 @@
     .Grid(Model)
     .Build(columns =>
     {
+        columns.Add(model => Html.CheckBox(<span class="str">"Check_"</span> + model.Id)).Titled(Html.CheckBox(<span class="str">"CheckAll"</span>));
+
         columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
 
@@ -62,3 +66,10 @@
         </div>
     </div>
 </div>
+@section scripts {
+    <script>
+        $(document).on('change', '#CheckAll', function () {
+            $('[id^="Check_"').prop('checked', $(this).prop('checked'));
+        });
+    </script>
+}

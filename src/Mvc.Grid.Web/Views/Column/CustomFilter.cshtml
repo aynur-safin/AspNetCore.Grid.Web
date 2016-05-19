@@ -111,53 +111,42 @@
         },
 
         init: <span class="kwd">function</span> (grid, column, popup) {
-            <span class="kwd">this</span>.bindType(grid, column, popup);
             <span class="kwd">this</span>.bindValue(grid, column, popup);
             <span class="kwd">this</span>.bindApply(grid, column, popup);
             <span class="kwd">this</span>.bindCancel(grid, column, popup);
-            <span class="kwd">this</span>.bindOperator(grid, column, popup);
-        },
-        bindType: <span class="kwd">function</span> (grid, column, popup) {
-            column.filter.first.type = <span class="str">"Contains"</span>;
-            column.filter.second.type = <span class="str">"Contains"</span>;
         },
         bindValue: <span class="kwd">function</span> (grid, column, popup) {
-            <span class="kwd">var</span> firstValue = popup.find(<span class="str">'.first-filter .mvc-grid-input'</span>);
-            firstValue.bind(<span class="str">'keyup.mvcgrid'</span>, <span class="kwd">function</span> (e) {
-                column.filter.first.val = <span class="kwd">this</span>.value;
-                <span class="kwd">if</span> (e.keyCode == 13) {
-                    popup.find(<span class="str">'.mvc-grid-apply'</span>).click();
-                }
-            });
-
-            <span class="kwd">var</span> secondValue = popup.find(<span class="str">'.second-filter .mvc-grid-input'</span>);
-            secondValue.bind(<span class="str">'keyup.mvcgrid'</span>, <span class="kwd">function</span> (e) {
-                column.filter.second.val = <span class="kwd">this</span>.value;
-                <span class="kwd">if</span> (e.keyCode == 13) {
+            <span class="kwd">var</span> inputs = popup.find(<span class="str">'.mvc-grid-input'</span>);
+            inputs.on(<span class="str">'keyup.mvcgrid'</span>, <span class="kwd">function</span> (e) {
+                <span class="kwd">if</span> (e.which == 13) {
                     popup.find(<span class="str">'.mvc-grid-apply'</span>).click();
                 }
             });
         },
         bindApply: <span class="kwd">function</span> (grid, column, popup) {
             <span class="kwd">var</span> apply = popup.find(<span class="str">'.mvc-grid-apply'</span>);
-            apply.bind(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
+            apply.on(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
                 popup.removeClass(<span class="str">'open'</span>);
-                grid.reload(grid, grid.formFilterQuery(grid, column));
+                column.filter.first.type = <span class="str">'Contains'</span>;
+                column.filter.second.type = <span class="str">'Contains'</span>;
+                column.filter.operator = popup.find(<span class="str">'.mvc-grid-operator'</span>).val();
+                column.filter.first.val = popup.find(<span class="str">'.first-filter .mvc-grid-input'</span>).val();
+                column.filter.second.val = popup.find(<span class="str">'.second-filter .mvc-grid-input'</span>).val();
+
+                grid.applyFilter(grid, column);
+                grid.reload(grid);
             });
         },
         bindCancel: <span class="kwd">function</span> (grid, column, popup) {
             <span class="kwd">var</span> cancel = popup.find(<span class="str">'.mvc-grid-cancel'</span>);
-            cancel.bind(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
+            cancel.on(<span class="str">'click.mvcgrid'</span>, <span class="kwd">function</span> () {
                 popup.removeClass(<span class="str">'open'</span>);
-                grid.reload(grid, grid.formFilterQueryWithout(grid, column));
+
+                if (column.filter.first.type || column.filter.second.type) {
+                    grid.cancelFilter(grid, column);
+                    grid.reload(grid);
+                }
             });
-        },
-        bindOperator: <span class="kwd">function</span> (grid, column, popup) {
-            <span class="kwd">var</span> operator = popup.find(<span class="str">'.mvc-grid-operator'</span>);
-            operator.bind(<span class="str">'change.mvcgrid'</span>, <span class="kwd">function</span> () {
-                column.filter.operator = <span class="kwd">this</span>.value;
-            });
-            operator.change();
         }
     };
 
@@ -211,53 +200,42 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
             },
 
             init: function (grid, column, popup) {
-                this.bindType(grid, column, popup);
                 this.bindValue(grid, column, popup);
                 this.bindApply(grid, column, popup);
                 this.bindCancel(grid, column, popup);
-                this.bindOperator(grid, column, popup);
-            },
-            bindType: function (grid, column, popup) {
-                column.filter.first.type = "Contains";
-                column.filter.second.type = "Contains";
             },
             bindValue: function (grid, column, popup) {
-                var firstValue = popup.find('.first-filter .mvc-grid-input');
-                firstValue.bind('keyup.mvcgrid', function (e) {
-                    column.filter.first.val = this.value;
-                    if (e.keyCode == 13) {
-                        popup.find('.mvc-grid-apply').click();
-                    }
-                });
-
-                var secondValue = popup.find('.second-filter .mvc-grid-input');
-                secondValue.bind('keyup.mvcgrid', function (e) {
-                    column.filter.second.val = this.value;
-                    if (e.keyCode == 13) {
+                var inputs = popup.find('.mvc-grid-input');
+                inputs.on('keyup.mvcgrid', function (e) {
+                    if (e.which == 13) {
                         popup.find('.mvc-grid-apply').click();
                     }
                 });
             },
             bindApply: function (grid, column, popup) {
                 var apply = popup.find('.mvc-grid-apply');
-                apply.bind('click.mvcgrid', function () {
+                apply.on('click.mvcgrid', function () {
                     popup.removeClass('open');
-                    grid.reload(grid, grid.formFilterQuery(grid, column));
+                    column.filter.first.type = 'Contains';
+                    column.filter.second.type = 'Contains';
+                    column.filter.operator = popup.find('.mvc-grid-operator').val();
+                    column.filter.first.val = popup.find('.first-filter .mvc-grid-input').val();
+                    column.filter.second.val = popup.find('.second-filter .mvc-grid-input').val();
+
+                    grid.applyFilter(grid, column);
+                    grid.reload(grid);
                 });
             },
             bindCancel: function (grid, column, popup) {
                 var cancel = popup.find('.mvc-grid-cancel');
-                cancel.bind('click.mvcgrid', function () {
+                cancel.on('click.mvcgrid', function () {
                     popup.removeClass('open');
-                    grid.reload(grid, grid.formFilterQueryWithout(grid, column));
+
+                    if (column.filter.first.type || column.filter.second.type) {
+                        grid.cancelFilter(grid, column);
+                        grid.reload(grid);
+                    }
                 });
-            },
-            bindOperator: function (grid, column, popup) {
-                var operator = popup.find('.mvc-grid-operator');
-                operator.bind('change.mvcgrid', function () {
-                    column.filter.operator = this.value;
-                });
-                operator.change();
             }
         };
 

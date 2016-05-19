@@ -96,7 +96,7 @@
 <pre>
 <code>
 $(<span class="str">'.mvc-grid'</span>).mvcgrid({
-    rowClicked: <span class="kwd">function</span> (grid, row, data) {
+    rowClicked: <span class="kwd">function</span> (grid, row, data, e) {
         console.log(<span class="str">'data: '</span> + data);
         console.log(<span class="str">'grid: '</span> + grid);
     }
@@ -114,7 +114,7 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
         background-color: #F5F5F5;
     }
 
-    .mvc-grid-row {
+    .mvc-grid tbody tr {
         cursor: pointer;
     }
 </style>
@@ -122,7 +122,7 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
 @section scripts {
 <script>
     $('.mvc-grid').mvcgrid({
-        rowClicked: function (grid, row, data) {
+        rowClicked: function (grid, row, data, e) {
             $(row).siblings().removeClass('selected');
             $(row).toggleClass('selected');
 
@@ -134,25 +134,33 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                     rowData.push('    "' + key + '": "' + data[key] + '"');
                 }
                 for (var i = 0; i < grid.columns.length; i++) {
-                    columnHtml.push(
-                        '\n' +
-                        '        {\n' +
-                        '            "name": "' + grid.columns[i].name + '",\n' +
-                        '            "filter": {\n' +
-                        '                "isEnabled": ' + grid.columns[i].filter.isEnabled + ',\n' +
-                        '                "isMulti": ' + grid.columns[i].filter.isMulti + ',\n' +
-                        '                "name": "' + grid.columns[i].filter.name + '",\n' +
-                        '                "operator": "' + grid.columns[i].filter.operator + '",\n' +
-                        '                "first": {\n' +
-                        '                    "type": "' + grid.columns[i].filter.first.type + '",\n' +
-                        '                    "val": "' + grid.columns[i].filter.first.val + '"\n' +
-                        '                },\n' +
-                        '                "second": {\n' +
-                        '                    "type": "' + grid.columns[i].filter.second.type + '",\n' +
-                        '                    "val": "' + grid.columns[i].filter.second.val + '"\n' +
-                        '                }\n' +
-                        '            }\n' +
-                        '        }');
+                    if (grid.columns[i].filter) {
+                        columnHtml.push(
+                            '\n' +
+                            '        {\n' +
+                            '            "name": "' + grid.columns[i].name + '",\n' +
+                            '            "filter": {\n' +
+                            '                "isMulti": ' + grid.columns[i].filter.isMulti + ',\n' +
+                            '                "name": "' + grid.columns[i].filter.name + '",\n' +
+                            '                "operator": "' + grid.columns[i].filter.operator + '",\n' +
+                            '                "first": {\n' +
+                            '                    "type": "' + grid.columns[i].filter.first.type + '",\n' +
+                            '                    "val": "' + grid.columns[i].filter.first.val + '"\n' +
+                            '                },\n' +
+                            '                "second": {\n' +
+                            '                    "type": "' + grid.columns[i].filter.second.type + '",\n' +
+                            '                    "val": "' + grid.columns[i].filter.second.val + '"\n' +
+                            '                }\n' +
+                            '            }\n' +
+                            '        }');
+                    } else {
+                        columnHtml.push(
+                            '\n' +
+                            '        {\n' +
+                            '            "name": "' + grid.columns[i].name + '",\n' +
+                            '            "filter": null\n' +
+                            '        }');
+                    }
                 }
 
 

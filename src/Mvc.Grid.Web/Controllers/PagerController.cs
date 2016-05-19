@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NonFactors.Mvc.Grid.Web.Context;
 
 namespace NonFactors.Mvc.Grid.Web.Controllers
@@ -12,7 +12,7 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult InitialPage()
+        public ActionResult CurrentPage()
         {
             return View(PeopleRepository.GetPeople());
         }
