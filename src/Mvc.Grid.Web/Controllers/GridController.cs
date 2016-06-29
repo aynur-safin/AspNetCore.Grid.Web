@@ -123,7 +123,7 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
                     sheet.Column(col++).Width = 18;
                 }
 
-                foreach (var gridRow in grid.Rows)
+                foreach (IGridRow<Object> gridRow in grid.Rows)
                 {
                     col = 1;
                     foreach (IGridColumn column in grid.Columns)

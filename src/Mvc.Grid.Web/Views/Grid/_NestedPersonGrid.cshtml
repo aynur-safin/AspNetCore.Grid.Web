@@ -2,7 +2,7 @@
 
 @model IGrid<PersonModel>
 
-<div class="mvc-grid" data-name="@Model.Name">
+<div id="@Model.Name" class="mvc-grid">
     <table class="table @Model.CssClasses">
         <thead>
             <tr>
@@ -52,7 +52,7 @@
                         }
                     </tr>
 
-                    @for (int i = 0; i < row.Model.Children.Count; i++)
+                    for (int i = 0; i < row.Model.Children.Count; i++)
                     {
                         GridRow<PersonModel> child = new GridRow<PersonModel>(row.Model.Children[i]);
                         <tr class="row-child">
