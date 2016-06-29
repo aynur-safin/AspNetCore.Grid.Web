@@ -181,7 +181,7 @@ pre {
 }
 
 .pagination {
-    margin-bottom: 0;
+    margin-bottom: -12px;
 }
 
     .pagination > li > span,
@@ -206,4 +206,12 @@ pre {
     text-align: center;
     color: #000000;
     border: none;
+}
+
+.rows-per-page {
+    display: inline-block;
+}
+
+.rows-per-page select {
+    height: 33px;
 }
