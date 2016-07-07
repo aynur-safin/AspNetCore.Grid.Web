@@ -25,6 +25,10 @@
                     columns.Add(model => model.Birthday).Titled("Birth date");
                     columns.Add(model => model.IsWorking).Titled("Employed");
                 })
+                .Pageable(pager =>
+                {
+                    pager.RowsPerPage = 4;
+                })
                 .Filterable()
                 .Sortable()
             )
@@ -49,7 +53,7 @@
 [<span class="cls">HttpGet</span>]
 <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
 {
-    <span class="kwd">return</span> View(<span class="cls">PeopleRepository</span>.GetPeople());
+    <span class="kwd">return</span> View(<span class="cls">PeopleRepository</span>.GetPeople()); <span class="com">// Has to be ordered in database query scenarios</span>
 }
 </code>
 </pre>
@@ -87,6 +91,7 @@
     })
     .Filterable()
     .Sortable()
+    .Pageable()
 )
 </code>
 </pre>
