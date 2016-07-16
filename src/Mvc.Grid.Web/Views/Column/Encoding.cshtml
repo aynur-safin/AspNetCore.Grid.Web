@@ -18,7 +18,8 @@
                 .Grid(Model)
                 .Build(columns =>
                 {
-                    columns.Add(model => Html.CheckBox("Person_" + model.Id));
+                    columns.Add(model => Html.CheckBox("Person_" + model.Id)).Css("action");
+                    columns.Add(model => $"<button data-id=\"{model.Id}\">Edit</button>").Encoded(false).Css("action");
 
                     columns.Add(model => model.Name).Titled("Name");
                     columns.Add(model => model.Surname).Titled("Surname");
@@ -53,6 +54,7 @@
     .Build(columns =>
     {
         columns.Add(model => Html.CheckBox(<span class="str">"Person_"</span> + model.Id));
+        columns.Add(model => <span class="str">$"&lt;button data-id=\"</span>{model.Id}\<span class="str">"&gt;Edit&lt;/button&gt;"</span>).Encoded(<span class="kwd">false</span>);
 
         columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
