@@ -1,18 +1,20 @@
 ﻿@model IEnumerable<PersonModel>
 
 @{
-    ViewBag.Title = "Binding reload events";
+    ViewBag.Title = "MVC.Grid reload events binding";
 }
 
 <div class="example content-block">
     <div class="widget">
         <div class="widget-header">
-            <i class="fa fa-bars"></i>
-            Ajax grid
-            <span class="widget-buttons">
-                <i class="content-refresh fa fa-refresh"></i>
-                <i class="content-toggle"></i>
-            </span>
+            <h1>
+                <i class="fa fa-bars"></i>
+                Binding grid reload events
+                <span class="widget-buttons">
+                    <i class="content-refresh fa fa-refresh"></i>
+                    <i class="content-toggle"></i>
+                </span>
+            </h1>
         </div>
         <div class="widget-content ajax-content">
             @Html.AjaxGrid(Url.Action("ReloadEventsGrid"))

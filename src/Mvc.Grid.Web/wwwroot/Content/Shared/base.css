@@ -219,3 +219,8 @@ pre {
 .rows-per-page select {
     height: 33px;
 }
+
+h1 {
+    font-size: 1em;
+    margin: 3px 0;
+}
