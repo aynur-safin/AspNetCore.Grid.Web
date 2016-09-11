@@ -25,6 +25,10 @@
                             columns.Add(model => model.Name).Titled("Name").Filterable(true);
                             columns.Add(model => model.Birthday).Titled("Birth date");
                         })
+                        .Pageable(pager =>
+                        {
+                            pager.RowsPerPage = 3;
+                        })
                     )
                 </div>
             </div>
@@ -76,6 +80,10 @@
     {
         columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>).Filterable(<span class="kwd">true</span>);
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>);
+    })
+    .Pageable(pager =>
+    {
+        pager.RowsPerPage = 3;
     })
 )
 </code>
@@ -173,6 +181,12 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                     '    "columns": [' +
                             columnHtml.join(',') + '\n' +
                     '    ]\n' +
+                    '    "pager": {\n' +
+                    '        "currentPage": "' + grid.pager.currentPage + '",\n' +
+                    '        "element": $Query pager element,\n' +
+                    '        "pages": $Query pager page elements,\n' +
+                    '        "rowsPerPage": $Query rows per page element,\n' +
+                    '    }\n' +
                     '}';
 
                 $('.script-output').html(rowHtml + '\n' + gridHtml);
