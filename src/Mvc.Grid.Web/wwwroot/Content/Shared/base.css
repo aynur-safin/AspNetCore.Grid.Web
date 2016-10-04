@@ -107,6 +107,10 @@ body {
     min-height: 440px;
 }
 
+.mvc-grid {
+    overflow-x: auto;
+}
+
 .table {
     margin: 0;
 }
@@ -120,6 +124,7 @@ body {
         border: 0 none;
     }
 
+    .table > thead > tr > th, 
     .table > tbody > tr > td {
         vertical-align: middle;
     }
@@ -185,7 +190,7 @@ pre {
 }
 
 .pagination {
-    margin-bottom: -12px;
+    margin-bottom: 0;
 }
 
     .pagination > li > span,
