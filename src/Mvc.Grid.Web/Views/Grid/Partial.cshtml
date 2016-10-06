@@ -117,7 +117,6 @@
     &lt;table class="table @@Model.CssClasses"&gt;
         &lt;thead&gt;
             &lt;tr&gt;
-                &lt;th&gt;&lt;/th&gt;
                 @@foreach (IGridColumn column in Model.Columns)
                 {
                     String filterableClass = column.IsFilterable == true ? "filterable" : null;
@@ -156,25 +155,26 @@
                 foreach (IGridRow&lt;PersonModel&gt; row in Model.Rows)
                 {
                     &lt;tr class="@@row.CssClasses"&gt;
-                        &lt;td&gt;Parent&lt;/td&gt;
                         @@foreach (IGridColumn column in Model.Columns)
                         {
                             &lt;td class="@@column.CssClasses"&gt;@@column.ValueFor(row)&lt;/td&gt;
                         }
                     &lt;/tr&gt;
 
-                    for (int i = 0; i &lt; row.Model.Children.Count; i++)
+                    if (row.Model.Children.Any())
                     {
-                        GridRow&lt;PersonModel&gt; child = new GridRow&lt;PersonModel&gt;(row.Model.Children[i]);
-                        &lt;tr class="row-child"&gt;
-                            @@if (i == 0)
-                            {
-                                &lt;td rowspan="@@row.Model.Children.Count"&gt;Children&lt;/td&gt;
-                            }
-                            @@foreach (IGridColumn column in Model.Columns)
-                            {
-                                &lt;td&gt;@@column.ValueFor(child)&lt;/td&gt;
-                            }
+                        &lt;tr&gt;
+                            &lt;td colspan="@@Model.Columns.Count()">
+                                @@(Html
+                                    .Grid(row.Model.Children)
+                                    .Build(columns =>
+                                    {
+                                        columns.Add(model => model.Name).Titled("Child name");
+                                        columns.Add(model => model.Age).Titled("Age");
+                                        columns.Add(model => model.Birthday).Titled("Birth date");
+                                    })
+                                )
+                            &lt;/td&gt;
                         &lt;/tr&gt;
                     }
                 }

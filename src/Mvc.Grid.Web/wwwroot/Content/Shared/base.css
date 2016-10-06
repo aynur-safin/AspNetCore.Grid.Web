@@ -124,9 +124,18 @@ body {
         border: 0 none;
     }
 
+    .table .table tbody {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .table .table thead {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
     .table > thead > tr > th, 
     .table > tbody > tr > td {
         vertical-align: middle;
+        border-color: #AEB2B3;
     }
 
 .docs .widget-header {

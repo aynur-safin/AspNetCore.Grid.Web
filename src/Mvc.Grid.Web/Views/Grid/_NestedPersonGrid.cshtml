@@ -6,7 +6,6 @@
     <table class="table @Model.CssClasses">
         <thead>
             <tr>
-                <th></th>
                 @foreach (IGridColumn column in Model.Columns)
                 {
                     String filterableClass = column.IsFilterable == true ? "filterable" : null;
@@ -45,25 +44,26 @@
                 foreach (IGridRow<PersonModel> row in Model.Rows)
                 {
                     <tr class="@row.CssClasses">
-                        <td>Parent</td>
                         @foreach (IGridColumn column in Model.Columns)
                         {
                             <td class="@column.CssClasses">@column.ValueFor(row)</td>
                         }
                     </tr>
 
-                    for (int i = 0; i < row.Model.Children.Count; i++)
+                    if (row.Model.Children.Any())
                     {
-                        GridRow<PersonModel> child = new GridRow<PersonModel>(row.Model.Children[i]);
-                        <tr class="row-child">
-                            @if (i == 0)
-                            {
-                                <td rowspan="@row.Model.Children.Count">Children</td>
-                            }
-                            @foreach (IGridColumn column in Model.Columns)
-                            {
-                                <td>@column.ValueFor(child)</td>
-                            }
+                        <tr>
+                            <td colspan="@Model.Columns.Count()">
+                                @(Html
+                                    .Grid(row.Model.Children)
+                                    .Build(columns =>
+                                    {
+                                        columns.Add(model => model.Name).Titled("Child name");
+                                        columns.Add(model => model.Age).Titled("Age");
+                                        columns.Add(model => model.Birthday).Titled("Birth date");
+                                    })
+                                )
+                            </td>
                         </tr>
                     }
                 }
