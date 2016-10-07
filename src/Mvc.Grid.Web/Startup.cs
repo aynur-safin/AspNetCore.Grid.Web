@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using NonFactors.Mvc.Grid.Web.Filters;
 using System;
 
@@ -15,9 +14,10 @@ namespace NonFactors.Mvc.Grid.Web
             services.AddMvcGrid(filters => filters.Register(typeof(Boolean), "Is", typeof(BooleanIsNullFilter)));
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
         }
