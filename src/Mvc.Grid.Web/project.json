@@ -3,7 +3,7 @@
   "version": "1.0.0",
 
   "dependencies": {
-    "NonFactors.Grid.Mvc6": "1.1.0",
+    "NonFactors.Grid.Mvc6": "1.2.0",
 
     "EPPlus": "4.0.4",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
