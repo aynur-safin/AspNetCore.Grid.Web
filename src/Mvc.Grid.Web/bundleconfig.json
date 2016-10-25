@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/Scripts/Page/bundle.min.js",
+    "inputFiles": [
+      "wwwroot/Scripts/JQuery/*.js",
+      "wwwroot/Scripts/Bootstrap/*.js",
+      "wwwroot/Scripts/JQueryUI/*.js",
+      "wwwroot/Scripts/MvcGrid/*.js",
+      "wwwroot/Scripts/Shared/*.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Content/Page/bundle.min.css",
+    "inputFiles": [
+      "wwwroot/Content/JQueryUI/*.css",
+      "wwwroot/Content/Bootstrap/*.css",
+      "wwwroot/Content/FontAwesome/*.css",
+      "wwwroot/Content/MvcGrid/*.css",
+      "wwwroot/Content/Shared/*.css"
+    ]
+  }
+]
