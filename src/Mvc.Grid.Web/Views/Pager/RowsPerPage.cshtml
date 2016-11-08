@@ -53,7 +53,10 @@
 [<span class="cls">HttpGet</span>]
 <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
 {
-    <span class="kwd">return</span> View(<span class="cls">PeopleRepository</span>.GetPeople()); <span class="com">// Has to be ordered in database query scenarios</span>
+    <span class="kwd">using</span> (<span class="cls">DbContext</span> context = new <span class="cls">ApplicationContext</span>())
+        <span class="kwd">return</span> View(context.Set&lt;<span class="cls">PersonModel</span>&gt;().OrderBy(model => model.Id));
+
+    <span class="com">// Only has to be ordered in database query scenarios with paging enabled</span>
 }
 </code>
 </pre>
