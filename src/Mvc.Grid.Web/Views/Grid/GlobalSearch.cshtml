@@ -69,10 +69,8 @@
 
 &lt;script&gt;
     $(document).on(<span class="str">'keyup'</span>, <span class="str">'.grid-search'</span>, <span class="kwd">function</span>() {
-        <span class="kwd">var</span> grid = $(<span class="str">'.mvc-grid'</span>).data(<span class="str">'mvc-grid'</span>);
-        grid.query = <span class="str">'search='</span> + <span class="kwd">this</span>.value; <span class="com">// Reset page, filter and sort with new filter.</span>
-
         $(<span class="str">'.mvc-grid'</span>).mvcgrid({
+            query: <span class="str">'search='</span> + <span class="kwd">this</span>.value,
             reload: <span class="kwd">true</span>
         });
     });
@@ -123,10 +121,9 @@
 @section scripts {
 <script>
     $(document).on('keyup', '.grid-search', function () {
-        var grid = $('.mvc-grid').data('mvc-grid');
-        grid.query = 'search=' + this.value;
-
         $('.mvc-grid').mvcgrid({
+            query: 'search=' + this.value,
+            requestType: 'post',
             reload: true
         });
     });
