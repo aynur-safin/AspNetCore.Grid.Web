@@ -123,7 +123,6 @@
     $(document).on('keyup', '.grid-search', function () {
         $('.mvc-grid').mvcgrid({
             query: 'search=' + this.value,
-            requestType: 'post',
             reload: true
         });
     });
