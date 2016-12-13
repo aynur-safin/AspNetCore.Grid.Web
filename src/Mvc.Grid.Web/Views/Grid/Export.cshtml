@@ -78,7 +78,7 @@
 {
     <span class="cls">IGrid</span>&lt;<span class="cls">PersonModel</span>&gt; grid = <span class="kwd">new</span> <span class="cls">Grid</span>&lt;<span class="cls">PersonModel</span>&gt;(<span class="cls">PeopleRepository</span>.GetPeople());
     grid.ViewContext = new ViewContext { HttpContext = HttpContext };
-    grid.Query = Request.QueryString;
+    grid.Query = Request.Query;
 
     grid.Columns.Add(model =&gt; model.Name).Titled(<span class="str">"Name"</span>);
     grid.Columns.Add(model =&gt; model.Surname).Titled(<span class="str">"Surname"</span>);
