@@ -2,11 +2,13 @@
     Text: {
         Contains: 'Contient',
         Equals: 'Egale',
+        NotEquals: 'Pas égal',
         StartsWith: 'Commence par',
         EndsWith: 'Fini par'
     },
     Number: {
         Equals: 'Egale',
+        NotEquals: 'Pas égal',
         LessThan: 'Inférieur à',
         GreaterThan: 'Supérieur à',
         LessThanOrEqual: 'Inférieur ou égale à',
@@ -14,6 +16,7 @@
     },
     Date: {
         Equals: 'Egale',
+        NotEquals: 'Pas égal',
         LessThan: 'Inférieur à',
         GreaterThan: 'Supérieur à',
         LessThanOrEqual: 'Inférieur ou égale à',
