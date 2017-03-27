@@ -6,6 +6,6 @@ Official [MVC6.Grid](http://mvc6-grid.azurewebsites.net/) website, used for exam
 ![License](https://img.shields.io/badge/license-MIT-green.svg?style=plastic)
 
 # Contribution
-- Questions or anything conserning MVC6.Grid web/docs should be reported at this repository.
+- Questions or anything conserning MVC6.Grid usage or documentation should be reported at this repository.
 - Before you start writing a pull request you should discuss it using GitHub issues.
 - Features, improvements and bugs should be reported at [Grid repository](https://github.com/NonFactors/MVC6.Grid).
