@@ -19,17 +19,19 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Controller
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="example-code content-block">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <i class="fa fa-code"></i>
+                            Controller
+                            <span class="widget-buttons">
+                                <i class="content-toggle"></i>
+                            </span>
+                        </div>
+                        <div class="widget-content">
 <pre>
 <code>
 [<span class="cls">HttpGet</span>]
@@ -43,37 +45,37 @@
 <span class="kwd">public</span> <span class="cls">ActionResult</span> IndexGrid(<span class="cls">String</span> param)
 {
     <span class="com">// Only grid string query values will be visible here.</span>
-    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>,
-        <span class="cls">PeopleRepository</span>.GetPeople());
+    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople());
 }
 </code>
 </pre>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Main view
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+            <div class="col-xs-12">
+                <div class="example-code content-block">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <i class="fa fa-code"></i>
+                            Main view
+                            <span class="widget-buttons">
+                                <i class="content-toggle"></i>
+                            </span>
+                        </div>
+                        <div class="widget-content">
 <pre>
 <code>
-@@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>,
-    <span class="kwd">new</span> { param = <span class="str">"value"</span>}))
+@@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>, <span class="kwd">new</span> { param = <span class="str">"value"</span>}))
 </code>
 </pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
