@@ -136,6 +136,13 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Configuration()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+
         private IGrid<PersonModel> CreateExportableGrid()
         {
             IGrid<PersonModel> grid = new Grid<PersonModel>(PeopleRepository.GetPeople());
