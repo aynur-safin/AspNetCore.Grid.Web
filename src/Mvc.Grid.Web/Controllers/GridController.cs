@@ -89,6 +89,20 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult ManualPaging(Int32? rows, Int32? page)
+        {
+            ViewBag.TotalRows = PeopleRepository.GetPeople().Count();
+
+            return View(PeopleRepository.GetPeople().Skip((page - 1 ?? 0) * (rows ?? 3)).Take(rows ?? 3));
+        }
+
+        [HttpGet]
+        public ActionResult HtmlAttributes()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+        [HttpGet]
         public ActionResult Partial()
         {
             return View(PeopleRepository.GetPeople());
@@ -134,6 +148,12 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
 
                 return File(package.GetAsByteArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Export.xlsx");
             }
+        }
+
+        [HttpGet]
+        public ActionResult Footer()
+        {
+            return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]

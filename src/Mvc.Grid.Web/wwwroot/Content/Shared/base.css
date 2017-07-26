@@ -23,6 +23,7 @@ body {
 .logo {
     text-align: center;
 }
+
     .logo a {
         margin-left: 3em;
     }
@@ -114,13 +115,13 @@ body {
     overflow-x: auto;
 }
 
+.action {
+    width: 1px;
+}
+
 .table {
     margin: 0;
 }
-
-    .action {
-        width: 1px;
-    }
 
     .table thead {
         background: rgba(255, 255, 255, 0.5);
@@ -135,10 +136,14 @@ body {
         background: rgba(0, 0, 0, 0.1);
     }
 
-    .table > thead > tr > th, 
+    .table > thead > tr > th,
     .table > tbody > tr > td {
         vertical-align: middle;
         border-color: #AEB2B3;
+    }
+
+    .table > tfoot > tr > td {
+        border-top: 2px solid #AEB2B3;
     }
 
 .docs .widget-header {
@@ -235,9 +240,9 @@ pre {
     margin-top: 20px;
 }
 
-.rows-per-page select {
-    height: 33px;
-}
+    .rows-per-page select {
+        height: 33px;
+    }
 
 h1 {
     font-size: 1em;
