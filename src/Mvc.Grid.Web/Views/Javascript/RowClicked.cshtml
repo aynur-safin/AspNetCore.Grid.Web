@@ -104,9 +104,9 @@
 <pre>
 <code>
 $(<span class="str">'.mvc-grid'</span>).mvcgrid({
-    rowClicked: <span class="kwd">function</span> (grid, row, data, e) {
+    rowClicked: <span class="kwd">function</span> (row, data, e) {
         console.log(<span class="str">'data: '</span> + data);
-        console.log(<span class="str">'grid: '</span> + grid);
+        console.log(<span class="str">'grid: '</span> + <span class="kwd">this</span>);
     }
 })
 </code>
@@ -130,7 +130,7 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
 @section scripts {
 <script>
     $('.mvc-grid').mvcgrid({
-        rowClicked: function (grid, row, data, e) {
+        rowClicked: function (row, data, e) {
             $(row).siblings().removeClass('selected');
             $(row).toggleClass('selected');
 
@@ -141,23 +141,23 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                 for (var key in data) {
                     rowData.push('    "' + key + '": "' + data[key] + '"');
                 }
-                for (var i = 0; i < grid.columns.length; i++) {
-                    if (grid.columns[i].filter) {
+                for (var i = 0; i < this.columns.length; i++) {
+                    if (this.columns[i].filter) {
                         columnHtml.push(
                             '\n' +
                             '        {\n' +
-                            '            "name": "' + grid.columns[i].name + '",\n' +
+                            '            "name": "' + this.columns[i].name + '",\n' +
                             '            "filter": {\n' +
-                            '                "isMulti": ' + grid.columns[i].filter.isMulti + ',\n' +
-                            '                "name": "' + grid.columns[i].filter.name + '",\n' +
-                            '                "operator": "' + grid.columns[i].filter.operator + '",\n' +
+                            '                "isMulti": ' + this.columns[i].filter.isMulti + ',\n' +
+                            '                "name": "' + this.columns[i].filter.name + '",\n' +
+                            '                "operator": "' + this.columns[i].filter.operator + '",\n' +
                             '                "first": {\n' +
-                            '                    "type": "' + grid.columns[i].filter.first.type + '",\n' +
-                            '                    "val": "' + grid.columns[i].filter.first.val + '"\n' +
+                            '                    "type": "' + this.columns[i].filter.first.type + '",\n' +
+                            '                    "val": "' + this.columns[i].filter.first.val + '"\n' +
                             '                },\n' +
                             '                "second": {\n' +
-                            '                    "type": "' + grid.columns[i].filter.second.type + '",\n' +
-                            '                    "val": "' + grid.columns[i].filter.second.val + '"\n' +
+                            '                    "type": "' + this.columns[i].filter.second.type + '",\n' +
+                            '                    "val": "' + this.columns[i].filter.second.val + '"\n' +
                             '                }\n' +
                             '            }\n' +
                             '        }');
@@ -165,7 +165,7 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                         columnHtml.push(
                             '\n' +
                             '        {\n' +
-                            '            "name": "' + grid.columns[i].name + '",\n' +
+                            '            "name": "' + this.columns[i].name + '",\n' +
                             '            "filter": null\n' +
                             '        }');
                     }
@@ -175,12 +175,12 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                 var rowHtml = 'data: {\n' + rowData.join(',\n') + '\n}';
                 var gridHtml =
                     'grid: {\n' +
-                    '    "name": "' + grid.name + '",\n' +
+                    '    "name": "' + this.name + '",\n' +
                     '    "columns": [' +
                             columnHtml.join(',') + '\n' +
                     '    ]\n' +
                     '    "pager": {\n' +
-                    '        "currentPage": "' + grid.pager.currentPage + '",\n' +
+                    '        "currentPage": "' + this.pager.currentPage + '",\n' +
                     '        "element": $Query pager element,\n' +
                     '        "pages": $Query pager page elements,\n' +
                     '        "rowsPerPage": $Query rows per page element,\n' +
