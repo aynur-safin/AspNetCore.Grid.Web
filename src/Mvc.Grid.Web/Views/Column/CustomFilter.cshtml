@@ -133,8 +133,8 @@
                 column.filter.first.val = popup.find(<span class="str">'.first-filter .mvc-grid-input'</span>).val();
                 column.filter.second.val = popup.find(<span class="str">'.second-filter .mvc-grid-input'</span>).val();
 
-                grid.applyFilter(grid, column);
-                grid.reload(grid);
+                grid.applyFilter(column);
+                grid.reload();
             });
         },
         bindCancel: <span class="kwd">function</span> (grid, column, popup) {
@@ -143,8 +143,8 @@
                 popup.removeClass(<span class="str">'open'</span>);
 
                 if (column.filter.first.type || column.filter.second.type) {
-                    grid.cancelFilter(grid, column);
-                    grid.reload(grid);
+                    grid.cancelFilter(column);
+                    grid.reload();
                 }
             });
         }
@@ -222,8 +222,8 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                     column.filter.first.val = popup.find('.first-filter .mvc-grid-input').val();
                     column.filter.second.val = popup.find('.second-filter .mvc-grid-input').val();
 
-                    grid.applyFilter(grid, column);
-                    grid.reload(grid);
+                    grid.applyFilter(column);
+                    grid.reload();
                 });
             },
             bindCancel: function (grid, column, popup) {
@@ -232,8 +232,8 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                     popup.removeClass('open');
 
                     if (column.filter.first.type || column.filter.second.type) {
-                        grid.cancelFilter(grid, column);
-                        grid.reload(grid);
+                        grid.cancelFilter(column);
+                        grid.reload();
                     }
                 });
             }
