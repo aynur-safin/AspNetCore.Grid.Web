@@ -48,8 +48,8 @@
 {
     services.AddMvcGrid(filters =>
     {
-        filters.Unregister(<span class="kwd">typeof</span>(<span class="cls">String</span>),<span class="str">"StartsWith"</span>, <span class="kwd">typeof</span>(<span class="cls">StringStartsWithFilter</span><>));
-        filters.Unregister(<span class="kwd">typeof</span>(<span class="cls">String</span>),<span class="str">"EndsWith"</span>, <span class="kwd">typeof</span>(<span class="cls">StringEndsWithFilter</span><>));
+        filters.Unregister(<span class="kwd">typeof</span>(<span class="cls">String</span>), <span class="str">"StartsWith"</span>);
+        filters.Unregister(<span class="kwd">typeof</span>(<span class="cls">String</span>), <span class="str">"EndsWith"</span>);
     });
 }
 </code>
