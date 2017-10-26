@@ -57,27 +57,28 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
     query: <span class="str">'?search=test'</span>, <span class="com">// Grid query string</span>
     requestType: <span class="str">'get'</span>, <span class="com">// Ajax grid request type</span>
     data: {
-        <span class="com">// Ajax grid query data</span> 
+        <span class="com">// Ajax grid query data</span>
     },
     filters: {
         <span class="com">// Grid filters to extend or use</span>
         <span class="str">'Boolean'</span>: <span class="kwd">new</span> CustomBooleanFilter()
     },
     reload: <span class="kwd">false</span>, <span class="com">// Grid reload indicator</span>
-    rowClicked: <span class="kwd">function</span>(grid, row, data, e) {
-        <span class="com">// grid - grid instance which invoked the event</span>
+    rowClicked: <span class="kwd">function</span>(row, data, e) {
+        <span class="com">// this - grid instance which invoked the event</span>
         <span class="com">// row - DOM element</span>
         <span class="com">// data - clicked row's data from all bound columns</span>
         <span class="com">// e - native row click event</span>
     },
-    reloadStarted: <span class="kwd">function</span>() {    
-        <span class="com">// Event called before grid reload is started</span>
+    reloadStarted: <span class="kwd">function</span>() {
+        <span class="com">// this - grid instance which invoked the event</span>
     },
-    reloadEnded: <span class="kwd">function</span>() {    
-        <span class="com">// Event called after grid reload is finished</span>
+    reloadEnded: <span class="kwd">function</span>() {
+        <span class="com">// this - grid instance which invoked the event</span>
     },
-    reloadFailed: <span class="kwd">function</span>() {    
-        <span class="com">// Event called after grid reload has failed</span>
+    reloadFailed: <span class="kwd">function</span>(result) {
+        <span class="com">// this - grid instance which invoked the event</span>
+        <span class="com">// result - failed ajax response result</span>
     }
 });
 </code>
