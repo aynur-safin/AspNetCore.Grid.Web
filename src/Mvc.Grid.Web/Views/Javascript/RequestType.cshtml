@@ -94,7 +94,7 @@ $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</spa
             name: <span class="str">'Joe'</span>
         }
     });
-})
+});
 </code>
 </pre>
                 </div>
@@ -105,14 +105,14 @@ $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</spa
 
 @section scripts {
     <script>
-    $('.content-refresh').on('click', function () {
-        $('.mvc-grid').mvcgrid({
-            requestType: 'post',
-            reload: true,
-            data: {
-                name: 'Joe'
-            }
+        $('.content-refresh').on('click', function () {
+            $('.mvc-grid').mvcgrid({
+                requestType: 'post',
+                reload: true,
+                data: {
+                    name: 'Joe'
+                }
+            });
         });
-    })
     </script>
 }

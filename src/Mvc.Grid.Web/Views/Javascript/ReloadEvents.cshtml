@@ -23,7 +23,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-6">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -42,8 +42,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-5">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -74,7 +72,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -93,18 +91,39 @@ $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</spa
         .find(<span class="str">'.widget-content'</span>);
 
     $(<span class="str">'.mvc-grid'</span>).mvcgrid({
-        reloadStarted: <span class="kwd">function</span> (grid) {
+        reloadStarted: <span class="kwd">function</span> () {
             content.block({ message: null });
         },
-        reloadEnded: <span class="kwd">function</span> (grid) {
+        reloadEnded: <span class="kwd">function</span> () {
             content.unblock();
         },
-        reloadFailed: <span class="kwd">function</span> (grid, result) {
+        reloadFailed: <span class="kwd">function</span> (result) {
             console.log(<span class="str">'I shall not crash in here :)'</span>);
         },
         reload: <span class="kwd">true</span>
     });
-})
+});
+
+<span class="com">// or</span>
+
+$(document).on(<span class="str">'reloadStarted'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid) {
+    console.log(<span class="str">'element: '</span>, <span class="kwd">this</span>);
+    console.log(<span class="str">'event: '</span>, e);
+    console.log(<span class="str">'grid: '</span>, grid);
+});
+
+$(document).on(<span class="str">'reloadEnded'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid) {
+    console.log(<span class="str">'element: '</span>, <span class="kwd">this</span>);
+    console.log(<span class="str">'event: '</span>, e);
+    console.log(<span class="str">'grid: '</span>, grid);
+});
+
+$(document).on(<span class="str">'reloadFailed'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid, result) {
+    console.log(<span class="str">'element: '</span>, <span class="kwd">this</span>);
+    console.log(<span class="str">'event: '</span>, e);
+    console.log(<span class="str">'grid: '</span>, grid);
+    console.log(<span class="str">'failed ajax response result: '</span>, result);
+});
 </code>
 </pre>
                 </div>
@@ -114,22 +133,22 @@ $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</spa
 </div>
 
 @section scripts {
-<script>
-    $('.content-refresh').on('click', function () {
-        var content = $(this).parents('.widget:first').find('.widget-content');
+    <script>
+        $('.content-refresh').on('click', function () {
+            var content = $(this).parents('.widget:first').find('.widget-content');
 
-        $('.mvc-grid').mvcgrid({
-            reloadStarted: function (grid) {
-                content.block({ message: null });
-            },
-            reloadEnded: function (grid) {
-                content.unblock();
-            },
-            reloadFailed: function (grid, result) {
-                console.log('I shall not crash here :)');
-            },
-            reload: true
+            $('.mvc-grid').mvcgrid({
+                reloadStarted: function (grid) {
+                    content.block({ message: null });
+                },
+                reloadEnded: function (grid) {
+                    content.unblock();
+                },
+                reloadFailed: function (grid, result) {
+                    console.log('I shall not crash here :)');
+                },
+                reload: true
+            });
         });
-    })
-</script>
+    </script>
 }

@@ -105,10 +105,21 @@
 <code>
 $(<span class="str">'.mvc-grid'</span>).mvcgrid({
     rowClicked: <span class="kwd">function</span> (row, data, e) {
-        console.log(<span class="str">'data: '</span> + data);
-        console.log(<span class="str">'grid: '</span> + <span class="kwd">this</span>);
+        console.log(<span class="str">'grid: '</span>, <span class="kwd">this</span>);
+        console.log(<span class="str">'row: '</span>, row);
+        console.log(<span class="str">'data: '</span>, data);
+        console.log(<span class="str">'click event: '</span>, e);
     }
-})
+});
+
+<span class="com">// or</span>
+
+$(<span class="str">'.mvc-grid tr'</span>).on(<span class="str">'rowclick'</span>, <span class="kwd">function</span> (e, data, grid) {
+    console.log(<span class="str">'row: '</span>, <span class="kwd">this</span>);
+    console.log(<span class="str">'event: '</span>, e);
+    console.log(<span class="str">'data: '</span>, data);
+    console.log(<span class="str">'grid: '</span>, grid);
+});
 </code>
 </pre>
                 </div>
@@ -192,6 +203,6 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
                 $('.script-output').html('');
             }
         }
-    })
+    });
 </script>
 }
