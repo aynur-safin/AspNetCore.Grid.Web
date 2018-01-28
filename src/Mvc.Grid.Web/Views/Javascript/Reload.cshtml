@@ -88,6 +88,10 @@
 <pre>
 <code>
 $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</span>, <span class="kwd">function</span> () {
+    $(<span class="str">'.mvc-grid'</span>).mvcgrid(<span class="str">'reload'</span>);
+
+    <span class="com">// or</span>
+
     $(<span class="str">'.mvc-grid'</span>).mvcgrid({
         reload: <span class="kwd">true</span>
     });
