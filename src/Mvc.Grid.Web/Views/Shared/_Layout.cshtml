@@ -25,10 +25,11 @@
 <body class="container-fluid">
     <div class="row">
         <div class="col-md-2">
-            <div class="sidebar logo">
+            <div class="logo">
                 <a href="https://github.com/NonFactors/MVC6.Grid">
-                    <img src="@Url.Content("~/Images/github.png")" alt="" width="80" height="80" />
-                    <span class="version">v@(typeof(IGrid).GetTypeInfo().Assembly.GetName().Version)</span>
+                    <span class="fa fa-github">
+                        <span class="version">v@(typeof(IGrid).Assembly.GetName().Version)</span>
+                    </span>
                 </a>
             </div>
             <div class="sidebar-search content-block">
