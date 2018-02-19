@@ -8,6 +8,12 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
     public class JavascriptController : Controller
     {
         [HttpGet]
+        public ActionResult Api()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+        [HttpGet]
         public ActionResult RowClicked()
         {
             return View(PeopleRepository.GetPeople());

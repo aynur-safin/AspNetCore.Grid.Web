@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PersonModel>
 
 @{
-    ViewBag.Title = "MVC.Grid configuration";
+    ViewBag.Title = "MVC.Grid javascript API";
 }
 
 <div class="example content-block">
@@ -39,12 +39,12 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
                     <i class="fa fa-code"></i>
-                    Javascript
+                    Javascript configuration
                     <span class="widget-buttons">
                         <i class="content-toggle"></i>
                     </span>
@@ -80,6 +80,73 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
         <span class="com">// this - grid instance which invoked the event</span>
         <span class="com">// result - failed ajax response result</span>
     }
+});
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    Javascript methods
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+<span class="com">// Returns grid's javascript instance</span>
+$(<span class="str">'.mvc-grid'</span>).mvcgrid(<span class="str">'instance'</span>);
+
+<span class="com">// Reloads the grid</span>
+$(<span class="str">'.mvc-grid'</span>).mvcgrid(<span class="str">'reload'</span>);
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    Javascript events
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+<span class="com">// Triggered when grid's row is clicked</span>
+$(document).on(<span class="str">'rowclick'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span>(e, data, grid, originalEvent) {
+    <span class="com">e - grid's rowclick event, generated through jQuery's trigger function.</span>
+    <span class="com">data - clicked row's data from columns.</span>
+    <span class="com">grid - grid's instance.</span>
+    <span class="com">originalEvent - original tr click event which triggered the rowclick.</span>
+});
+
+<span class="com">// Triggered before grid starts loading</span>
+$(document).on(<span class="str">'reloadStarted'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid) {
+    <span class="com">e - grid's reload started event, generated through jQuery's trigger function.</span>
+    <span class="com">grid - grid's instance.</span>
+});
+
+<span class="com">// Triggered after grid stop loading</span>
+$(document).on(<span class="str">'reloadEnded'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid) {
+    <span class="com">e - grid's reload ended event, generated through jQuery's trigger function.</span>
+    <span class="com">grid - grid's instance.</span>
+});
+    
+<span class="com">// Triggered after grid reload fails</span>
+$(document).on(<span class="str">'reloadFailed'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid, result) {
+    <span class="com">e - grid's reload failed event, generated through jQuery's trigger function.</span>
+    <span class="com">grid - grid's instance.</span>
+    <span class="com">result - failed ajax response result.</span>
 });
 </code>
 </pre>
