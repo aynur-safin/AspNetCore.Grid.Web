@@ -73,6 +73,10 @@ body {
                 color: #448FBA;
             }
 
+    .sidebar li + li {
+        border-top: 1px solid #B8B8B8;
+    }
+
 .widget-header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     padding: 10px 12px;
@@ -143,6 +147,7 @@ body {
 
     .table > thead > tr > th,
     .table > tbody > tr > td {
+        border-bottom: 1px solid #AEB2B3;
         vertical-align: middle;
         border-color: #AEB2B3;
     }
