@@ -1,9 +1,7 @@
-wwwroot/lib/
-/artifacts/
-/.vs/
+.vscode/
+.vs/
 bin/
 obj/
 
-project.lock.json
 *.user
 *.suo
