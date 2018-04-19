@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PersonModel>
+﻿@model IEnumerable<Person>
 
 @(Html
     .Grid(Model)
@@ -6,9 +6,10 @@
     {
         columns.Add(model => model.Name).Titled("Name");
         columns.Add(model => model.Surname).Titled("Surname");
+        columns.Add(model => model.MaritalStatus).Titled("Marital status");
 
         columns.Add(model => model.Age).Titled("Age");
-        columns.Add(model => model.Birthday).Titled("Birth date");
+        columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
         columns.Add(model => model.IsWorking).Titled("Employed");
     })
     .Pageable(pager =>
@@ -16,6 +17,8 @@
         pager.PagesToDisplay = 2;
         pager.RowsPerPage = 2;
     })
+    .Empty("No data found")
+    .Id("my-ajax-grid")
     .Filterable()
     .Sortable()
 )

@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Person>
 
 @{
-    ViewBag.Title = "MVC.Grid styling";
+    ViewBag.Title = "MVC.Grid id attribute";
 }
 
 <div class="widget example">
     <div class="widget-header">
         <div class="fa fa-bars"></div>
-        <span>Styling grid table</span>
+        <span>Grid with id attribute</span>
         <div class="widget-buttons">
             <span class="fa fa-minus content-toggle"></span>
         </div>
@@ -25,8 +25,7 @@
                 columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
                 columns.Add(model => model.IsWorking).Titled("Employed");
             })
-            .Css("css-classes")
-            .AppendCss("table-hover")
+            .Id("my-grid")
         )
     </div>
 </div>
@@ -57,8 +56,7 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
-    .Css(<span class="str">"css-classes"</span>) <span class="com">// Overwrites all classes with the new ones</span>
-    .AppendCss(<span class="str">"table-hover"</span>) <span class="com">// Appends classes to the current ones</span>
+    .Id(<span class="str">"my-grid"</span>)
 )
 </code>
 </pre>
@@ -67,7 +65,7 @@
     <div class="widget code col">
         <div class="widget-header">
             <div class="fa fa-code"></div>
-            <span>Css</span>
+            <span>Rendered grid html</span>
             <div class="widget-buttons">
                 <span class="fa fa-minus content-toggle"></span>
             </div>
@@ -75,19 +73,13 @@
         <div class="widget-content">
 <pre>
 <code>
-&lt;style&gt;
-    .table-hover tbody tr:hover {
-        background-color: rgba(0, 0, 0, 0.075);
-    }
-&lt;/style&gt;
+&lt;div id="my-grid" class="mvc-grid"&gt;
+    &lt;table&gt;
+        ...
+    &lt;/table&gt;
+&lt;/div&gt;
 </code>
 </pre>
         </div>
     </div>
 </div>
-
-<style>
-    table tbody tr {
-        cursor: pointer;
-    }
-</style>

@@ -11,85 +11,106 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
     public class GridController : Controller
     {
         [HttpGet]
-        public ActionResult RowProcessing()
-        {
-            return View(PeopleRepository.GetPeople());
-        }
-
-        [HttpGet]
-        public ActionResult Ajax()
+        public ViewResult Ajax()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult GridPartial()
+        public PartialViewResult AjaxGrid()
         {
             return PartialView("_AjaxGrid", PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult MultiFiltering()
+        public ViewResult MultiFiltering()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult GlobalSearch()
+        public ViewResult GlobalSearch()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult GridSearchPartial(String search)
+        public PartialViewResult GridSearchPartial(String search)
         {
             return PartialView("_AjaxSearchGrid", PeopleRepository.GetPeople(search));
         }
 
         [HttpGet]
-        public ActionResult Filtering()
+        public ViewResult FilterModes()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Sorting()
+        public ViewResult Filtering()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult RowStyling()
+        public ViewResult Sorting()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Styling()
+        public ViewResult RowStyling()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult EmptyText()
+        public ActionResult SourceUrl()
         {
-            return View(Enumerable.Empty<PersonModel>());
+            if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                return PartialView("_SourceUrlGrid", PeopleRepository.GetPeople());
+
+            return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Multiple()
+        public ViewResult RowAttributes()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Paging()
+        public ViewResult RowProcessing()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult ManualPaging(Int32? rows, Int32? page)
+        public ViewResult Styling()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+        [HttpGet]
+        public ViewResult EmptyText()
+        {
+            return View(Enumerable.Empty<Person>());
+        }
+
+        [HttpGet]
+        public ViewResult Multiple()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+        [HttpGet]
+        public ViewResult Paging()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+        [HttpGet]
+        public ViewResult ManualPaging(Int32? rows, Int32? page)
         {
             ViewBag.TotalRows = PeopleRepository.GetPeople().Count();
 
@@ -97,38 +118,44 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult HtmlAttributes()
+        public ViewResult HtmlAttributes()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Partial()
+        public ViewResult Id()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Localization()
+        public ViewResult Partial()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Export()
+        public ViewResult Localization()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+        [HttpGet]
+        public ViewResult Export()
         {
             return View(CreateExportableGrid());
         }
 
         [HttpGet]
-        public ActionResult GetExport()
+        public FileContentResult GetExport()
         {
             using (ExcelPackage package = new ExcelPackage())
             {
                 Int32 row = 2;
                 Int32 col = 1;
                 package.Workbook.Worksheets.Add("Data");
-                IGrid<PersonModel> grid = CreateExportableGrid();
+                IGrid<Person> grid = CreateExportableGrid();
                 ExcelWorksheet sheet = package.Workbook.Worksheets["Data"];
 
                 foreach (IGridColumn column in grid.Columns)
@@ -151,15 +178,15 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Footer()
+        public ViewResult Footer()
         {
             return View(PeopleRepository.GetPeople());
         }
 
 
-        private IGrid<PersonModel> CreateExportableGrid()
+        private IGrid<Person> CreateExportableGrid()
         {
-            IGrid<PersonModel> grid = new Grid<PersonModel>(PeopleRepository.GetPeople());
+            IGrid<Person> grid = new Grid<Person>(PeopleRepository.GetPeople());
             grid.ViewContext = new ViewContext { HttpContext = HttpContext };
             grid.Query = Request.Query;
 
@@ -167,17 +194,17 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
             grid.Columns.Add(model => model.Surname).Titled("Surname");
 
             grid.Columns.Add(model => model.Age).Titled("Age");
-            grid.Columns.Add(model => model.Birthday).Titled("Birth date");
+            grid.Columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
             grid.Columns.Add(model => model.IsWorking).Titled("Employed");
 
-            grid.Pager = new GridPager<PersonModel>(grid);
+            grid.Pager = new GridPager<Person>(grid);
             grid.Processors.Add(grid.Pager);
             grid.Pager.RowsPerPage = 6;
 
             foreach (IGridColumn column in grid.Columns)
             {
-                column.IsFilterable = true;
-                column.IsSortable = true;
+                column.Filter.IsEnabled = true;
+                column.Sort.IsEnabled = true;
             }
 
             return grid;

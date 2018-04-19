@@ -1,38 +1,38 @@
 ﻿$.fn.mvcgrid.lang = {
-    Text: {
-        Contains: 'Contient',
-        Equals: 'Egale',
-        NotEquals: 'Pas égal',
-        StartsWith: 'Commence par',
-        EndsWith: 'Fini par'
+    text: {
+        'contains': 'Contient',
+        'equals': 'Egale',
+        'not-equals': 'Pas égal',
+        'starts-with': 'Commence par',
+        'ends-with': 'Fini par'
     },
-    Number: {
-        Equals: 'Egale',
-        NotEquals: 'Pas égal',
-        LessThan: 'Inférieur à',
-        GreaterThan: 'Supérieur à',
-        LessThanOrEqual: 'Inférieur ou égale à',
-        GreaterThanOrEqual: 'Supérieur ou égale à'
+    number: {
+        'equals': 'Egale',
+        'note-quals': 'Pas égal',
+        'less-than': 'Inférieur à',
+        'greater-than': 'Supérieur à',
+        'less-than-or-equal': 'Inférieur ou égale à',
+        'greater-than-o-requal': 'Supérieur ou égale à'
     },
-    Date: {
-        Equals: 'Egale',
-        NotEquals: 'Pas égal',
-        LessThan: 'Inférieur à',
-        GreaterThan: 'Supérieur à',
-        LessThanOrEqual: 'Inférieur ou égale à',
-        GreaterThanOrEqual: 'Supérieur ou égale à'
+    date: {
+        'equals': 'Egale',
+        'note-quals': 'Pas égal',
+        'earlier-than': 'Inférieur à',
+        'later-than': 'Supérieur à',
+        'earlier-than-or-equal': 'Inférieur ou égale à',
+        'later-than-or-equal': 'Supérieur ou égale à'
     },
-    Boolean: {
-        Yes: 'Oui',
-        No: 'Non'
+    enum: {
+        'equals': 'Egale',
+        'note-quals': 'Pas égal',
     },
-    Filter: {
-        Apply: '&#10004;',
-        Remove: '&#10008;'
+    filter: {
+        'apply': '✔',
+        'remove': '✘'
     },
-    Operator: {
-        Select: '',
-        And: 'et',
-        Or: 'ou'
+    operator: {
+        'select': '',
+        'and': 'et',
+        'or': 'ou'
     }
 };

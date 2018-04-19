@@ -1,23 +1,9 @@
-﻿* {
-    text-decoration: none !important;
-    outline: none !important;
-}
-
-body {
+﻿body {
     background: url(../../Images/background.jpg);
     font-family: 'Open Sans', sans-serif;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 0 30px 30px;
-}
-
-.content {
-    padding-top: 30px;
-}
-
-.content-block {
-    background: rgba(255, 255, 255, 0.8);
-    color: #666666;
+    font-size: 14px;
 }
 
 .logo {
@@ -39,227 +25,152 @@ body {
     }
 
 .sidebar-search {
-    position: relative;
+    background: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    border-style: none;
+    text-align: center;
+    color: #000000;
+    padding: 7px;
+    width: 100%;
 }
 
-    .sidebar-search input {
-        background: rgba(255, 255, 255, 0.2);
-        border-style: none;
-        text-align: center;
-        color: #000000;
-        padding: 7px;
-        width: 100%;
-    }
-
-.sidebar {
-    margin: 20px 0;
+.sidebar ul {
+    background: rgba(255, 255, 255, 0.93);
+    font-weight: bold;
+    list-style: none;
+    padding: 0;
 }
 
-    .sidebar ul {
-        font-weight: bold;
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .sidebar ul a {
+        padding: 5px 12px;
+        color: #777777;
+        display: block;
     }
 
-        .sidebar ul a {
-            padding: 5px 12px;
-            color: #777777;
-            display: block;
+        .sidebar ul a:hover,
+        .sidebar ul a:focus {
+            background: #FFFFFF;
+            color: #448FBA;
         }
 
-            .sidebar ul a:hover {
-                background: rgba(255, 255, 255, 0.9);
-                color: #448FBA;
-            }
+.sidebar li + li {
+    border-top: 1px solid #B8B8B8;
+}
 
-    .sidebar li + li {
-        border-top: 1px solid #B8B8B8;
-    }
+.widget {
+    margin-top: 20px;
+}
 
 .widget-header {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 10px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    align-items: center;
+    padding: 8px 12px;
     color: #FFFFFF;
-    font-size: 18px;
+    font-size: 16px;
+    display: flex;
 }
+
+    .widget-header > span {
+        padding-left: 10px;
+        flex: 1;
+    }
 
 .widget-buttons {
-    float: right;
+    cursor: pointer;
+    padding: 0 5px;
 }
 
-    .widget-buttons a, i {
-        display: inline-block;
-        cursor: pointer;
-        padding: 0 5px;
-        color: white;
+    .widget-buttons a,
+    .widget-buttons span {
+        padding-left: 10px;
+        color: #FFFFFF;
     }
 
-        .widget-buttons a:hover, i:hover {
-            color: #DDDDDD;
-        }
-
-    .widget-buttons .content-toggle {
-        font-family: 'FontAwesome';
-        font-style: normal;
+    .widget-buttons a:hover,
+    .widget-buttons span:hover {
+        color: #DDDDDD;
     }
-
-        .widget-buttons .content-toggle:before {
-            content: "\f078";
-        }
-
-        .widget-buttons .content-toggle.open:before {
-            content: "\f077";
-        }
 
 .widget-content {
+    background: rgba(255, 255, 255, 0.93);
     padding: 10px;
-}
-
-.ajax-content {
-    min-height: 440px;
-}
-
-.mvc-grid {
-    overflow-x: auto;
 }
 
 .action {
     width: 1px;
 }
 
-.table {
-    margin: 0;
+.docs pre {
+    padding: 7px 10px;
 }
 
-    .table thead {
-        background: rgba(255, 255, 255, 0.5);
-        border: 0 none;
-    }
-
-    .table .table tbody {
-        background: rgba(0, 0, 0, 0.05);
-    }
-
-    .table .table thead {
-        background: rgba(0, 0, 0, 0.1);
-    }
-
-    .table > thead > tr > th,
-    .table > tbody > tr > td {
-        border-bottom: 1px solid #AEB2B3;
-        vertical-align: middle;
-        border-color: #AEB2B3;
-    }
-
-    .table > tfoot > tr > td {
-        border-top: 2px solid #AEB2B3;
-    }
+.docs .row {
+    margin-bottom: 10px;
+}
 
 .docs .widget-header {
-    background: rgba(54, 52, 52, 0.67);
+    background: #62BD6B;
 }
 
-.output .widget-header {
-    background: rgba(145, 203, 222, 0.85);
+.console .widget-header {
+    background: #898989;
 }
 
 .example .widget-header {
-    background: rgba(64, 145, 215, 0.69);
+    background: #8C86D7;
 }
 
-.example-code {
-    margin-top: 20px;
+.example .widget-content {
+    background: #FFFFFF;
 }
 
-    .example-code .widget-header {
-        background: rgba(94, 186, 103, 0.75);
-    }
+.code .widget-header {
+    background: #479AE2;
+}
 
 p {
     margin: 10px 0;
 }
 
 pre {
+    border: 1px solid #E2E2E2;
     background: #FFFFFF;
+    padding: 0 15px;
     margin: 0;
 }
 
-    pre code .com {
-        color: #05B305;
+    pre .com {
+        font-weight: bold;
+        color: #15A915;
     }
 
-    pre code .cls {
+    pre .cls {
         color: #2AADBA;
     }
 
-    pre code .kwd {
+    pre .kwd {
         color: #084DFF;
     }
 
-    pre code .str {
+    pre .str {
         color: #CC6500;
     }
 
-.btn {
-    border: 3px solid transparent;
-    border-radius: 0;
-    padding: 5px 9px;
-}
-
-.btn-success {
-    background-color: rgba(94, 186, 103, 0.75);
-    color: #ffffff;
-}
-
-.btn-danger {
-    background-color: #ce948d;
-    color: #ffffff;
-}
-
-.mvc-grid-pager {
-    text-align: center;
-}
-
-.pagination {
-    margin-bottom: 0;
-}
-
-    .pagination > li > span,
-    .pagination > .disabled > span {
-        background: rgba(255, 255, 255, 0.55);
-    }
-
-        .pagination > .disabled > span:hover {
-            background-color: #eee;
-            border-color: #ddd;
-            color: #23527c;
-        }
-
-    .pagination > .active > span {
-        background: #82a1d2;
-        border-color: rgba(131, 174, 211, 1);
-    }
-
-.grid-search {
+.mvc-grid-search {
     background-color: rgba(255, 255, 255, 0.7);
-    margin-left: 15px;
     text-align: center;
+    margin-left: 15px;
+    font-size: 0.7em;
+    padding: 5px 0;
     color: #000000;
     border: none;
 }
 
-.rows-per-page {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 20px;
+.mvc-grid th, .mvc-grid td {
+    border: 1px solid #CACACA;
 }
 
-    .rows-per-page select {
-        height: 33px;
-    }
-
-h1 {
-    font-size: 1em;
-    margin: 3px 0;
+.mvc-grid-pager .active a {
+    background-color: rgba(12, 123, 220, 0.72);
+    border-color: #3280C1;
 }

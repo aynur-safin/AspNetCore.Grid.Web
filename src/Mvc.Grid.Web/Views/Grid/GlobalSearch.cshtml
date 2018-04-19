@@ -2,73 +2,64 @@
     ViewBag.Title = "MVC.Grid global search";
 }
 
-<div class="example content-block">
-    <div class="widget">
-        <div class="widget-header">
-            <h1>
-                <i class="fa fa-bars"></i>
-                Global grid searching
-                <input class="grid-search" type="text" placeholder="Search..." />
-                <span class="widget-buttons">
-                    <i class="content-toggle"></i>
-                </span>
-            </h1>
-        </div>
-        <div class="widget-content">
-            @Html.AjaxGrid(Url.Action("GridSearchPartial"))
+<div class="widget example">
+    <div class="widget-header">
+        <div class="fa fa-bars"></div>
+        <span>Global grid searching</span>
+        <input class="mvc-grid-search" type="text" placeholder="Search..." />
+        <div class="widget-buttons">
+            <span class="fa fa-minus content-toggle"></span>
         </div>
     </div>
+    <div class="widget-content">
+        @Html.AjaxGrid(Url.Action("GridSearchPartial"))
+    </div>
 </div>
+
 <div class="row">
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Controller
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Controller</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 [<span class="cls">HttpGet</span>]
-<span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
+<span class="kwd">public</span> <span class="cls">ViewResult</span> Index()
 {
     <span class="kwd">return</span> View();
 }
 
 [<span class="cls">HttpGet</span>]
-<span class="kwd">public</span> <span class="cls">ActionResult</span> IndexGrid(<span class="cls">String</span> search)
+<span class="kwd">public</span> <span class="cls">PartialViewResult</span> IndexGrid(<span class="cls">String</span> search)
 {
     <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople(search));
 }
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Main view
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Main view</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
-&lt;input class="grid-search" /&gt;
+&lt;input class="mvc-grid-search" /&gt;
 
 @@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>))
 
 &lt;script&gt;
-    $(document).on(<span class="str">'keyup'</span>, <span class="str">'.grid-search'</span>, <span class="kwd">function</span>() {
+    $(document).on(<span class="str">'keyup'</span>, <span class="str">'.mvc-grid-search'</span>, <span class="kwd">function</span>() {
         $(<span class="str">'.mvc-grid'</span>).mvcgrid({
             query: <span class="str">'search='</span> + <span class="kwd">this</span>.value,
             reload: <span class="kwd">true</span>
@@ -77,24 +68,22 @@
 &lt;/script&gt;
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-12">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    _IndexGrid partial view
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>_IndexGrid partial view</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
-@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">PersonModel</span>&gt;
+<span class="com">&lt;!-- Should only include the grid --&gt;</span>
+
+@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
 
 @@(Html
     .Grid(Model)
@@ -102,27 +91,27 @@
     {
         columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
+        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
-        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>);
+        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
     .Sortable()
 )
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>
+
 @section scripts {
-<script>
-    $(document).on('keyup', '.grid-search', function () {
-        $('.mvc-grid').mvcgrid({
-            query: 'search=' + this.value,
-            reload: true
+    <script>
+        $(document).on('keyup', '.mvc-grid-search', function () {
+            $('.mvc-grid').mvcgrid({
+                query: 'search=' + this.value,
+                reload: true
+            });
         });
-    });
-</script>
+    </script>
 }

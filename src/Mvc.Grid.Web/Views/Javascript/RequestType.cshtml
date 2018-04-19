@@ -1,89 +1,61 @@
-﻿@model IEnumerable<PersonModel>
+﻿@model IEnumerable<Person>
 
 @{
     ViewBag.Title = "MVC.Grid reloading with post data";
 }
 
-<div class="example content-block">
-    <div class="widget">
-        <div class="widget-header">
-            <h1>
-                <i class="fa fa-bars"></i>
-                Reloading grid with post data
-                <span class="widget-buttons">
-                    <i class="content-refresh fa fa-refresh"></i>
-                    <i class="content-toggle"></i>
-                </span>
-            </h1>
+<div class="widget example">
+    <div class="widget-header">
+        <div class="fa fa-bars"></div>
+        <span>Reloading ajax grid with post data</span>
+        <div class="widget-buttons">
+            <span class="content-refresh fa fa-refresh"></span>
+            <span class="fa fa-minus content-toggle"></span>
         </div>
-        <div class="widget-content">
-            @Html.AjaxGrid(Url.Action("ReloadGrid"))
-        </div>
+    </div>
+    <div class="widget-content">
+        @Html.Partial("_ReloadGrid")
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-3">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Main view
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-<pre>
-<code>
-@@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>))
-</code>
-</pre>
+    <div class="col">
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Controller</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="col-md-5">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Partial view
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+            <div class="widget-content">
 <pre>
 <code>
-@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">PersonModel</span>&gt;
+[<span class="cls">HttpGet</span>]
+<span class="kwd">public</span> <span class="cls">ViewResult</span> Index()
+{
+    <span class="kwd">return</span> View();
+}
 
-@@(Html
-    .Grid(Model)
-    .Build(columns =>
-    {
-        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
-        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
-        columns.Add(model => <span class="cls">DateTime</span>.Now).Titled(<span class="str">"Time stamp"</span>);
-    })
-)
+[<span class="cls">HttpGet</span>]
+[<span class="cls">HttpPost</span>]
+<span class="kwd">public</span> <span class="cls">PartialViewResult</span> IndexGrid(<span class="cls">String</span> name)
+{
+    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople(name));
+}
 </code>
 </pre>
-                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Javascript
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Javascript</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
                 </div>
-                <div class="widget-content">
+            </div>
+            <div class="widget-content">
 <pre>
 <code>
 $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</span>, <span class="kwd">function</span> () {
@@ -97,7 +69,54 @@ $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</spa
 });
 </code>
 </pre>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Main view</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
                 </div>
+            </div>
+            <div class="widget-content">
+<pre>
+<code>
+@@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>))
+</code>
+</pre>
+            </div>
+        </div>
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Ajax grid partial view</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
+                </div>
+            </div>
+            <div class="widget-content">
+<pre>
+<code>
+<span class="com">&lt;!-- Should only include the grid --&gt;</span>
+
+@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
+
+@@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
+        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
+        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
+
+        columns.Add(model => <span class="cls">DateTime</span>.Now).Titled(<span class="str">"Time stamp"</span>);
+    })
+)
+</code>
+</pre>
             </div>
         </div>
     </div>

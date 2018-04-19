@@ -8,48 +8,48 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
     public class JavascriptController : Controller
     {
         [HttpGet]
-        public ActionResult Api()
+        public ViewResult Api()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult RowClicked()
+        public ViewResult RowClicked()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Reload()
+        public ViewResult Reload()
         {
-            return View();
+            return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
         [HttpPost]
-        public ActionResult ReloadGrid(String name)
+        public PartialViewResult ReloadGrid(String name)
         {
             return PartialView("_ReloadGrid", PeopleRepository.GetPeople(name));
         }
 
         [HttpGet]
-        public ActionResult RequestType()
+        public ViewResult RequestType()
         {
-            return View();
+            return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult ReloadEvents()
+        public ViewResult ReloadEvents()
         {
-            return View();
+            return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult ReloadEventsGrid()
+        public PartialViewResult ReloadEventsGrid()
         {
-            Thread.Sleep(500);
+            Thread.Sleep(2000);
 
-            return PartialView("_ReloadGrid", PeopleRepository.GetPeople());
+            return PartialView("_ReloadEventsGrid", PeopleRepository.GetPeople());
         }
     }
 }

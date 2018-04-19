@@ -11,7 +11,7 @@ namespace NonFactors.Mvc.Grid.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddMvcGrid(filters => filters.Register(typeof(Boolean), "Is", typeof(BooleanIsNullFilter)));
+            services.AddMvcGrid(filters => filters.Register(typeof(Int32), "contains", typeof(NumberContainsFilter)));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

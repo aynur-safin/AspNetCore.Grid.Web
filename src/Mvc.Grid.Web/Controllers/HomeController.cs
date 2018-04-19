@@ -6,13 +6,13 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
-        public ActionResult Index()
+        public ViewResult Index()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Installation()
+        public ViewResult Installation()
         {
             return View();
         }

@@ -1,17 +1,19 @@
-﻿@{
-    ViewBag.Title = "MVC.Grid ajax";
+﻿@model IEnumerable<Person>
+
+@{
+    ViewBag.Title = "MVC.Grid switching to ajax grid";
 }
 
 <div class="widget example">
     <div class="widget-header">
         <div class="fa fa-bars"></div>
-        <span>Ajax grid</span>
+        <span>Grid with source url for ajax</span>
         <div class="widget-buttons">
             <span class="fa fa-minus content-toggle"></span>
         </div>
     </div>
     <div class="widget-content">
-        @Html.AjaxGrid(Url.Action("AjaxGrid"), new { id = "my-ajax-grid" })
+        @Html.Partial("_SourceUrlGrid")
     </div>
 </div>
 
@@ -29,17 +31,12 @@
 <pre>
 <code>
 [<span class="cls">HttpGet</span>]
-<span class="kwd">public</span> <span class="cls">ViewResult</span> Index()
+<span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
 {
-    <span class="com">// Only main query values will be visible here.</span>
-    <span class="kwd">return</span> View();
-}
+    <span class="kwd">if</span> (HttpContext.Request.Headers[<span class="str">"X-Requested-With"</span>] == <span class="str">"XMLHttpRequest"</span>)
+        <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople());
 
-[<span class="cls">HttpGet</span>]
-<span class="kwd">public</span> <span class="cls">PartialViewResult</span> IndexGrid()
-{
-    <span class="com">// Only grid query values will be available here.</span>
-    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople());
+    <span class="kwd">return</span> View(<span class="cls">PeopleRepository</span>.GetPeople());
 }
 </code>
 </pre>
@@ -56,11 +53,9 @@
             <div class="widget-content">
 <pre>
 <code>
-@@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>))
+@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
 
-<span class="com">// or with html attributes</span>
-
-@@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>), <span class="kwd">new</span> { id = <span class="str">"my-ajax-grid"</span>})
+@@(Html.Partial(<span class="str">"_IndexGrid"</span>))
 </code>
 </pre>
             </div>
@@ -78,8 +73,6 @@
         <div class="widget-content">
 <pre>
 <code>
-<span class="com">&lt;!-- Should only include the grid --&gt;</span>
-
 @@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
 
 @@(Html
@@ -94,11 +87,11 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
+    .WithSourceUrl(Url.Action(<span class="str">"SourceUrl"</span>, <span class="str">"Grid"</span>))
     .Empty(<span class="str">"No data found"</span>)
-    .Id(<span class="str">"my-ajax-grid"</span>)
     .Pageable(pager =>
     {
-        pager.PagesToDisplay = 2;
+        pager.PagesToDisplay = 3;
         pager.RowsPerPage = 2;
     })
     .Filterable()

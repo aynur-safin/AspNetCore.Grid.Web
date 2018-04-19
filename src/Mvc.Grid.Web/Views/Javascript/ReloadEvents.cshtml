@@ -1,60 +1,55 @@
-﻿@model IEnumerable<PersonModel>
+﻿@model IEnumerable<Person>
 
 @{
     ViewBag.Title = "MVC.Grid reload events binding";
 }
 
-<div class="example content-block">
-    <div class="widget">
-        <div class="widget-header">
-            <h1>
-                <i class="fa fa-bars"></i>
-                Binding grid reload events
-                <span class="widget-buttons">
-                    <i class="content-refresh fa fa-refresh"></i>
-                    <i class="content-toggle"></i>
-                </span>
-            </h1>
+<div class="widget example">
+    <div class="widget-header">
+        <div class="fa fa-bars"></div>
+        <span>Binding grid reload events</span>
+        <div class="widget-buttons">
+            <span class="content-refresh fa fa-refresh"></span>
+            <span class="fa fa-minus content-toggle"></span>
         </div>
-        <div class="widget-content ajax-content">
-            @Html.AjaxGrid(Url.Action("ReloadEventsGrid"))
-        </div>
+    </div>
+    <div class="widget-content">
+        @Html.Partial("_ReloadEventsGrid")
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Main view
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
+    <div class="col">
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Main view</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
                 </div>
-                <div class="widget-content">
+            </div>
+            <div class="widget-content">
 <pre>
 <code>
 @@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>))
 </code>
 </pre>
-                </div>
             </div>
         </div>
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Partial view
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Ajax grid partial view</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
                 </div>
-                <div class="widget-content">
+            </div>
+            <div class="widget-content">
 <pre>
 <code>
-@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">PersonModel</span>&gt;
+<span class="com">&lt;!-- Should only include the grid --&gt;</span>
+
+@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
 
 @@(Html
     .Grid(Model)
@@ -62,43 +57,37 @@
     {
         columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
+        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
 
         columns.Add(model => <span class="cls">DateTime</span>.Now).Titled(<span class="str">"Time stamp"</span>);
     })
 )
 </code>
 </pre>
-                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Javascript
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Javascript</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</span>, <span class="kwd">function</span> () {
-    <span class="kwd">var</span> content = $(this)
-        .parents(<span class="str">'.widget:first'</span>)
-        .find(<span class="str">'.widget-content'</span>);
-
     $(<span class="str">'.mvc-grid'</span>).mvcgrid({
         reloadStarted: <span class="kwd">function</span> () {
-            content.block({ message: null });
+            console.log(<span class="str">'Started loading grid'</span>, <span class="kwd">this</span>);
         },
         reloadEnded: <span class="kwd">function</span> () {
-            content.unblock();
+            console.log(<span class="str">'Ended loading grid'</span>, <span class="kwd">this</span>);
         },
         reloadFailed: <span class="kwd">function</span> (result) {
-            console.log(<span class="str">'I shall not crash in here :)'</span>);
+            console.log(<span class="str">'Failed loading grid and here's the result'</span>, <span class="kwd">this</span>, result);
         },
         reload: <span class="kwd">true</span>
     });
@@ -126,8 +115,6 @@ $(document).on(<span class="str">'reloadFailed'</span>, <span class="str">'.mvc-
 });
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -135,17 +122,15 @@ $(document).on(<span class="str">'reloadFailed'</span>, <span class="str">'.mvc-
 @section scripts {
     <script>
         $('.content-refresh').on('click', function () {
-            var content = $(this).parents('.widget:first').find('.widget-content');
-
             $('.mvc-grid').mvcgrid({
-                reloadStarted: function (grid) {
-                    content.block({ message: null });
+                reloadStarted: function () {
+                    console.log('Started loading grid', this);
                 },
-                reloadEnded: function (grid) {
-                    content.unblock();
+                reloadEnded: function () {
+                    console.log('Ended loading grid', this);
                 },
-                reloadFailed: function (grid, result) {
-                    console.log('I shall not crash here :)');
+                reloadFailed: function (result) {
+                    console.log('Failed loading grid and here\'s the result', this, result);
                 },
                 reload: true
             });

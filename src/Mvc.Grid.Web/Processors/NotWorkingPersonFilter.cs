@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace NonFactors.Mvc.Grid.Web.Processors
 {
-    public class NotWorkingPersonFilter : IGridProcessor<PersonModel>
+    public class NotWorkingPersonFilter : IGridProcessor<Person>
     {
         public GridProcessorType ProcessorType { get; set; }
 
@@ -12,7 +12,7 @@ namespace NonFactors.Mvc.Grid.Web.Processors
             ProcessorType = GridProcessorType.Pre;
         }
 
-        public IQueryable<PersonModel> Process(IQueryable<PersonModel> items)
+        public IQueryable<Person> Process(IQueryable<Person> items)
         {
             return items.Where(item => item.IsWorking == false);
         }

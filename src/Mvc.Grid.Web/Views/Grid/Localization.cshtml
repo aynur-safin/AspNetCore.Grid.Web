@@ -1,54 +1,51 @@
-﻿@model IEnumerable<PersonModel>
+﻿@model IEnumerable<Person>
 
 @{
     ViewBag.Title = "MVC.Grid localization";
 }
 
-<div class="example content-block">
-    <div class="widget">
-        <div class="widget-header">
-            <h1>
-                <i class="fa fa-bars"></i>
-                Localizing grid
-                <span class="widget-buttons">
-                    <i class="content-toggle"></i>
-                </span>
-            </h1>
-        </div>
-        <div class="widget-content">
-            @(Html
-                .Grid(Model)
-                .Build(columns =>
-                {
-                    columns.Add(model => model.Name).Titled("Nom");
-                    columns.Add(model => model.Surname).Titled("Nom de famille");
-
-                    columns.Add(model => model.Age).Titled("Âge");
-                    columns.Add(model => model.Birthday).Titled("Date de naissance");
-                    columns.Add(model => model.IsWorking).Titled("Employé");
-                })
-                .MultiFilterable()
-                .Filterable()
-                .Sortable()
-            )
+<div class="widget example">
+    <div class="widget-header">
+        <div class="fa fa-bars"></div>
+        <span>Localizing grid</span>
+        <div class="widget-buttons">
+            <span class="fa fa-minus content-toggle"></span>
         </div>
     </div>
+    <div class="widget-content">
+        @(Html
+            .Grid(Model)
+            .Build(columns =>
+            {
+                columns.Add(model => model.Name).Titled("Nom");
+                columns.Add(model => model.Surname).Titled("Nom de famille");
+                columns.Add(model => model.MaritalStatus).Titled("État matrimonial");
+
+                columns.Add(model => model.Age).Titled("Âge");
+                columns.Add(model => model.Birthday).Titled("Date de naissance");
+                columns.Add(model => model.IsWorking).Titled("Employé");
+            })
+            .Empty("Aucune donnée disponible")
+            .MultiFilterable()
+            .Filterable()
+            .Sortable()
+        )
+    </div>
 </div>
+
 <div class="row">
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
-@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">PersonModel</span>&gt;
+@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
 
 @@(Html
     .Grid(Model)
@@ -56,78 +53,74 @@
     {
         columns.Add(model => model.Name).Titled(<span class="str">"Nom"</span>);
         columns.Add(model => model.Surname).Titled(<span class="str">"Nom de famille"</span>);
+        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"État matrimonial"</span>);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Âge"</span>);
         columns.Add(model => model.Birthday).Titled(<span class="str">"Date de naissance"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employé"</span>);
     })
+    .Empty(<span class="str">"Aucune donnée disponible"</span>)
     .MultiFilterable()
     .Filterable()
     .Sortable()
 )
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Javascript
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Javascript</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 &lt;script&gt;
     $.fn.mvcgrid.lang = {
-        Text: {
-            Contains: <span class="str">'Contient'</span>,
-            Equals: <span class="str">'Egale'</span>,
-            NotEquals: <span class="str">'Pas égal'</span>,
-            StartsWith: <span class="str">'Commence par'</span>,
-            EndsWith: <span class="str">'Fini par'</span>
+        text: {
+            <span class="str">'contains'</span>: <span class="str">'Contient'</span>,
+            <span class="str">'equals'</span>: <span class="str">'Egale'</span>,
+            <span class="str">'not-equals'</span>: <span class="str">'Pas égal'</span>,
+            <span class="str">'starts-with'</span>: <span class="str">'Commence par'</span>,
+            <span class="str">'ends-with'</span>: <span class="str">'Fini par'</span>
         },
-        Number: {
-            Equals: <span class="str">'Egale'</span>,
-            NotEquals: <span class="str">'Pas égal'</span>,
-            LessThan: <span class="str">'Inférieur à'</span>,
-            GreaterThan: <span class="str">'Supérieur à'</span>,
-            LessThanOrEqual: <span class="str">'Inférieur ou égale à'</span>,
-            GreaterThanOrEqual: <span class="str">'Supérieur ou égale à'</span>
+        number: {
+            <span class="str">'equals'</span>: <span class="str">'Egale'</span>,
+            <span class="str">'note-quals'</span>: <span class="str">'Pas égal'</span>,
+            <span class="str">'less-than'</span>: <span class="str">'Inférieur à'</span>,
+            <span class="str">'greater-than'</span>: <span class="str">'Supérieur à'</span>,
+            <span class="str">'less-than-or-equal'</span>: <span class="str">'Inférieur ou égale à'</span>,
+            <span class="str">'greater-than-o-requal'</span>: <span class="str">'Supérieur ou égale à'</span>
         },
-        Date: {
-            Equals: <span class="str">'Egale'</span>,
-            NotEquals: <span class="str">'Pas égal'</span>,
-            LessThan: <span class="str">'Inférieur à'</span>,
-            GreaterThan: <span class="str">'Supérieur à'</span>,
-            LessThanOrEqual: <span class="str">'Inférieur ou égale à'</span>,
-            GreaterThanOrEqual: <span class="str">'Supérieur ou égale à'</span>
+        date: {
+            <span class="str">'equals'</span>: <span class="str">'Egale'</span>,
+            <span class="str">'note-quals'</span>: <span class="str">'Pas égal'</span>,
+            <span class="str">'earlier-than'</span>: <span class="str">'Inférieur à'</span>,
+            <span class="str">'later-than'</span>: <span class="str">'Supérieur à'</span>,
+            <span class="str">'earlier-than-or-equal'</span>: <span class="str">'Inférieur ou égale à'</span>,
+            <span class="str">'later-than-or-equal'</span>: <span class="str">'Supérieur ou égale à'</span>
         },
-        Boolean: {
-            Yes: <span class="str">'Oui'</span>,
-            No: <span class="str">'Non'</span>
+        enum: {
+            <span class="str">'equals'</span>: <span class="str">'Egale'</span>,
+            <span class="str">'note-quals'</span>: <span class="str">'Pas égal'</span>,
         },
-        Filter: {
-            Apply: <span class="str">'&#10004;'</span>,
-            Remove: <span class="str">'&#10008;'</span>
+        filter: {
+            <span class="str">'apply'</span>: <span class="str">'&#10004;'</span>,
+            <span class="str">'remove'</span>: <span class="str">'&#10008;'</span>
         },
-        Operator: {
-            Select: '',
-            And: <span class="str">'et'</span>,
-            Or: <span class="str">'ou'</span>
+        operator: {
+            <span class="str">'select'</span>: '',
+            <span class="str">'and'</span>: <span class="str">'et'</span>,
+            <span class="str">'or'</span>: <span class="str">'ou'</span>
         }
     };
 &lt;/script&gt;
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>

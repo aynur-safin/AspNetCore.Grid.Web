@@ -6,25 +6,25 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
     public class PagerController : Controller
     {
         [HttpGet]
-        public ActionResult SelectableRowsPerPage()
+        public ViewResult PagesToDisplay()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult PagesToDisplay()
+        public ViewResult CurrentPage()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult CurrentPage()
+        public ViewResult RowsPerPage()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult RowsPerPage()
+        public ViewResult PageSizes()
         {
             return View(PeopleRepository.GetPeople());
         }

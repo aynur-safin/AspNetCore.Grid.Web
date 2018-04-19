@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Person>
 
 @{
-    ViewBag.Title = "MVC.Grid column value formatting";
+    ViewBag.Title = "MVC.Grid column filter options";
 }
 
 <div class="widget example">
     <div class="widget-header">
         <div class="fa fa-bars"></div>
-        <span>Formatting column value</span>
+        <span>Grid with filter options</span>
         <div class="widget-buttons">
             <span class="fa fa-minus content-toggle"></span>
         </div>
@@ -17,14 +17,26 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).Titled("Name");
+                columns.Add(model => model.Name).Titled("Name").WithFilterOptions(new[]
+                {
+                    new SelectListItem(),
+                    new SelectListItem { Value = "Joe", Text = "Joe Crosswave" },
+                    new SelectListItem { Value = "Merry", Text = "Merry Lisel" }
+                });
                 columns.Add(model => model.Surname).Titled("Surname");
                 columns.Add(model => model.MaritalStatus).Titled("Marital status");
 
                 columns.Add(model => model.Age).Titled("Age");
-                columns.Add(model => model.Birthday).Titled("Birth year").Formatted("{0: yyyy}");
+                columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
                 columns.Add(model => model.IsWorking).Titled("Employed");
             })
+            .Empty("No data found")
+            .Pageable(pager =>
+            {
+                pager.RowsPerPage = 4;
+            })
+            .Filterable()
+            .Sortable()
         )
     </div>
 </div>
@@ -46,14 +58,23 @@
     .Grid(Model)
     .Build(columns =>
     {
-        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
+        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>).WithFilterOptions(<span class="kwd">new</span>[]
+        {
+            <span class="kwd">new</span> <span class="cls">SelectListItem</span>(),
+            <span class="kwd">new</span> <span class="cls">SelectListItem</span> { Value = <span class="str">"Joe"</span>, Text = <span class="str">"Joe Crosswave"</span> },
+            <span class="kwd">new</span> <span class="cls">SelectListItem</span> { Value = <span class="str">"Merry"</span>, Text = <span class="str">"Merry Lisel"</span> }
+        });
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
         columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
-        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth year"</span>).Formatted(<span class="str">"{0: yyyy}"</span>);
+        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
+    .Empty(<span class="str">"No data found"</span>)
+    .Filterable()
+    .Sortable()
+    .Pageable()
 )
 </code>
 </pre>

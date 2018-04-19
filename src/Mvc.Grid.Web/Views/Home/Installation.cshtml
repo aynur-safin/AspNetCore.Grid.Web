@@ -2,39 +2,35 @@
     ViewBag.Title = "MVC.Grid installation";
 }
 
-<div class="docs content-block">
-    <div class="widget">
-        <div class="widget-header">
-            <h1>
-                <i class="fa fa-bars"></i>
-                Installation steps
-                <span class="widget-buttons">
-                    <i class="content-toggle"></i>
-                </span>
-            </h1>
+<div class="widget docs">
+    <div class="widget-header">
+        <div class="fa fa-info"></div>
+        <span>Installation steps</span>
+        <div class="widget-buttons">
+            <span class="fa fa-minus content-toggle"></span>
         </div>
-        <div class="widget-content">
-            <p>
-                Install MVC.Grid package from nuget.
-            </p>
-            <pre>> Install-Package NonFactors.Grid.Mvc6</pre>
-            <p>
-                Include grid partial views to your shared views folder, they can be found at:
-            </p>
-            <div class="row">
-                <div class="col-lg-6">
-                    <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Grid.Mvc6\{version}\content\Views\</pre>
-                </div>
-                <div class="col-lg-6">
-                    <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Grid.Mvc6/{version}/content/Views/</pre>
-                </div>
+    </div>
+    <div class="widget-content">
+        <p>
+            Install MVC.Grid package from nuget.
+        </p>
+        <pre>> Install-Package NonFactors.Grid.Mvc6</pre>
+        <p>
+            Include grid partial views to your shared views folder, they can be found at:
+        </p>
+        <div class="row">
+            <div class="col">
+                <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Grid.Mvc6\{version}\content\Views\</pre>
             </div>
-            <pre>
+            <div class="col">
+                <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Grid.Mvc6/{version}/content/Views/</pre>
+            </div>
+        </div>
+<pre>
 &lt;Project name&gt;
     Views
         Shared
-            <b style="text-decoration: underline">MvcGrid
-                _AjaxGrid.cshtml
+            <b>MvcGrid
                 _Grid.cshtml
                 _Pager.cshtml</b></pre>
             <p>
@@ -42,38 +38,13 @@
             </p>
             <pre>@@using NonFactors.Mvc.Grid;</pre>
             <p>
-                Register mvc grid at start up
-            </p>
-            <pre>
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using NonFactors.Mvc.Grid;
-
-namespace NonFactors.Mvc.Grid.Web
-{
-    public class Startup
-    {
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            <b>services.AddMvcGrid();</b>
-        }
-        public void Configure(IApplicationBuilder app)
-        {
-            app.UseMvcWithDefaultRoute();
-            app.UseStaticFiles();
-        }
-    }
-}
-</pre>
-            <p>
                 Include grid styling sheet to your project and your page, it can be found at:
             </p>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col">
                     <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Grid.Mvc6\{version}\content\Content\MvcGrid\</pre>
                 </div>
-                <div class="col-lg-6">
+                <div class="col">
                     <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Grid.Mvc6/{version}/content/Content/MvcGrid/</pre>
                 </div>
             </div>
@@ -90,10 +61,10 @@ namespace NonFactors.Mvc.Grid.Web
                 Include grid scripts after jQuery scripts to your project and your page, it can be found at.
             </p>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col">
                     <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Grid.Mvc6\{version}\content\Scripts\MvcGrid\</pre>
                 </div>
-                <div class="col-lg-6">
+                <div class="col">
                     <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Grid.Mvc6/{version}/content/Scripts/MvcGrid/</pre>
                 </div>
             </div>
@@ -126,7 +97,7 @@ namespace NonFactors.Mvc.Grid.Web
             <b>$('.mvc-grid').mvcgrid();</b>
         &lt;/script&gt;
     &lt;/body&gt;
-&lt;/html&gt;</pre>
-        </div>
+&lt;/html&gt;
+</pre>
     </div>
 </div>

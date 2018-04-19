@@ -1,7 +1,6 @@
 ﻿// Content opening/closing
 $(document).ready(function () {
     $('.content-toggle').on('click', function () {
-        $(this).toggleClass('open');
         $(this).parents('.widget:first').find('.widget-content').slideToggle();
     });
 });

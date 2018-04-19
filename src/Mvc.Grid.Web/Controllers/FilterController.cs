@@ -6,13 +6,13 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
     public class FilterController : Controller
     {
         [HttpGet]
-        public ActionResult Register()
+        public ViewResult Register()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Unregister()
+        public ViewResult Unregister()
         {
             return View(PeopleRepository.GetPeople());
         }

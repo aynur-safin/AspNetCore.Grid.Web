@@ -6,67 +6,73 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
     public class ColumnController : Controller
     {
         [HttpGet]
-        public ActionResult RenderingValue()
+        public ViewResult RenderingValue()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult MultiFiltering()
+        public ViewResult MultiFiltering()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Filtering()
+        public ViewResult Filtering()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult CustomFilter()
+        public ViewResult FilterOptions()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult InitialSort()
+        public ViewResult CustomFilter()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult FirstSort()
+        public ViewResult InitialSort()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Sorting()
+        public ViewResult FirstSort()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Encoding()
+        public ViewResult Sorting()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Formatting()
+        public ViewResult Encoding()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Styling()
+        public ViewResult Formatting()
         {
             return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
-        public ActionResult Title()
+        public ViewResult Styling()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+        [HttpGet]
+        public ViewResult Title()
         {
             return View(PeopleRepository.GetPeople());
         }
