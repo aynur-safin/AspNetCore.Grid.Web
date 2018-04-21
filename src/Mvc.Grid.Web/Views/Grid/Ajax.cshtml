@@ -20,7 +20,7 @@
         <div class="widget code">
             <div class="widget-header">
                 <div class="fa fa-code"></div>
-                <span>Controller</span>
+                <span>MVC controller</span>
                 <div class="widget-buttons">
                     <span class="fa fa-minus content-toggle"></span>
                 </div>
@@ -48,7 +48,7 @@
         <div class="widget code">
             <div class="widget-header">
                 <div class="fa fa-code"></div>
-                <span>Main view</span>
+                <span>MVC main view</span>
                 <div class="widget-buttons">
                     <span class="fa fa-minus content-toggle"></span>
                 </div>
@@ -65,17 +65,15 @@
 </pre>
             </div>
         </div>
-    </div>
-
-    <div class="widget code col">
-        <div class="widget-header">
-            <div class="fa fa-code"></div>
-            <span>_IndexGrid partial view</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>_IndexGrid partial view</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
+                </div>
             </div>
-        </div>
-        <div class="widget-content">
+            <div class="widget-content">
 <pre>
 <code>
 <span class="com">&lt;!-- Should only include the grid --&gt;</span>
@@ -106,6 +104,104 @@
 )
 </code>
 </pre>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Razor pages</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
+                </div>
+            </div>
+            <div class="widget-content">
+<pre>
+<code>
+<span class="kwd">public class</span> <span class="cls">IndexModel</span> : <span class="cls">PageModel</span>
+{
+    <span class="kwd">public void</span> OnGet()
+    {
+    }
+}
+
+<span class="kwd">public class</span> <span class="cls">IndexGridModel</span> : <span class="cls">PageModel</span>
+{
+    <span class="kwd">public</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; People { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    <span class="kwd">public void</span> OnGet()
+    {
+        People = <span class="cls">PeopleRepository</span>.GetPeople();
+    }
+}
+</code>
+</pre>
+            </div>
+        </div>
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Index razor page</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
+                </div>
+            </div>
+            <div class="widget-content">
+<pre>
+<code>
+@@Html.AjaxGrid(Url.Page(<span class="str">"IndexGrid"</span>))
+
+<span class="com">// or with html attributes</span>
+
+@@Html.AjaxGrid(Url.Page(<span class="str">"IndexGrid"</span>), <span class="kwd">new</span> { id = <span class="str">"my-ajax-grid"</span>})
+</code>
+</pre>
+            </div>
+        </div>
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>IndexGrid razor page</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
+                </div>
+            </div>
+            <div class="widget-content">
+<pre>
+<code>
+<span class="com">&lt;!-- Should only include the grid --&gt;</span>
+
+@@page
+@@model <span class="cls">IndexGridModel</span>
+
+@@{ Layout = null; }
+
+@@(Html
+    .Grid(Model.People)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
+        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
+        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
+
+        columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
+        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
+        columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
+    })
+    .Empty(<span class="str">"No data found"</span>)
+    .Id(<span class="str">"my-ajax-grid"</span>)
+    .Pageable(pager =>
+    {
+        pager.PagesToDisplay = 2;
+        pager.RowsPerPage = 2;
+    })
+    .Filterable()
+    .Sortable()
+)
+</code>
+</pre>
+            </div>
         </div>
     </div>
 </div>
