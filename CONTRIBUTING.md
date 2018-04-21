@@ -1,4 +1,3 @@
-# Contribution
-- Questions or anything conserning MVC.Grid usage or documentation should be reported at this repository.
+# Contributing
 - Before you start writing a pull request you should discuss it using GitHub issues.
-- Features, improvements and bugs should be reported at [Grid repository](https://github.com/NonFactors/MVC6.Grid).
+- Bug reports should be provided with at least minimum repro, if it works on [documentation page](http://mvc6-grid.azurewebsites.net/) you must be doing something differently, please analyze the core of the problem first and provide as much details as you can.
