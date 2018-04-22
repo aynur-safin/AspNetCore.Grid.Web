@@ -8,7 +8,7 @@
     },
     number: {
         'equals': 'Egale',
-        'note-quals': 'Pas égal',
+        'not-equals': 'Pas égal',
         'less-than': 'Inférieur à',
         'greater-than': 'Supérieur à',
         'less-than-or-equal': 'Inférieur ou égale à',
@@ -16,7 +16,7 @@
     },
     date: {
         'equals': 'Egale',
-        'note-quals': 'Pas égal',
+        'not-equals': 'Pas égal',
         'earlier-than': 'Inférieur à',
         'later-than': 'Supérieur à',
         'earlier-than-or-equal': 'Inférieur ou égale à',
@@ -24,7 +24,7 @@
     },
     enum: {
         'equals': 'Egale',
-        'note-quals': 'Pas égal',
+        'not-equals': 'Pas égal',
     },
     filter: {
         'apply': '✔',
