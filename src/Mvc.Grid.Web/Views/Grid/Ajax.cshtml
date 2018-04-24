@@ -76,9 +76,9 @@
             <div class="widget-content">
 <pre>
 <code>
-<span class="com">&lt;!-- Should only include the grid --&gt;</span>
-
 @@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
+
+<span class="com">&lt;!-- Should only include the grid --&gt;</span>
 
 @@(Html
     .Grid(Model)
@@ -150,6 +150,9 @@
             <div class="widget-content">
 <pre>
 <code>
+@@page
+@@model IndexModel
+
 @@Html.AjaxGrid(Url.Page(<span class="str">"IndexGrid"</span>))
 
 <span class="com">// or with html attributes</span>
@@ -170,12 +173,12 @@
             <div class="widget-content">
 <pre>
 <code>
-<span class="com">&lt;!-- Should only include the grid --&gt;</span>
-
 @@page
 @@model <span class="cls">IndexGridModel</span>
 
 @@{ Layout = null; }
+
+<span class="com">&lt;!-- Should only include the grid --&gt;</span>
 
 @@(Html
     .Grid(Model.People)
