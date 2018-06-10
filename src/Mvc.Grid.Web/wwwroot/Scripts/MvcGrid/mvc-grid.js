@@ -1,5 +1,5 @@
 ﻿/*!
- * Mvc.Grid 3.0.0
+ * Mvc.Grid 3.1.0
  * https://github.com/NonFactors/MVC6.Grid
  *
  * Copyright © NonFactors
@@ -827,5 +827,7 @@ $.fn.mvcgrid.lang = {
 };
 
 $(function () {
-    $('body').append('<div class="mvc-grid-popup"></div>');
+    if (!$('body > .mvc-grid-popup').length) {
+        $('body').append('<div class="mvc-grid-popup"></div>');
+    }
 });
