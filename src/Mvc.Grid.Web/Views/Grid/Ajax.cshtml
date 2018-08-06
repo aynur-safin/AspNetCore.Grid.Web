@@ -78,7 +78,7 @@
 <code>
 @@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
 
-<span class="com">&lt;!-- Should only include the grid --&gt;</span>
+<span class="com">@@* Should only include grid declaration *@@</span>
 
 @@(Html
     .Grid(Model)
@@ -178,7 +178,7 @@
 
 @@{ Layout = null; }
 
-<span class="com">&lt;!-- Should only include the grid --&gt;</span>
+<span class="com">@@* Should only include grid declaration *@@</span>
 
 @@(Html
     .Grid(Model.People)
