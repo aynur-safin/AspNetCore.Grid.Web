@@ -87,7 +87,7 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
-    .WithSourceUrl(Url.Action(<span class="str">"SourceUrl"</span>, <span class="str">"Grid"</span>))
+    .WithSourceUrl(Url.Action(<span class="str">"Index"</span>, <span class="str">"Grid"</span>))
     .Empty(<span class="str">"No data found"</span>)
     .Pageable(pager =>
     {
