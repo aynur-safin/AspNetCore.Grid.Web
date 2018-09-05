@@ -24,7 +24,11 @@
     },
     enum: {
         'equals': 'Egale',
-        'not-equals': 'Pas égal',
+        'not-equals': 'Pas égal'
+    },
+    boolean: {
+        'equals': 'Egale',
+        'not-equals': 'Pas égal'
     },
     filter: {
         'apply': '✔',
