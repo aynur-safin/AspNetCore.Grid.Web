@@ -156,8 +156,7 @@
 [<span class="cls">HttpGet</span>]
 <span class="kwd">public</span> <span class="cls">ViewResult</span> Index()
 {
-    <span class="kwd">using</span> (<span class="cls">DbContext</span> context = <span class="kwd">new</span> <span class="cls">ApplicationContext</span>())
-        <span class="kwd">return</span> View(context.Set&lt;<span class="cls">Person</span>&gt;().OrderBy(model => model.Id));
+    <span class="kwd">return</span> View(Context.Set&lt;<span class="cls">Person</span>&gt;().OrderBy(model => model.Id));
 
     <span class="com">// Has to be ordered in database query scenarios for paging to work!</span>
 }
