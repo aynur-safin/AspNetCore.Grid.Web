@@ -17,11 +17,11 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).Titled("Name");
-                columns.Add(model => model.Surname).Titled("Surname");
-                columns.Add(model => model.MaritalStatus).Titled("Marital status");
+                columns.Add(model => model.Name);
+                columns.Add(model => model.Surname);
+                columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.IsWorking).Titled("Employed");
+                columns.Add(model => model.IsWorking);
             })
             .Empty("No data found")
             .Filterable()
@@ -99,8 +99,8 @@
 <span class="kwd">var</span> CustomTextFilter = (<span class="kwd">function</span> (base) {
     MvcGridExtends(CustomTextFilter, base);
 
-    <span class="kwd">function</span> CustomTextFilter() {
-        base.apply(<span class="kwd">this</span>);
+    <span class="kwd">function</span> CustomTextFilter(column) {
+        base.call(<span class="kwd">this</span>, column);
 
         <span class="kwd">this</span>.methods = [<span class="str">'contains'</span>, <span class="str">'equals'</span>, <span class="str">'not-equals'</span>];
     }
@@ -108,9 +108,9 @@
     <span class="kwd">return</span> CustomTextFilter;
 })(MvcGridTextFilter);
 
-$(<span class="str">'.mvc-grid'</span>).mvcgrid({
+<span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">'.mvc-grid'</span>), {
     filters: {
-        <span class="str">'text'</span>: <span class="kwd">new</span> CustomTextFilter()
+        <span class="str">'text'</span>: CustomTextFilter
     }
 });
 </code>
@@ -124,8 +124,8 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
         var CustomTextFilter = (function (base) {
             MvcGridExtends(CustomTextFilter, base);
 
-            function CustomTextFilter() {
-                base.apply(this);
+            function CustomTextFilter(column) {
+                base.call(this, column);
 
                 this.methods = ['contains', 'equals', 'not-equals'];
             }
@@ -133,9 +133,9 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
             return CustomTextFilter;
         })(MvcGridTextFilter);
 
-        $('.mvc-grid').mvcgrid({
+        new MvcGrid(document.querySelector('.mvc-grid'), {
             filters: {
-                'text': new CustomTextFilter()
+                'text': CustomTextFilter
             }
         });
     </script>

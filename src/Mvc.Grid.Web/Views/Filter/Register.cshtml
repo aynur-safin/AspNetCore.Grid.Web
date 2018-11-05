@@ -17,12 +17,12 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).Titled("Name");
-                columns.Add(model => model.Surname).Titled("Surname");
-                columns.Add(model => model.MaritalStatus).Titled("Marital status");
+                columns.Add(model => model.Name);
+                columns.Add(model => model.Surname);
+                columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.Age).Titled("Age");
-                columns.Add(model => model.IsWorking).Titled("Employed");
+                columns.Add(model => model.Age);
+                columns.Add(model => model.IsWorking);
             })
             .Empty("No data found")
             .Filterable()
@@ -98,8 +98,8 @@
 <span class="kwd">var</span> ExtendedNumberFilter = (<span class="kwd">function</span> (base) {
     MvcGridExtends(ExtendedNumberFilter, base);
 
-    <span class="kwd">function</span> ExtendedNumberFilter() {
-        base.apply(<span class="kwd">this</span>);
+    <span class="kwd">function</span> ExtendedNumberFilter(column) {
+        base.call(<span class="kwd">this</span>, column);
 
         <span class="kwd">this</span>.methods.unshift(<span class="str">'contains'</span>);
     }
@@ -107,13 +107,13 @@
     <span class="kwd">return</span> ExtendedNumberFilter;
 })(MvcGridNumberFilter);
 
-$(<span class="str">'.mvc-grid'</span>).mvcgrid({
+<span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">'.mvc-grid'</span>), {
     filters: {
-        <span class="str">'number'</span>: <span class="kwd">new</span> ExtendedNumberFilter()
+        <span class="str">'number'</span>: ExtendedNumberFilter
     }
 });
 
-$.fn.mvcgrid.lang.number.contains = <span class="str">'Contains'</span>;
+MvcGrid.prototype.lang.number.contains = <span class="str">'Contains'</span>;
 </code>
 </pre>
         </div>
@@ -125,8 +125,8 @@ $.fn.mvcgrid.lang.number.contains = <span class="str">'Contains'</span>;
         var ExtendedNumberFilter = (function (base) {
             MvcGridExtends(ExtendedNumberFilter, base);
 
-            function ExtendedNumberFilter() {
-                base.apply(this);
+            function ExtendedNumberFilter(column) {
+                base.call(this, column);
 
                 this.methods.unshift('contains');
             }
@@ -134,12 +134,12 @@ $.fn.mvcgrid.lang.number.contains = <span class="str">'Contains'</span>;
             return ExtendedNumberFilter;
         })(MvcGridNumberFilter);
 
-        $('.mvc-grid').mvcgrid({
+        new MvcGrid(document.querySelector('.mvc-grid'), {
             filters: {
-                'number': new ExtendedNumberFilter()
+                'number': ExtendedNumberFilter
             }
         });
 
-        $.fn.mvcgrid.lang.number.contains = 'Contains';
+        MvcGrid.prototype.lang.number.contains = 'Contains';
     </script>
 }

@@ -64,7 +64,7 @@
             row++;
         }
 
-        <span class="kwd">return</span> File(package.GetAsByteArray(), <span class="str">"application/unknown"</span>);
+        <span class="kwd">return</span> File(package.GetAsByteArray(), <span class="str">"application/unknown"</span>, <span class="str">"Export.xlsx"</span>);
     }
 }
 
@@ -78,7 +78,7 @@
     grid.Columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
 
     grid.Columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
-    grid.Columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
+    grid.Columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
     grid.Columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
 
     grid.Pager = <span class="kwd">new</span> <span class="cls">GridPager</span>&lt;<span class="cls">Person</span>&gt;(grid);

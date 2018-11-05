@@ -12,7 +12,6 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 
     <environment names="Development">
-        <link href="~/Content/JQueryUI/jquery-ui.css" rel="stylesheet">
         <link href="~/Content/Bootstrap/bootstrap.css" rel="stylesheet">
         <link href="~/Content/FontAwesome/font-awesome.css" rel="stylesheet">
         <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
@@ -129,6 +128,9 @@
                     @Html.ActionLink("Column multi value filtering", "MultiFiltering", "Column")
                 </li>
                 <li>
+                    @Html.ActionLink("Column default filter method", "DefaultMethod", "Column")
+                </li>
+                <li>
                     @Html.ActionLink("Column value sorting", "Sorting", "Column")
                 </li>
                 <li>
@@ -186,14 +188,12 @@
                 </li>
             </ul>
         </div>
-        <div class="col">
+        <div class="col-12 col-lg-10">
             @RenderBody()
         </div>
     </div>
 
     <environment names="Development">
-        <script src="~/Scripts/JQuery/jquery.js"></script>
-        <script src="~/Scripts/JQueryUI/jquery-ui.js"></script>
         <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
         <script src="~/Scripts/Shared/site.js"></script>
     </environment>

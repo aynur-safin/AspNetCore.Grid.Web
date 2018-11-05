@@ -6,7 +6,7 @@
     <div class="widget-header">
         <div class="fa fa-bars"></div>
         <span>Global grid searching</span>
-        <input class="mvc-grid-search" type="text" placeholder="Search..." />
+        <input id="GridSearch" class="grid-search" placeholder="Search..." />
         <div class="widget-buttons">
             <span class="fa fa-minus content-toggle"></span>
         </div>
@@ -54,16 +54,16 @@
         <div class="widget-content">
 <pre>
 <code>
-&lt;input class="mvc-grid-search" /&gt;
+&lt;input id="GridSearch" /&gt;
 
 @@Html.AjaxGrid(Url.Action(<span class="str">"IndexGrid"</span>))
 
 &lt;script&gt;
-    $(document).on(<span class="str">'keyup'</span>, <span class="str">'.mvc-grid-search'</span>, <span class="kwd">function</span>() {
-        $(<span class="str">'.mvc-grid'</span>).mvcgrid({
-            query: <span class="str">'search='</span> + <span class="kwd">this</span>.value,
-            reload: <span class="kwd">true</span>
-        });
+    document.getElementById(<span class="str">'GridSearch'</span>).addEventListener(<span class="str">'input'</span>, <span class="kwd">function</span>() {
+        <span class="kwd">var</span> grid = <span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">'.mvc-grid'</span>));
+        grid.query.set(<span class="str">'search'</span>, <span class="kwd">this</span>.value);
+
+        grid.reload();
     });
 &lt;/script&gt;
 </code>
@@ -94,7 +94,7 @@
         columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
-        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
+        columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
     .Sortable()
@@ -107,11 +107,11 @@
 
 @section scripts {
     <script>
-        $(document).on('keyup', '.mvc-grid-search', function () {
-            $('.mvc-grid').mvcgrid({
-                query: 'search=' + this.value,
-                reload: true
-            });
+        document.getElementById('GridSearch').addEventListener('input', function() {
+            var grid = new MvcGrid(document.querySelector('.mvc-grid'));
+            grid.query.set('search', this.value);
+
+            grid.reload();
         });
     </script>
 }

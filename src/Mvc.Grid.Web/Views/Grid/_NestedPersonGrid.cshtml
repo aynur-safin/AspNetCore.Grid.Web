@@ -33,8 +33,8 @@
                                     .Build(columns =>
                                     {
                                         columns.Add(model => model.Name).Titled("Child name");
-                                        columns.Add(model => model.Age).Titled("Age");
-                                        columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
+                                        columns.Add(model => model.Age);
+                                        columns.Add(model => model.Birthday).Formatted("{0:d}");
                                     })
                                 )
                             </td>

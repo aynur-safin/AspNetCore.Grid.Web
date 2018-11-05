@@ -17,13 +17,13 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).Titled("Name");
-                columns.Add(model => model.Surname).Titled("Surname");
-                columns.Add(model => model.MaritalStatus).Titled("Marital status");
+                columns.Add(model => model.Name);
+                columns.Add(model => model.Surname);
+                columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.Age).Titled("Age");
-                columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
-                columns.Add(model => model.IsWorking).Titled("Employed");
+                columns.Add(model => model.Age);
+                columns.Add(model => model.Birthday).Formatted("{0:d}");
+                columns.Add(model => model.IsWorking);
             })
             .Pageable(pager =>
             {
@@ -48,36 +48,15 @@
         <div class="widget-content">
 <pre>
 <code>
-$(<span class="str">'.mvc-grid'</span>).mvcgrid({
+<span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">'.mvc-grid'</span>), {
     sourceUrl: <span class="str">'IndexGrid'</span>, <span class="com">// Grid source url string</span>
-    query: <span class="str">'?search=test'</span>, <span class="com">// Grid query string</span>
+    query: <span class="str">'search=test'</span>, <span class="com">// Grid query string</span>
     requestType: <span class="str">'get'</span>, <span class="com">// Ajax grid request type</span>
-    data: {
-        <span class="com">// Ajax grid query data</span>
-    },
     filters: {
-        <span class="com">// Grid filters to extend or use</span>
-        <span class="str">'Boolean'</span>: <span class="kwd">new</span> CustomBooleanFilter()
+        <span class="com">// Grid filter constructors to extend or use</span>
+        <span class="str">'boolean'</span>: CustomBooleanFilter
     },
-    loadingDelay: 300, <span class="com">// Loading block visiblity delay on ajax grid</span>
-    showLoading: true, <span class="com">// Indicates if grid loading block should be shown after loading delay</span>
-    reload: <span class="kwd">false</span>, <span class="com">// Grid reload indicator</span>
-    rowClicked: <span class="kwd">function</span>(row, data, e) {
-        <span class="com">// this - grid instance which invoked the event</span>
-        <span class="com">// row - DOM element</span>
-        <span class="com">// data - clicked row's data from all bound columns</span>
-        <span class="com">// e - native row click event</span>
-    },
-    reloadStarted: <span class="kwd">function</span>() {
-        <span class="com">// this - grid instance which invoked the event</span>
-    },
-    reloadEnded: <span class="kwd">function</span>() {
-        <span class="com">// this - grid instance which invoked the event</span>
-    },
-    reloadFailed: <span class="kwd">function</span>(result) {
-        <span class="com">// this - grid instance which invoked the event</span>
-        <span class="com">// result - failed ajax response result</span>
-    }
+    loadingDelay: 300 <span class="com">// Loading block visiblity delay on ajax grid, null indicates no loading screen</span>
 });
 </code>
 </pre>
@@ -95,11 +74,8 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid({
             <div class="widget-content">
 <pre>
 <code>
-<span class="com">// Returns grid's javascript instance</span>
-$(<span class="str">'.mvc-grid'</span>).mvcgrid(<span class="str">'instance'</span>);
-
 <span class="com">// Reloads the grid</span>
-$(<span class="str">'.mvc-grid'</span>).mvcgrid(<span class="str">'reload'</span>);
+<span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">'.mvc-grid'</span>)).reload();
 </code>
 </pre>
             </div>
@@ -115,31 +91,29 @@ $(<span class="str">'.mvc-grid'</span>).mvcgrid(<span class="str">'reload'</span
             <div class="widget-content">
 <pre>
 <code>
+<span class="kwd">var</span> grid = document.querySelector(<span class="str">'.mvc-grid'</span>);
+
 <span class="com">// Triggered when grid's row is clicked</span>
-$(document).on(<span class="str">'rowclick'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span>(e, data, grid, originalEvent) {
-    <span class="com">e - grid's rowclick event, generated through jQuery's trigger function.</span>
-    <span class="com">data - clicked row's data from columns.</span>
-    <span class="com">grid - grid's instance.</span>
-    <span class="com">originalEvent - original tr click event which triggered the rowclick.</span>
+grid.addEventListener(<span class="str">'rowclick'</span>, <span class="kwd">function</span>(e) {
+    <span class="com">e.detail.data - clicked row's data from columns.</span>
+    <span class="com">e.detail.grid - grid's instance.</span>
+    <span class="com">e.detail.originalEvent - original tr click event which triggered the rowclick.</span>
 });
 
 <span class="com">// Triggered before grid starts loading</span>
-$(document).on(<span class="str">'reloadStarted'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid) {
-    <span class="com">e - grid's reload started event, generated through jQuery's trigger function.</span>
-    <span class="com">grid - grid's instance.</span>
+grid.addEventListener(<span class="str">'reloadstart'</span>, <span class="kwd">function</span> (e) {
+    <span class="com">e.detail.grid - grid's instance.</span>
 });
 
 <span class="com">// Triggered after grid stop loading</span>
-$(document).on(<span class="str">'reloadEnded'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid) {
-    <span class="com">e - grid's reload ended event, generated through jQuery's trigger function.</span>
-    <span class="com">grid - grid's instance.</span>
+grid.addEventListener(<span class="str">'reloadend'</span>, <span class="kwd">function</span> (e) {
+    <span class="com">e.detail.grid - grid's instance.</span>
 });
 
 <span class="com">// Triggered after grid reload fails</span>
-$(document).on(<span class="str">'reloadFailed'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid, result) {
-    <span class="com">e - grid's reload failed event, generated through jQuery's trigger function.</span>
-    <span class="com">grid - grid's instance.</span>
-    <span class="com">result - failed ajax response result.</span>
+grid.addEventListener(<span class="str">'reloadfail'</span>, <span class="kwd">function</span> (e) {
+    <span class="com">e.detail.result - failed ajax response result.</span>
+    <span class="com">e.detail.grid - grid's instance.</span>
 });
 </code>
 </pre>

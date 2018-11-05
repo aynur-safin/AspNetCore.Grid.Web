@@ -12,7 +12,7 @@ namespace NonFactors.Mvc.Grid.Web.Filters
                 return null;
 
             MethodInfo toStringMethod = typeof(Int32).GetMethod("ToString", new Type[0]);
-            MethodInfo containsMethod = typeof(String).GetMethod("Contains");
+            MethodInfo containsMethod = typeof(String).GetMethod("Contains", new[] { typeof(String) });
 
             Expression toString = Expression.Call(expression, toStringMethod);
             Expression value = Expression.Constant(Value.ToUpper());

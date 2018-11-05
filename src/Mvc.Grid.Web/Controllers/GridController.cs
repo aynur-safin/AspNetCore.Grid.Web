@@ -190,12 +190,12 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
             grid.ViewContext = new ViewContext { HttpContext = HttpContext };
             grid.Query = Request.Query;
 
-            grid.Columns.Add(model => model.Name).Titled("Name");
-            grid.Columns.Add(model => model.Surname).Titled("Surname");
+            grid.Columns.Add(model => model.Name);
+            grid.Columns.Add(model => model.Surname);
 
-            grid.Columns.Add(model => model.Age).Titled("Age");
-            grid.Columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
-            grid.Columns.Add(model => model.IsWorking).Titled("Employed");
+            grid.Columns.Add(model => model.Age);
+            grid.Columns.Add(model => model.Birthday).Formatted("{0:d}");
+            grid.Columns.Add(model => model.IsWorking);
 
             grid.Pager = new GridPager<Person>(grid);
             grid.Processors.Add(grid.Pager);

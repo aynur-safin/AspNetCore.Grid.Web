@@ -74,7 +74,7 @@
     &lt;/body&gt;
 &lt;/html&gt;</pre>
             <p>
-                Include grid scripts after jQuery scripts to your project and your page, it can be found at.
+                Include grid scripts to your project and your page, it can be found at.
             </p>
             <div class="row">
                 <div class="col">
@@ -92,7 +92,6 @@
     &lt;body&gt;
         @@RenderBody()
 
-        &lt;script src="~/Scripts/JQuery/jquery.js"&gt;&lt;/script&gt;
         <b>&lt;script src="~/Scripts/MvcGrid/mvc-grid.js"&gt;&lt;/script&gt;</b>
     &lt;/body&gt;
 &lt;/html&gt;</pre>
@@ -107,10 +106,11 @@
     &lt;body&gt;
         @@RenderBody()
 
-        &lt;script src="~/Scripts/JQuery/jquery.js"&gt;&lt;/script&gt;
         &lt;script src="~/Scripts/MvcGrid/mvc-grid.js"&gt;&lt;/script&gt;
         &lt;script&gt;
-            <b>$('.mvc-grid').mvcgrid();</b>
+            <b>[].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+                new MvcGrid(element);
+            });</b>
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;

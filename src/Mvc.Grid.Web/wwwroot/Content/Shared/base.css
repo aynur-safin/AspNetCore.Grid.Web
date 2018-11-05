@@ -1,4 +1,8 @@
-﻿body {
+﻿html {
+    font-size: 14px;
+}
+
+body {
     background: url(../../Images/background.jpg);
     font-family: 'Open Sans', sans-serif;
     background-repeat: no-repeat;
@@ -156,7 +160,7 @@ pre {
         color: #CC6500;
     }
 
-.mvc-grid-search {
+.grid-search {
     background-color: rgba(255, 255, 255, 0.7);
     text-align: center;
     margin-left: 15px;
@@ -166,11 +170,20 @@ pre {
     border: none;
 }
 
-.mvc-grid th, .mvc-grid td {
-    border: 1px solid #CACACA;
+.bolded {
+    font-weight: bold;
 }
 
-.mvc-grid-pager .active a {
+.table-hover tr {
+    cursor: pointer;
+}
+
+.selected,
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.mvc-grid-pager .active {
     background-color: rgba(12, 123, 220, 0.72);
     border-color: #3280C1;
 }

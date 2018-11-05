@@ -9,7 +9,7 @@
         <div class="fa fa-bars"></div>
         <span>Binding grid reload events</span>
         <div class="widget-buttons">
-            <span class="content-refresh fa fa-refresh"></span>
+            <span id="ContentRefresh" class="fa fa-refresh"></span>
             <span class="fa fa-minus content-toggle"></span>
         </div>
     </div>
@@ -39,7 +39,7 @@
         <div class="widget code">
             <div class="widget-header">
                 <div class="fa fa-code"></div>
-                <span>Ajax grid partial view</span>
+                <span>_IndexGrid partial view</span>
                 <div class="widget-buttons">
                     <span class="fa fa-minus content-toggle"></span>
                 </div>
@@ -67,73 +67,80 @@
             </div>
         </div>
     </div>
-    <div class="widget code col">
-        <div class="widget-header">
-            <div class="fa fa-code"></div>
-            <span>Javascript</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
+    <div class="col">
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Javascript</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
+                </div>
             </div>
-        </div>
-        <div class="widget-content">
+            <div class="widget-content">
 <pre>
 <code>
-$(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</span>, <span class="kwd">function</span> () {
-    $(<span class="str">'.mvc-grid'</span>).mvcgrid({
-        reloadStarted: <span class="kwd">function</span> () {
-            console.log(<span class="str">'Started loading grid'</span>, <span class="kwd">this</span>);
-        },
-        reloadEnded: <span class="kwd">function</span> () {
-            console.log(<span class="str">'Ended loading grid'</span>, <span class="kwd">this</span>);
-        },
-        reloadFailed: <span class="kwd">function</span> (result) {
-            console.log(<span class="str">'Failed loading grid and here's the result'</span>, <span class="kwd">this</span>, result);
-        },
-        reload: <span class="kwd">true</span>
-    });
+document.addEventListener(<span class="str">'reloadstart'</span>, <span class="kwd">function</span> (e) {
+    console.log(<span class="str">'grid: '</span>, e.detail.grid);
 });
 
-<span class="com">// or</span>
-
-$(document).on(<span class="str">'reloadStarted'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid) {
-    console.log(<span class="str">'element: '</span>, <span class="kwd">this</span>);
-    console.log(<span class="str">'event: '</span>, e);
-    console.log(<span class="str">'grid: '</span>, grid);
+document.addEventListener(<span class="str">'reloadend'</span>, <span class="kwd">function</span> (e) {
+    console.log(<span class="str">'grid: '</span>, e.detail.grid);
 });
 
-$(document).on(<span class="str">'reloadEnded'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid) {
-    console.log(<span class="str">'element: '</span>, <span class="kwd">this</span>);
-    console.log(<span class="str">'event: '</span>, e);
-    console.log(<span class="str">'grid: '</span>, grid);
-});
-
-$(document).on(<span class="str">'reloadFailed'</span>, <span class="str">'.mvc-grid'</span>, <span class="kwd">function</span> (e, grid, result) {
-    console.log(<span class="str">'element: '</span>, <span class="kwd">this</span>);
-    console.log(<span class="str">'event: '</span>, e);
-    console.log(<span class="str">'grid: '</span>, grid);
-    console.log(<span class="str">'failed ajax response result: '</span>, result);
+document.addEventListener(<span class="str">'reloadfail'</span>, <span class="kwd">function</span> (e) {
+    console.log(<span class="str">'grid: '</span>, e.detail.grid);
+    console.log(<span class="str">'failed ajax response result: '</span>, e.detail.result);
 });
 </code>
 </pre>
+            </div>
+        </div>
+        <div class="widget code">
+            <div class="widget-header">
+                <div class="fa fa-code"></div>
+                <span>Controller</span>
+                <div class="widget-buttons">
+                    <span class="fa fa-minus content-toggle"></span>
+                </div>
+            </div>
+            <div class="widget-content">
+<pre>
+<code>
+[<span class="cls">HttpGet</span>]
+<span class="kwd">public</span> <span class="cls">ViewResult</span> Index()
+{
+    <span class="kwd">return</span> View();
+}
+
+[<span class="cls">HttpGet</span>]
+<span class="kwd">public</span> <span class="cls">PartialViewResult</span> IndexGrid()
+{
+    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople());
+}
+</code>
+</pre>
+            </div>
         </div>
     </div>
 </div>
 
 @section scripts {
     <script>
-        $('.content-refresh').on('click', function () {
-            $('.mvc-grid').mvcgrid({
-                reloadStarted: function () {
-                    console.log('Started loading grid', this);
-                },
-                reloadEnded: function () {
-                    console.log('Ended loading grid', this);
-                },
-                reloadFailed: function (result) {
-                    console.log('Failed loading grid and here\'s the result', this, result);
-                },
-                reload: true
-            });
+        document.getElementById('ContentRefresh').addEventListener('click', function () {
+            new MvcGrid(document.querySelector('.mvc-grid')).reload();
+        });
+
+        document.addEventListener('reloadstart', function (e) {
+            console.log('grid: ', e.detail.grid);
+        });
+
+        document.addEventListener('reloadend', function (e) {
+            console.log('grid: ', e.detail.grid);
+        });
+
+        document.addEventListener('reloadfail', function (e) {
+            console.log('grid: ', e.detail.grid);
+            console.log('failed ajax response result: ', e.detail.result);
         });
     </script>
 }

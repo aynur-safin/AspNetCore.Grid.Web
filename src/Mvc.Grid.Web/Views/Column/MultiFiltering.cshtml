@@ -17,14 +17,15 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).Titled("Name").MultiFilterable(true);
-                columns.Add(model => model.Surname).Titled("Surname").Filterable(true);
-                columns.Add(model => model.MaritalStatus).Titled("Marital status");
+                columns.Add(model => model.Name).MultiFilterable(true);
+                columns.Add(model => model.Surname).Filterable(true);
+                columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.Age).Titled("Age").MultiFilterable(true);
-                columns.Add(model => model.Birthday).Titled("Birth date").MultiFilterable(true);
-                columns.Add(model => model.IsWorking).Titled("Employed").Filterable(true);
+                columns.Add(model => model.Age).MultiFilterable(true);
+                columns.Add(model => model.Birthday).MultiFilterable(true);
+                columns.Add(model => model.IsWorking).Filterable(true);
             })
+            .Empty("No data found")
         )
     </div>
 </div>
@@ -51,9 +52,10 @@
         columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>).MultiFilterable(<span class="kwd">true</span>);
-        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).MultiFilterable(<span class="kwd">true</span>);
+        columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).MultiFilterable(<span class="kwd">true</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>).Filterable(<span class="kwd">true</span>);
     })
+    .Empty(<span class="str">"No data found"</span>)
 )
 </code>
 </pre>

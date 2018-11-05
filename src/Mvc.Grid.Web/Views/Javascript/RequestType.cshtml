@@ -9,7 +9,7 @@
         <div class="fa fa-bars"></div>
         <span>Reloading ajax grid with post data</span>
         <div class="widget-buttons">
-            <span class="content-refresh fa fa-refresh"></span>
+            <span id="ContentRefresh" class="fa fa-refresh"></span>
             <span class="fa fa-minus content-toggle"></span>
         </div>
     </div>
@@ -58,14 +58,12 @@
             <div class="widget-content">
 <pre>
 <code>
-$(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</span>, <span class="kwd">function</span> () {
-    $(<span class="str">'.mvc-grid'</span>).mvcgrid({
-        requestType: <span class="str">'post'</span>, <span class="com">// defaults to get</span>
-        reload: <span class="kwd">true</span>,
-        data: {
-            name: <span class="str">'Joe'</span>
-        }
-    });
+document.getElementById(<span class="str">'ContentRefresh'</span>).addEventListener(<span class="str">'click'</span>, <span class="kwd">function</span> () {
+    <span class="kwd">var</span> grid = <span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">'.mvc-grid'</span>));
+    grid.requestType = <span class="str">'post'</span>; <span class="com">// defaults to get</span>
+    grid.query.set(<span class="str">'name'</span>, <span class="str">'Joe'</span>);
+
+    grid.reload();
 });
 </code>
 </pre>
@@ -124,14 +122,12 @@ $(<span class="str">'.content-refresh'</span>).on(<span class="str">'click'</spa
 
 @section scripts {
     <script>
-        $('.content-refresh').on('click', function () {
-            $('.mvc-grid').mvcgrid({
-                requestType: 'post',
-                reload: true,
-                data: {
-                    name: 'Joe'
-                }
-            });
+        document.getElementById('ContentRefresh').addEventListener('click', function () {
+            var grid = new MvcGrid(document.querySelector('.mvc-grid'));
+            grid.query.set('name', 'Joe');
+            grid.requestType = 'post';
+
+            grid.reload();
         });
     </script>
 }

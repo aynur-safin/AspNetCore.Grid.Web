@@ -19,27 +19,28 @@
             {
                 columns.Add(model => Html.CheckBox("Check_" + model.Id)).Titled(Html.CheckBox("CheckAll")).Css("action");
 
-                columns.Add(model => model.Name).Titled("Name");
-                columns.Add(model => model.Surname).Titled("Surname");
-                columns.Add(model => model.MaritalStatus).Titled("Marital status");
+                columns.Add(model => model.Name);
+                columns.Add(model => model.Surname);
+                columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.Age).Titled("Age");
+                columns.Add(model => model.Age);
                 columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
-                columns.Add(model => model.IsWorking).Titled("Employed");
+                columns.Add(model => model.IsWorking);
             })
         )
     </div>
 </div>
 
-<div class="widget code">
-    <div class="widget-header">
-        <div class="fa fa-code"></div>
-        <span>View</span>
-        <div class="widget-buttons">
-            <span class="fa fa-minus content-toggle"></span>
+<div class="row">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
         </div>
-    </div>
-    <div class="widget-content">
+        <div class="widget-content">
 <pre>
 <code>
 @@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
@@ -50,24 +51,63 @@
     {
         columns.Add(model => Html.CheckBox(<span class="str">"Check_"</span> + model.Id)).Titled(Html.CheckBox(<span class="str">"CheckAll"</span>));
 
-        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
-        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
-        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
+        columns.Add(model => model.Name);
+        columns.Add(model => model.Surname);
+        columns.Add(model => model.MaritalStatus);
 
-        columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
+        columns.Add(model => model.Age);
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
-        columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
+        columns.Add(model => model.IsWorking);
     })
 )
 </code>
 </pre>
+        </div>
+    </div>
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Model</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
+<pre>
+<code>
+<span class="kwd">public class</span> <span class="cls">Person</span>
+{
+    [<span class="cls">Display</span>(Name = <span class="str">"Name"</span>)]
+    <span class="kwd">public</span> <span class="cls">String</span> Name { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">Display</span>(Name = <span class="str">"Surname"</span>)]
+    <span class="kwd">public</span> <span class="cls">String</span> Surname { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">Display</span>(Name = <span class="str">"Age"</span>)]
+    <span class="kwd">public</span> <span class="cls">Int32</span> Age { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">Display</span>(Name = <span class="str">"Birthday"</span>)]
+    <span class="kwd">public</span> <span class="cls">DateTime</span> Birthday { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">Display</span>(Name = <span class="str">"Employed"</span>)]
+    <span class="kwd">public</span> <span class="cls">Boolean</span>? IsWorking { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">Display</span>(Name = <span class="str">"Marital status"</span>)]
+    <span class="kwd">public</span> <span class="cls">MaritalStatus</span>? MaritalStatus { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+}
+</code>
+</pre>
+        </div>
     </div>
 </div>
-
 @section scripts {
     <script>
-        $(document).on('change', '#CheckAll', function () {
-            $('[id^="Check_"').prop('checked', $(this).prop('checked'));
+        document.getElementById('CheckAll').addEventListener('change', function () {
+            var checked = this.checked;
+
+            [].forEach.call(document.querySelectorAll('[id^="Check_"'), function (checkbox) {
+                checkbox.checked = checked;
+            });
         });
     </script>
 }

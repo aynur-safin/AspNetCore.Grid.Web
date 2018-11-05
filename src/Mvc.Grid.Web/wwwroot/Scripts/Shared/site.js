@@ -1,21 +1,12 @@
-﻿// Content opening/closing
-$(document).ready(function () {
-    $('.content-toggle').on('click', function () {
-        $(this).parents('.widget:first').find('.widget-content').slideToggle();
-    });
-});
-
-// Sidebar search
-(function () {
-    $(document).on('keyup', '#SearchInput', function () {
+﻿(function () {
+    document.getElementById('SearchInput').addEventListener('input', function () {
+        var menus = document.querySelectorAll('.sidebar li');
         var searches = this.value.toLowerCase().split(' ');
-        var menus = $('.sidebar li');
 
         for (var i = 0; i < menus.length; i++) {
-            var menu = $(menus[i]);
             var isMatch = true;
 
-            var menuWords = menu.text().toLowerCase().split(' ');
+            var menuWords = menus[i].innerText.toLowerCase().split(' ');
             for (var j = 0; j < searches.length; j++) {
                 var hasMatch = false;
                 for (var k = 0; k < menuWords.length; k++) {
@@ -30,15 +21,14 @@ $(document).ready(function () {
             }
 
             if (isMatch) {
-                menu.show(500);
+                menus[i].style.display = '';
             } else {
-                menu.hide(500);
+                menus[i].style.display = 'none';
             }
         }
     });
-}());
 
-// Mvc.Grid binding
-$(function () {
-    $('.mvc-grid').mvcgrid();
-});
+    [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+        new MvcGrid(element);
+    });
+})();

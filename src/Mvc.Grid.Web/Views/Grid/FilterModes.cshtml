@@ -17,13 +17,13 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).Titled("Name");
-                columns.Add(model => model.Surname).Titled("Surname");
-                columns.Add(model => model.MaritalStatus).Titled("Marital status");
+                columns.Add(model => model.Name);
+                columns.Add(model => model.Surname);
+                columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.Age).Titled("Age");
-                columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
-                columns.Add(model => model.IsWorking).Titled("Employed");
+                columns.Add(model => model.Age);
+                columns.Add(model => model.Birthday).Formatted("{0:d}");
+                columns.Add(model => model.IsWorking);
             })
             .WithFilterMode(GridFilterMode.FilterRow)
             .Empty("No data found")
@@ -46,13 +46,13 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).Titled("Name");
-                columns.Add(model => model.Surname).Titled("Surname");
-                columns.Add(model => model.MaritalStatus).Titled("Marital status");
+                columns.Add(model => model.Name);
+                columns.Add(model => model.Surname);
+                columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.Age).Titled("Age");
-                columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
-                columns.Add(model => model.IsWorking).Titled("Employed");
+                columns.Add(model => model.Age);
+                columns.Add(model => model.Birthday).Formatted("{0:d}");
+                columns.Add(model => model.IsWorking);
             })
             .WithFilterMode(GridFilterMode.ExcelRow)
             .Empty("No data found")
@@ -75,13 +75,13 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).Titled("Name");
-                columns.Add(model => model.Surname).Titled("Surname");
-                columns.Add(model => model.MaritalStatus).Titled("Marital status");
+                columns.Add(model => model.Name);
+                columns.Add(model => model.Surname);
+                columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.Age).Titled("Age");
-                columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
-                columns.Add(model => model.IsWorking).Titled("Employed");
+                columns.Add(model => model.Age);
+                columns.Add(model => model.Birthday).Formatted("{0:d}");
+                columns.Add(model => model.IsWorking);
             })
             .WithFilterMode(GridFilterMode.HeaderRow)
             .Empty("No data found")

@@ -30,6 +30,12 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         }
 
         [HttpGet]
+        public ViewResult DefaultMethod()
+        {
+            return View(PeopleRepository.GetPeople());
+        }
+
+        [HttpGet]
         public ViewResult CustomFilter()
         {
             return View(PeopleRepository.GetPeople());

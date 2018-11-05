@@ -1,4 +1,4 @@
-﻿$.fn.mvcgrid.lang = {
+﻿MvcGrid.prototype.lang = {
     text: {
         'contains': 'Contient',
         'equals': 'Egale',
@@ -12,7 +12,7 @@
         'less-than': 'Inférieur à',
         'greater-than': 'Supérieur à',
         'less-than-or-equal': 'Inférieur ou égale à',
-        'greater-than-o-requal': 'Supérieur ou égale à'
+        'greater-than-or-equal': 'Supérieur ou égale à'
     },
     date: {
         'equals': 'Egale',

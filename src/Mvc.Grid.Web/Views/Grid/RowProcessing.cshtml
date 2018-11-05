@@ -20,12 +20,12 @@
                 .Grid(Model)
                 .Build(columns =>
                 {
-                    columns.Add(model => model.Name).Titled("Name");
-                    columns.Add(model => model.Surname).Titled("Surname");
+                    columns.Add(model => model.Name);
+                    columns.Add(model => model.Surname);
 
-                    columns.Add(model => model.Age).Titled("Age");
-                    columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
-                    columns.Add(model => model.IsWorking).Titled("Employed");
+                    columns.Add(model => model.Age);
+                    columns.Add(model => model.Birthday).Formatted("{0:d}");
+                    columns.Add(model => model.IsWorking);
                 })
                 .ProcessWith(new NotWorkingPersonFilter())
             )
@@ -46,9 +46,9 @@
                 {
                     columns.Add(model => model.Name).Titled("N. Surname");
 
-                    columns.Add(model => model.Age).Titled("Age");
-                    columns.Add(model => model.Birthday).Titled("Birth date").Formatted("{0:d}");
-                    columns.Add(model => model.IsWorking).Titled("Employed");
+                    columns.Add(model => model.Age);
+                    columns.Add(model => model.Birthday).Formatted("{0:d}");
+                    columns.Add(model => model.IsWorking);
                 })
                 .ProcessWith(new ShortNameProcessor())
             )
@@ -78,7 +78,7 @@
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
-        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
+        columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
     .ProcessWith(<span class="kwd">new</span> <span class="cls">NotWorkingPersonFilter</span>())
@@ -107,7 +107,7 @@
         columns.Add(model => model.Name).Titled(<span class="str">"N. Surname"</span>);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
-        columns.Add(model => model.Birthday).Titled(<span class="str">"Birth date"</span>).Formatted(<span class="str">"{0:d}"</span>);
+        columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
     .ProcessWith(<span class="kwd">new</span> <span class="cls">ShortNameProcessor</span>())
