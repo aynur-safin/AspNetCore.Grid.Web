@@ -53,6 +53,8 @@
         {
             sheet.Cells[1, col].Value = column.Title;
             sheet.Column(col++).Width = 18;
+
+            column.IsEncoded = <span class="kwd">false</span>;
         }
 
         <span class="kwd">foreach</span> (<span class="cls">IGridRow&lt;Person&gt;</span> gridRow <span class="kwd">in</span> grid.Rows)

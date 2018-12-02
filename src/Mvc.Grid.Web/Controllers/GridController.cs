@@ -162,6 +162,8 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
                 {
                     sheet.Cells[1, col].Value = column.Title;
                     sheet.Column(col++).Width = 18;
+
+                    column.IsEncoded = false;
                 }
 
                 foreach (IGridRow<Object> gridRow in grid.Rows)
