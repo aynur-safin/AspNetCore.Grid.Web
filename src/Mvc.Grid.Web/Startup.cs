@@ -18,15 +18,13 @@ namespace NonFactors.Mvc.Grid.Web
                 filters.BooleanFalseOptionText = () => "False";
                 filters.Register(typeof(Int32), "contains", typeof(NumberContainsFilter));
             });
+            services.AddLogging(builder => builder.AddConsole());
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logging)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-                logging.AddConsole();
-            }
 
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();

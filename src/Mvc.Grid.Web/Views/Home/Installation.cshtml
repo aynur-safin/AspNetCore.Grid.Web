@@ -33,18 +33,18 @@
 &lt;Project name&gt;
     Views
         Shared
-            <b>MvcGrid
-                _Grid.cshtml
-                _Pager.cshtml</b></pre>
+<b class="install-note">+           MvcGrid
++               _Grid.cshtml
++               _Pager.cshtml</b></pre>
             </div>
             <div class="col">
                 <p>Razor pages application</p>
                 <pre>
 &lt;Project name&gt;
     Pages
-        <b>MvcGrid
-            _Grid.cshtml
-            _Pager.cshtml</b>
+<b class="install-note">+       MvcGrid
++           _Grid.cshtml
++           _Pager.cshtml</b>
                 </pre>
             </div>
         </div>
@@ -67,7 +67,7 @@
             <pre>
 &lt;html&gt;
     &lt;head&gt;
-        <b>&lt;link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet"&gt;</b>
+<b class="install-note">+       &lt;link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet"&gt;</b>
     &lt;/head&gt;
     &lt;body&gt;
         @@RenderBody()
@@ -92,7 +92,7 @@
     &lt;body&gt;
         @@RenderBody()
 
-        <b>&lt;script src="~/Scripts/MvcGrid/mvc-grid.js"&gt;&lt;/script&gt;</b>
+<b class="install-note">+       &lt;script src="~/Scripts/MvcGrid/mvc-grid.js"&gt;&lt;/script&gt;</b>
     &lt;/body&gt;
 &lt;/html&gt;</pre>
             <p>
@@ -108,9 +108,9 @@
 
         &lt;script src="~/Scripts/MvcGrid/mvc-grid.js"&gt;&lt;/script&gt;
         &lt;script&gt;
-            <b>[].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
-                new MvcGrid(element);
-            });</b>
+<b class="install-note">+           [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
++               new MvcGrid(element);
++           });</b>
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;
