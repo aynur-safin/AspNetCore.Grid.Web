@@ -86,7 +86,7 @@
         <div class="widget-content">
 <pre>
 <code>
-$(<span class="str">'.mvc-grid tr'</span>).on(<span class="str">'rowclick'</span>, <span class="kwd">function</span> (e) {
+document.addEventListener(<span class="str">'rowclick'</span>, <span class="kwd">function</span> (e) {
     console.log(<span class="str">'data: '</span>, e.detail.data);
     console.log(<span class="str">'grid: '</span>, e.detail.grid);
     console.log(<span class="str">'original event: '</span>, e.detail.originalEvent);
