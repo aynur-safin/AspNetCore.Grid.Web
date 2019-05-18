@@ -23,9 +23,9 @@ body {
     .logo .version {
         font-family: 'Open Sans', sans-serif;
         vertical-align: bottom;
-        margin-left: -20px;
+        margin-left: -30px;
+        line-height: 4.5;
         font-size: 14px;
-        line-height: 2;
     }
 
 .install-note {
