@@ -48,7 +48,7 @@
     requestType: <span class="str">'get'</span>, <span class="com">// Ajax grid request type</span>
     filters: {
         <span class="com">// Grid filter constructors to extend or use</span>
-        <span class="str">'boolean'</span>: CustomBooleanFilter
+        <span class="str">'boolean'</span>: <span class="cls">CustomBooleanFilter</span>
     },
     loadingDelay: 300 <span class="com">// Loading block visiblity delay on ajax grid, null indicates no loading screen</span>
 });
@@ -67,6 +67,9 @@
 <code>
 <span class="com">// Reloads the grid</span>
 <span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">'.mvc-grid'</span>)).reload();
+
+<span class="com">// Clears all query values associated with the grid name</span>
+<span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">'.mvc-grid'</span>)).clearQuery();
 </code>
 </pre>
             </div>

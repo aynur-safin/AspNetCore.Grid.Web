@@ -31,7 +31,7 @@
 [<span class="cls">HttpGet</span>]
 <span class="kwd">public</span> <span class="cls">PartialViewResult</span> IndexGrid(<span class="cls">String</span> search)
 {
-    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople(search));
+    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, repository.Filter(search));
 }
 </code>
 </pre>
@@ -85,6 +85,7 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
+    .Empty(<span class="str">"No data found"</span>)
     .Sortable()
 )
 </code>

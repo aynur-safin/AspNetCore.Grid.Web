@@ -15,16 +15,15 @@
             .Build(columns =>
             {
                 columns.Add(model => model.Name);
-                columns.Add(model => model.Surname).MultiFilterable(false);
-                columns.Add(model => model.MaritalStatus);
+                columns.Add(model => model.Surname).Filterable(false);
+                columns.Add(model => model.MaritalStatus).Filterable(GridFilterType.Multi);
 
                 columns.Add(model => model.Age);
                 columns.Add(model => model.Birthday).Formatted("{0:d}");
-                columns.Add(model => model.IsWorking).MultiFilterable(false);
+                columns.Add(model => model.IsWorking).Filterable(false);
             })
+            .Filterable(GridFilterType.Double)
             .Empty("No data found")
-            .MultiFilterable()
-            .Filterable()
         )
     </div>
 </div>
@@ -44,16 +43,15 @@
     .Build(columns =>
     {
         columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
-        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>).MultiFilterable(<span class="kwd">false</span>);
-        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
+        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>).Filterable(<span class="kwd">false</span>);
+        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>).Filterable(<span class="cls">GridFilterType</span>.Multi);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
-        columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>).MultiFilterable(<span class="kwd">false</span>);
+        columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>).Filterable(<span class="kwd">false</span>);
     })
+    .Filterable(<span class="cls">GridFilterType</span>.Double)
     .Empty(<span class="str">"No data found"</span>)
-    .MultiFilterable()
-    .Filterable()
 )
 </code>
 </pre>

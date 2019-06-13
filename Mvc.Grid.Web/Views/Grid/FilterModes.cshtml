@@ -22,7 +22,7 @@
                 columns.Add(model => model.Birthday).Formatted("{0:d}");
                 columns.Add(model => model.IsWorking);
             })
-            .WithFilterMode(GridFilterMode.FilterRow)
+            .UsingFilterMode(GridFilterMode.Row)
             .Empty("No data found")
             .Filterable()
             .Sortable()
@@ -48,7 +48,7 @@
                 columns.Add(model => model.Birthday).Formatted("{0:d}");
                 columns.Add(model => model.IsWorking);
             })
-            .WithFilterMode(GridFilterMode.ExcelRow)
+            .UsingFilterMode(GridFilterMode.Excel)
             .Empty("No data found")
             .Filterable()
             .Sortable()
@@ -74,7 +74,7 @@
                 columns.Add(model => model.Birthday).Formatted("{0:d}");
                 columns.Add(model => model.IsWorking);
             })
-            .WithFilterMode(GridFilterMode.HeaderRow)
+            .UsingFilterMode(GridFilterMode.Header)
             .Empty("No data found")
             .Filterable()
             .Sortable()
@@ -105,7 +105,7 @@
         columns.Add(model => model.Birthday).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking);
     })
-    .WithFilterMode(<span class="cls">GridFilterMode</span>.FilterRow)
+    .UsingFilterMode(<span class="cls">GridFilterMode</span>.Row)
     .Empty(<span class="str">"No data found"</span>)
     .Filterable()
     .Sortable()
@@ -136,7 +136,7 @@
         columns.Add(model => model.Birthday).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking);
     })
-    .WithFilterMode(<span class="cls">GridFilterMode</span>.ExcelRow)
+    .UsingFilterMode(<span class="cls">GridFilterMode</span>.Excel)
     .Empty(<span class="str">"No data found"</span>)
     .Filterable()
     .Sortable()
@@ -167,7 +167,7 @@
         columns.Add(model => model.Birthday).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking);
     })
-    .WithFilterMode(<span class="cls">GridFilterMode</span>.HeaderRow)
+    .UsingFilterMode(<span class="cls">GridFilterMode</span>.Header)
     .Empty(<span class="str">"No data found"</span>)
     .Filterable()
     .Sortable()

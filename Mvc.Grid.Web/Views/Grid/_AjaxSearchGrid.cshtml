@@ -12,5 +12,6 @@
         columns.Add(model => model.Birthday).Formatted("{0:d}");
         columns.Add(model => model.IsWorking);
     })
+    .Empty("No data found")
     .Sortable()
 )

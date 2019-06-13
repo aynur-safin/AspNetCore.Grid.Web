@@ -37,7 +37,7 @@
 [<span class="cls">HttpPost</span>]
 <span class="kwd">public</span> <span class="cls">PartialViewResult</span> IndexGrid(<span class="cls">String</span> name)
 {
-    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople(name));
+    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, repository.Filter(name));
 }
 </code>
 </pre>

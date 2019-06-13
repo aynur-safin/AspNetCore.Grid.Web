@@ -35,6 +35,12 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         }
 
         [HttpGet]
+        public ViewResult DataTable()
+        {
+            return View(PeopleRepository.AsDataTable());
+        }
+
+        [HttpGet]
         public PartialViewResult GridSearchPartial(String search)
         {
             return PartialView("_AjaxSearchGrid", PeopleRepository.GetPeople(search));
@@ -54,12 +60,6 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
 
         [HttpGet]
         public ViewResult Sorting()
-        {
-            return View(PeopleRepository.GetPeople());
-        }
-
-        [HttpGet]
-        public ViewResult RowStyling()
         {
             return View(PeopleRepository.GetPeople());
         }
@@ -94,7 +94,7 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         [HttpGet]
         public ViewResult EmptyText()
         {
-            return View(Enumerable.Empty<Person>());
+            return View(PeopleRepository.GetPeople());
         }
 
         [HttpGet]
@@ -110,7 +110,7 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
         }
 
         [HttpGet]
-        public ViewResult ManualPaging(Int32? rows, Int32? page)
+        public ViewResult ManualProcessing(Int32? rows, Int32? page)
         {
             ViewBag.TotalRows = PeopleRepository.GetPeople().Count();
 

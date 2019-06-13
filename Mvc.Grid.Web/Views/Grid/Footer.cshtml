@@ -22,7 +22,7 @@
                 columns.Add(model => model.Birthday).Formatted("{0:d}");
                 columns.Add(model => model.IsWorking);
             })
-            .WithFooter("_GridFooter")
+            .UsingFooter("_GridFooter")
         )
     </div>
 </div>
@@ -50,7 +50,7 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
-    .WithFooter(<span class="str">"_GridFooter"</span>)
+    .UsingFooter(<span class="str">"_GridFooter"</span>)
 )
 </code>
 </pre>

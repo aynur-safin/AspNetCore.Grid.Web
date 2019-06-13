@@ -33,7 +33,7 @@
 <span class="kwd">public</span> <span class="cls">PartialViewResult</span> IndexGrid()
 {
     <span class="com">// Only grid query values will be available here.</span>
-    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople());
+    <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, repository.GetPeople());
 }
 </code>
 </pre>
@@ -117,7 +117,7 @@
 
     <span class="kwd">public void</span> OnGet()
     {
-        People = <span class="cls">PeopleRepository</span>.GetPeople();
+        People = repository.GetPeople();
     }
 }
 </code>

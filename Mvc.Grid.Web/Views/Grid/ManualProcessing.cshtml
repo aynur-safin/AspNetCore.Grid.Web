@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Person>
 
 @{
-    ViewBag.Title = "MVC.Grid manual paging";
+    ViewBag.Title = "MVC.Grid manual processing";
 }
 
 <div class="widget example">
@@ -22,9 +22,9 @@
                 columns.Add(model => model.Birthday).Formatted("{0:d}");
                 columns.Add(model => model.IsWorking);
             })
+            .UsingProcessingMode(GridProcessingMode.Manual)
             .Pageable(pager =>
             {
-                pager.ProcessorType = GridProcessorType.Manual;
                 pager.TotalRows = ViewBag.TotalRows;
                 pager.RowsPerPage = 3;
             })
@@ -44,9 +44,13 @@
 [<span class="cls">HttpGet</span>]
 <span class="kwd">public</span> <span class="cls">ViewResult</span> Index(<span class="cls">Int32</span>? page, <span class="cls">Int32</span>? rows)
 {
-    ViewBag.TotalRows = <span class="cls">PeopleRepository</span>.GetPeople().Count();
+    <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; people = repository.GetPeople();
 
-    <span class="kwd">return</span> View(<span class="cls">PeopleRepository</span>.GetPeople().Skip((page - 1 ?? 0) * (rows ?? 3)).Take(rows ?? 3));
+    <span class="com">// Manual filtering and sorting if enabled.</span>
+
+    ViewBag.TotalRows = people.Count();
+
+    <span class="kwd">return</span> View(people.Skip((page - 1 ?? 0) * (rows ?? 3)).Take(rows ?? 3));
 }
 </code>
 </pre>
@@ -74,9 +78,9 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
+    .UsingProcessingMode(<span class="cls">GridProcessingMode</span>.Manual)
     .Pageable(pager =>
     {
-        pager.ProcessorType = <span class="cls">GridProcessorType</span>.Manual;
         pager.TotalRows = ViewBag.TotalRows;
         pager.RowsPerPage = 3;
     })

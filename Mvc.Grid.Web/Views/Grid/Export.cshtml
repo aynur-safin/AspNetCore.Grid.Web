@@ -68,7 +68,7 @@
 
 <span class="kwd">private</span> <span class="cls">IGrid</span>&lt;<span class="cls">Person</span>&gt; CreateExportableGrid()
 {
-    <span class="cls">IGrid</span>&lt;<span class="cls">Person</span>&gt; grid = <span class="kwd">new</span> <span class="cls">Grid</span>&lt;<span class="cls">Person</span>&gt;(<span class="cls">PeopleRepository</span>.GetPeople());
+    <span class="cls">IGrid</span>&lt;<span class="cls">Person</span>&gt; grid = <span class="kwd">new</span> <span class="cls">Grid</span>&lt;<span class="cls">Person</span>&gt;(repository.GetPeople());
     grid.ViewContext = new ViewContext { HttpContext = HttpContext };
     grid.Query = Request.Query;
 

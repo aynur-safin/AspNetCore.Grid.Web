@@ -24,7 +24,7 @@
                     columns.Add(model => model.Birthday).Formatted("{0:d}");
                     columns.Add(model => model.IsWorking);
                 })
-                .ProcessWith(new NotWorkingPersonFilter())
+                .UsingProcessor(new NotWorkingPersonFilter())
             )
         </div>
     </div>
@@ -44,7 +44,7 @@
                     columns.Add(model => model.Birthday).Formatted("{0:d}");
                     columns.Add(model => model.IsWorking);
                 })
-                .ProcessWith(new ShortNameProcessor())
+                .UsingProcessor(new ShortNameProcessor())
             )
         </div>
     </div>
@@ -72,7 +72,7 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
-    .ProcessWith(<span class="kwd">new</span> <span class="cls">NotWorkingPersonFilter</span>())
+    .UsingProcessor(<span class="kwd">new</span> <span class="cls">NotWorkingPersonFilter</span>())
 )
 </code>
 </pre>
@@ -98,7 +98,7 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
-    .ProcessWith(<span class="kwd">new</span> <span class="cls">ShortNameProcessor</span>())
+    .UsingProcessor(<span class="kwd">new</span> <span class="cls">ShortNameProcessor</span>())
 )
 
 </code>

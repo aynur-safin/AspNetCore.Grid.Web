@@ -15,7 +15,7 @@
             .Build(columns =>
             {
                 columns.Add(model => model.Name).Filterable(true).FilteredAs("custom");
-                columns.Add(model => model.Surname).MultiFilterable(true).FilteredAs("custom");
+                columns.Add(model => model.Surname).Filterable(GridFilterType.Double).FilteredAs("custom");
                 columns.Add(model => model.MaritalStatus);
 
                 columns.Add(model => model.Age);
@@ -41,7 +41,7 @@
     .Build(columns =>
     {
         columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>).Filterable(<span class="kwd">true</span>).FilteredAs(<span class="str">"custom"</span>);
-        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>).MultiFilterable(<span class="kwd">true</span>).FilteredAs(<span class="str">"custom"</span>);
+        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>).Filterable(<span class="cls">GridFilterType</span>.Double).FilteredAs(<span class="str">"custom"</span>);
         columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
 
         columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);

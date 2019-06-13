@@ -28,9 +28,9 @@
 <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
 {
     <span class="kwd">if</span> (HttpContext.Request.Headers[<span class="str">"X-Requested-With"</span>] == <span class="str">"XMLHttpRequest"</span>)
-        <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, <span class="cls">PeopleRepository</span>.GetPeople());
+        <span class="kwd">return</span> PartialView(<span class="str">"_IndexGrid"</span>, repository.GetPeople());
 
-    <span class="kwd">return</span> View(<span class="cls">PeopleRepository</span>.GetPeople());
+    <span class="kwd">return</span> View(repository.GetPeople());
 }
 </code>
 </pre>
@@ -75,7 +75,7 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
-    .WithSourceUrl(Url.Action(<span class="str">"Index"</span>, <span class="str">"Grid"</span>))
+    .UsingSourceUrl(Url.Action(<span class="str">"Index"</span>, <span class="str">"Grid"</span>))
     .Empty(<span class="str">"No data found"</span>)
     .Pageable(pager =>
     {

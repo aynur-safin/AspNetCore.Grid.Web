@@ -11,13 +11,13 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 
     <environment names="Development">
-        <link href="~/Content/Bootstrap/bootstrap.css" rel="stylesheet">
-        <link href="~/Content/FontAwesome/font-awesome.css" rel="stylesheet">
-        <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
-        <link href="~/Content/Shared/base.css" rel="stylesheet">
+        <link href="~/css/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="~/css/font-awesome/font-awesome.css" rel="stylesheet">
+        <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+        <link href="~/css/shared/base.css" rel="stylesheet">
     </environment>
     <environment names="Staging,Production">
-        <link asp-append-version="true" href="~/content/page/bundle.min.css" rel="stylesheet">
+        <link asp-append-version="true" href="~/css/page/bundle.min.css" rel="stylesheet">
     </environment>
 </head>
 <body class="container-fluid">
@@ -33,157 +33,157 @@
             <input id="SearchInput" class="sidebar-search" placeholder="Search...">
             <ul>
                 <li>
-                    @Html.ActionLink("Quick start", "Index", "Home")
+                    <a asp-action="Index" asp-controller="Home">Quick start</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Installation", "Installation", "Home")
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    @Html.ActionLink("Ajax grid", "Ajax", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid filtering", "Filtering", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid filter modes", "FilterModes", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid multi filtering", "MultiFiltering", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid global search", "GlobalSearch", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid sorting", "Sorting", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid paging", "Paging", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid manual paging", "ManualPaging", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid styling", "Styling", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid row styling", "RowStyling", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid html attributes", "HtmlAttributes", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid row attributes", "RowAttributes", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid row processing", "RowProcessing", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid no data found text", "EmptyText", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid footer", "Footer", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid id", "Id", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid localization", "Localization", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid data page export", "Export", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Multiple grids", "Multiple", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Grid custom partial", "Partial", "Grid")
-                </li>
-                <li>
-                    @Html.ActionLink("Switching normal grid to ajax grid", "SourceUrl", "Grid")
+                    <a asp-action="Installation" asp-controller="Home">Installation</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    @Html.ActionLink("Column header title", "Title", "Column")
+                    <a asp-action="Ajax" asp-controller="Grid">Ajax grid</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column value rendering", "RenderingValue", "Column")
+                    <a asp-action="Filtering" asp-controller="Grid">Grid filtering</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column value formatting", "Formatting", "Column")
+                    <a asp-action="FilterModes" asp-controller="Grid">Grid filter modes</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column html encoding", "Encoding", "Column")
+                    <a asp-action="MultiFiltering" asp-controller="Grid">Grid multi filtering</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column filter options", "FilterOptions", "Column")
+                    <a asp-action="GlobalSearch" asp-controller="Grid">Grid global search</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column value filtering", "Filtering", "Column")
+                    <a asp-action="Sorting" asp-controller="Grid">Grid sorting</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column multi value filtering", "MultiFiltering", "Column")
+                    <a asp-action="Paging" asp-controller="Grid">Grid paging</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column default filter method", "DefaultMethod", "Column")
+                    <a asp-action="ManualProcessing" asp-controller="Grid">Grid manual processing</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column value sorting", "Sorting", "Column")
+                    <a asp-action="Styling" asp-controller="Grid">Grid styling</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column initial sort order", "InitialSort", "Column")
+                    <a asp-action="HtmlAttributes" asp-controller="Grid">Grid html attributes</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column first sort order", "FirstSort", "Column")
+                    <a asp-action="RowAttributes" asp-controller="Grid">Grid row attributes</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column styling", "Styling", "Column")
+                    <a asp-action="RowProcessing" asp-controller="Grid">Grid row processing</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Column custom filter", "CustomFilter", "Column")
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    @Html.ActionLink("Pager page sizes", "PageSizes", "Pager")
+                    <a asp-action="EmptyText" asp-controller="Grid" asp-route-name-equals="Xena">Grid no data found text</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Pager initial page", "CurrentPage", "Pager")
+                    <a asp-action="Footer" asp-controller="Grid">Grid footer</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Pager rows per page", "RowsPerPage", "Pager")
+                    <a asp-action="Id" asp-controller="Grid">Grid id</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Pager pages to display", "PagesToDisplay", "Pager")
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    @Html.ActionLink("Reloading grid with post data", "RequestType", "Javascript")
+                    <a asp-action="Localization" asp-controller="Grid">Grid localization</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Binding row clicked event", "RowClicked", "Javascript")
+                    <a asp-action="Export" asp-controller="Grid">Grid data page export</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Binding reload events", "ReloadEvents", "Javascript")
+                    <a asp-action="Multiple" asp-controller="Grid">Multiple grids</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Reloading ajax grid", "Reload", "Javascript")
+                    <a asp-action="DataTable" asp-controller="Grid">DataTable source</a>
+                </li>
+                <li>
+                    <a asp-action="Partial" asp-controller="Grid">Grid custom partial</a>
+                </li>
+                <li>
+                    <a asp-action="SourceUrl" asp-controller="Grid">Switching normal grid to ajax grid</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    @Html.ActionLink("Filter registration", "Register", "Filter")
+                    <a asp-action="Title" asp-controller="Column">Column header title</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Filter unregistration", "Unregister", "Filter")
+                    <a asp-action="RenderingValue" asp-controller="Column">Column value rendering</a>
+                </li>
+                <li>
+                    <a asp-action="Formatting" asp-controller="Column">Column value formatting</a>
+                </li>
+                <li>
+                    <a asp-action="Encoding" asp-controller="Column">Column html encoding</a>
+                </li>
+                <li>
+                    <a asp-action="FilterOptions" asp-controller="Column">Column filter options</a>
+                </li>
+                <li>
+                    <a asp-action="Filtering" asp-controller="Column">Column value filtering</a>
+                </li>
+                <li>
+                    <a asp-action="MultiFiltering" asp-controller="Column">Column multi value filtering</a>
+                </li>
+                <li>
+                    <a asp-action="DefaultMethod" asp-controller="Column">Column default filter method</a>
+                </li>
+                <li>
+                    <a asp-action="Sorting" asp-controller="Column">Column value sorting</a>
+                </li>
+                <li>
+                    <a asp-action="InitialSort" asp-controller="Column">Column initial sort order</a>
+                </li>
+                <li>
+                    <a asp-action="FirstSort" asp-controller="Column">Column first sort order</a>
+                </li>
+                <li>
+                    <a asp-action="Styling" asp-controller="Column">Column styling</a>
+                </li>
+                <li>
+                    <a asp-action="CustomFilter" asp-controller="Column">Column custom filter</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    @Html.ActionLink("Grid javascript API", "Api", "Javascript")
+                    <a asp-action="PageSizes" asp-controller="Pager">Pager page sizes</a>
+                </li>
+                <li>
+                    <a asp-action="CurrentPage" asp-controller="Pager">Pager initial page</a>
+                </li>
+                <li>
+                    <a asp-action="RowsPerPage" asp-controller="Pager">Pager rows per page</a>
+                </li>
+                <li>
+                    <a asp-action="PagesToDisplay" asp-controller="Pager">Pager pages to display</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a asp-action="RequestType" asp-controller="Javascript">Reloading grid with post data</a>
+                </li>
+                <li>
+                    <a asp-action="RowClicked" asp-controller="Javascript">Binding row clicked event</a>
+                </li>
+                <li>
+                    <a asp-action="ReloadEvents" asp-controller="Javascript">Binding reload events</a>
+                </li>
+                <li>
+                    <a asp-action="Reload" asp-controller="Javascript">Reloading ajax grid</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a asp-action="Register" asp-controller="Filter">Filter registration</a>
+                </li>
+                <li>
+                    <a asp-action="Unregister" asp-controller="Filter">Filter unregistration</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a asp-action="Api" asp-controller="Javascript">Grid javascript API</a>
                 </li>
             </ul>
         </div>
@@ -193,8 +193,8 @@
     </div>
 
     <environment names="Development">
-        <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
-        <script src="~/Scripts/Shared/site.js"></script>
+        <script src="~/js/mvc-grid/mvc-grid.js"></script>
+        <script src="~/js/shared/site.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script asp-append-version="true" src="~/scripts/page/bundle.min.js"></script>

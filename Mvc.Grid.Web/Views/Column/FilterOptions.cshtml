@@ -14,7 +14,7 @@
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name).WithFilterOptions(new[]
+                columns.Add(model => model.Name).UsingFilterOptions(new[]
                 {
                     new SelectListItem(),
                     new SelectListItem { Value = "Joe", Text = "Joe Crosswave" },
@@ -23,7 +23,7 @@
                 columns.Add(model => model.Surname);
                 columns.Add(model => model.MaritalStatus);
 
-                columns.Add(model => model.Age).WithFilterOptions();
+                columns.Add(model => model.Age).UsingFilterOptions();
                 columns.Add(model => model.Birthday).Formatted("{0:d}");
                 columns.Add(model => model.IsWorking);
             })
@@ -52,7 +52,7 @@
     .Grid(Model)
     .Build(columns =>
     {
-        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>).WithFilterOptions(<span class="kwd">new</span>[]
+        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>).UsingFilterOptions(<span class="kwd">new</span>[]
         {
             <span class="kwd">new</span> <span class="cls">SelectListItem</span>(),
             <span class="kwd">new</span> <span class="cls">SelectListItem</span> { Value = <span class="str">"Joe"</span>, Text = <span class="str">"Joe Crosswave"</span> },
@@ -61,7 +61,7 @@
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
         columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
 
-        columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>).WithFilterOptions();
+        columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>).UsingFilterOptions();
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })

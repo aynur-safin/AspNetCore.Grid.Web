@@ -23,6 +23,7 @@
                 columns.Add(model => model.IsWorking);
             })
             .Empty("No data found")
+            .Filterable()
         )
 
     </div>
@@ -51,6 +52,7 @@
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
     .Empty(<span class="str">"No data found"</span>)
+    .Filterable()
 )
 </code>
 </pre>

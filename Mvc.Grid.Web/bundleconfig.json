@@ -1,18 +1,18 @@
 ﻿[
   {
-    "outputFileName": "wwwroot/Scripts/Page/bundle.min.js",
+    "outputFileName": "wwwroot/js/page/bundle.min.js",
     "inputFiles": [
-      "wwwroot/Scripts/MvcGrid/*.js",
-      "wwwroot/Scripts/Shared/*.js"
+      "wwwroot/js/mvc-grid/*.js",
+      "wwwroot/js/shared/*.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/Content/Page/bundle.min.css",
+    "outputFileName": "wwwroot/css/page/bundle.min.css",
     "inputFiles": [
-      "wwwroot/Content/Bootstrap/*.css",
-      "wwwroot/Content/FontAwesome/*.css",
-      "wwwroot/Content/MvcGrid/*.css",
-      "wwwroot/Content/Shared/*.css"
+      "wwwroot/css/bootstrap/*.css",
+      "wwwroot/css/font-awesome/*.css",
+      "wwwroot/css/mvc-grid/*.css",
+      "wwwroot/css/shared/*.css"
     ]
   }
 ]

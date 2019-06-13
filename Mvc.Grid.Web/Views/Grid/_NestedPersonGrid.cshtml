@@ -7,7 +7,7 @@
                 @foreach (IGridColumn column in Model.Columns)
                 {
                     <th>
-                        <span class="mvc-grid-header-title">@column.Title</span>
+                        <span class="mvc-grid-title">@column.Title</span>
                     </th>
                 }
             </tr>
@@ -29,7 +29,7 @@
                         <tr>
                             <td colspan="@Model.Columns.Count()">
                                 @(Html
-                                    .Grid(row.Model.Children)
+                                    .Grid("_NestedPersonGrid", row.Model.Children)
                                     .Build(columns =>
                                     {
                                         columns.Add(model => model.Name).Titled("Child name");

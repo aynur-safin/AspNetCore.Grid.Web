@@ -1,12 +1,40 @@
 ﻿using NonFactors.Mvc.Grid.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace NonFactors.Mvc.Grid.Web.Context
 {
     public static class PeopleRepository
     {
+        public static DataTable AsDataTable()
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add(new DataColumn("Name"));
+            table.Columns.Add(new DataColumn("Surname"));
+            table.Columns.Add(new DataColumn("MaritalStatus"));
+            table.Columns.Add(new DataColumn("Age"));
+            table.Columns.Add(new DataColumn("Birthday"));
+            table.Columns.Add(new DataColumn("IsWorking"));
+
+            foreach (Person person in GetPeople())
+            {
+                DataRow row = table.NewRow();
+
+                row["Name"] = person.Name;
+                row["Surname"] = person.Surname;
+                row["MaritalStatus"] =person.MaritalStatus;
+
+                row["Age"] = person.Age;
+                row["Birthday"] = person.Birthday;
+                row["IsWorking"] = person.IsWorking;
+
+                table.Rows.Add(row);
+            }
+
+            return table;
+        }
         public static IEnumerable<Person> GetPeople(String search = "")
         {
             search = (search ?? "").ToLower();
@@ -191,6 +219,7 @@ namespace NonFactors.Mvc.Grid.Web.Context
                 person.Name.ToLower().Contains(search) ||
                 person.Surname.ToLower().Contains(search) ||
                 person.Birthday.ToString().Contains(search) ||
+                person.IsWorking.ToString().ToLower().Contains(search) ||
                 person.MaritalStatus.ToString().ToLower().Contains(search))
             .ToList();
         }

@@ -14,6 +14,8 @@
             .Grid(Model)
             .Build(columns =>
             {
+                columns.Add().RenderedAs((model, row) => row + 1).Titled("#");
+
                 columns.Add(model => model.Name);
                 columns.Add(model => model.Surname);
                 columns.Add(model => model.MaritalStatus);
@@ -40,6 +42,8 @@
     .Grid(Model)
     .Build(columns =>
     {
+        columns.Add().RenderedAs((model, row) => row + 1).Titled(<span class="str">"#"</span>);
+
         columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
         columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
