@@ -15,6 +15,7 @@ body {
 }
 
     .logo a {
+        text-decoration: none;
         margin-left: 0.5em;
         font-size: 84px;
         color: #FFFFFF;
@@ -27,6 +28,10 @@ body {
         line-height: 4.5;
         font-size: 14px;
     }
+
+        .logo .version:hover {
+            text-decoration: underline;
+        }
 
 .install-note {
     background: rgba(204, 255, 201, 0.35);
