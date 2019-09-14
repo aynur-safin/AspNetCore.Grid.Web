@@ -43,8 +43,8 @@
 {
     services.AddMvcGrid(filters =>
     {
-        filters.BooleanFalseOptionText = () => Localize(<span class="str">"false"</span>);
-        filters.BooleanTrueOptionText = () => Localize(<span class="str">"true"</span>);
+        filters.BooleanFalseOptionText = () => <span class="str">"faux"</span>;
+        filters.BooleanTrueOptionText = () => <span class="str">"vrai"</span>;
     });
 }
 </code>
