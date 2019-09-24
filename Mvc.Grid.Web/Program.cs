@@ -12,6 +12,7 @@ namespace NonFactors.Mvc.Grid.Web
                 .UseStartup<Startup>()
                 .UseIISIntegration()
                 .UseKestrel()
+                .UseIIS()
                 .Build()
                 .Run();
         }
