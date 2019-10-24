@@ -30,8 +30,11 @@ namespace NonFactors.Mvc.Grid.Web.Models
 
         public List<Person> Children { get; set; }
 
-        public Person()
+        public Person(Int32 id, String name, String surname)
         {
+            Id = id;
+            Name = name;
+            Surname = surname;
             Children = new List<Person>();
         }
     }

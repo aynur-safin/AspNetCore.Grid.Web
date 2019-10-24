@@ -14,12 +14,8 @@ namespace NonFactors.Mvc.Grid.Web.Processors
 
         public IQueryable<Person> Process(IQueryable<Person> items)
         {
-            return items.Select(person => new Person
+            return items.Select(person => new Person(person.Id, person.Name.Substring(0, 1) + ". " + person.Surname, person.Surname)
             {
-                Id = person.Id,
-                Name = person.Name.Substring(0, 1) + ". " + person.Surname,
-                Surname = person.Surname,
-
                 Age = person.Age,
                 Birthday = person.Birthday,
                 IsWorking = person.IsWorking,

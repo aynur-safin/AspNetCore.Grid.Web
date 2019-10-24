@@ -7,7 +7,7 @@ namespace NonFactors.Mvc.Grid.Web.Filters
 {
     public class NumberContainsFilter : BaseGridFilter
     {
-        public override Expression Apply(Expression expression)
+        public override Expression? Apply(Expression expression)
         {
             if (Values.Count == 0 || Values.Any(String.IsNullOrEmpty))
                 return null;
@@ -15,11 +15,11 @@ namespace NonFactors.Mvc.Grid.Web.Filters
             return base.Apply(expression);
         }
 
-        protected override Expression Apply(Expression expression, String value)
+        protected override Expression? Apply(Expression expression, String? value)
         {
-            Expression valueExpression = Expression.Constant(value.ToUpper());
-            MethodInfo toStringMethod = typeof(Int32).GetMethod("ToString", new Type[0]);
-            MethodInfo containsMethod = typeof(String).GetMethod("Contains", new[] { typeof(String) });
+            Expression valueExpression = Expression.Constant(value?.ToUpper());
+            MethodInfo toStringMethod = typeof(Int32).GetMethod("ToString", new Type[0])!;
+            MethodInfo containsMethod = typeof(String).GetMethod("Contains", new[] { typeof(String) })!;
 
             Expression toString = Expression.Call(expression, toStringMethod);
 

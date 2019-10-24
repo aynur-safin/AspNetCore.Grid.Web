@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <VersionPrefix>5.0.1</VersionPrefix>
+    <Nullable>enable</Nullable>
+    <VersionPrefix>5.1.0</VersionPrefix>
     <GenerateFullPaths>true</GenerateFullPaths>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -9,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="NonFactors.Grid.Mvc6" Version="5.0.1" />
+    <PackageReference Include="NonFactors.Grid.Mvc6" Version="5.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.0.0" />
   </ItemGroup>
 

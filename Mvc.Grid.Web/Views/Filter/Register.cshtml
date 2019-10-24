@@ -56,7 +56,7 @@
 <code>
 <span class="kwd">public class</span> <span class="cls">NumberContainsFilter</span> : <span class="cls">BaseGridFilter</span>
 {
-    <span class="kwd">public override</span> <span class="cls">Expression</span> Apply(<span class="cls">Expression</span> expression)
+    <span class="kwd">public override</span> <span class="cls">Expression</span>? Apply(<span class="cls">Expression</span> expression)
     {
         <span class="kwd">if</span> (Values.Length == 0 || Values.Any(<span class="cls">String</span>.IsNullOrEmpty))
             <span class="kwd">return null</span>;
@@ -64,11 +64,11 @@
         <span class="kwd">return base</span>.Apply(expression);
     }
 
-    <span class="kwd">protected override</span> <span class="cls">Expression</span> Apply(<span class="cls">Expression</span> expression, <span class="cls">String</span> value)
+    <span class="kwd">protected override</span> <span class="cls">Expression</span>? Apply(<span class="cls">Expression</span> expression, <span class="cls">String</span>? value)
     {
-        <span class="cls">Expression</span> valueExpression = <span class="cls">Expression</span>.Constant(value.ToUpper());
-        <span class="cls">MethodInfo</span> toStringMethod = <span class="kwd">typeof</span>(<span class="cls">Int32</span>).GetMethod(<span class="str">"ToString"</span>, <span class="kwd">new</span> <span class="cls">Type</span>[0]);
-        <span class="cls">MethodInfo</span> containsMethod = <span class="kwd">typeof</span>(<span class="cls">String</span>).GetMethod(<span class="str">"Contains"</span>, <span class="kwd">new</span>[] { <span class="kwd">typeof</span>(<span class="cls">String</span>) });
+        <span class="cls">Expression</span> valueExpression = <span class="cls">Expression</span>.Constant(value?.ToUpper());
+        <span class="cls">MethodInfo</span> toStringMethod = <span class="kwd">typeof</span>(<span class="cls">Int32</span>).GetMethod(<span class="str">"ToString"</span>, <span class="kwd">new</span> <span class="cls">Type</span>[0])!;
+        <span class="cls">MethodInfo</span> containsMethod = <span class="kwd">typeof</span>(<span class="cls">String</span>).GetMethod(<span class="str">"Contains"</span>, <span class="kwd">new</span>[] { <span class="kwd">typeof</span>(<span class="cls">String</span>) })!;
 
         <span class="cls">Expression</span> toString = <span class="cls">Expression</span>.Call(expression, toStringMethod);
 
