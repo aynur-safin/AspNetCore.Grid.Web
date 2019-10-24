@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="NonFactors.Grid.Mvc6" Version="5.1.0" />
+    <PackageReference Include="NonFactors.Grid.Mvc6" Version="5.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.0.0" />
   </ItemGroup>
 
