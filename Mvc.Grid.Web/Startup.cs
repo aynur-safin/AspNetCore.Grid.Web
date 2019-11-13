@@ -26,6 +26,10 @@ namespace NonFactors.Mvc.Grid.Web
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
+            else
+                app.UseHsts();
+
+            app.UseHttpsRedirection();
 
             app.UseStaticFiles();
 
