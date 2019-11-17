@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Person>
+﻿@model IQueryable<Person>
 
 @{
     ViewBag.Title = "MVC.Grid reloading with post data";
@@ -85,7 +85,7 @@ document.getElementById(<span class="str">'ContentRefresh'</span>).addEventListe
             <div class="widget-content">
 <pre>
 <code>
-@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
+@@model <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt;
 
 <span class="com">@@* Should only include grid declaration *@@</span>
 

@@ -35,7 +35,7 @@ namespace NonFactors.Mvc.Grid.Web.Context
 
             return table;
         }
-        public static IEnumerable<Person> GetPeople(String search = "")
+        public static IQueryable<Person> GetPeople(String search = "")
         {
             search = (search ?? "").ToLower();
 
@@ -167,7 +167,7 @@ namespace NonFactors.Mvc.Grid.Web.Context
                 person.Birthday.ToString()!.Contains(search) ||
                 person.IsWorking.ToString()!.ToLower().Contains(search) ||
                 person.MaritalStatus.ToString()!.ToLower().Contains(search))
-            .ToList();
+            .AsQueryable();
         }
     }
 }

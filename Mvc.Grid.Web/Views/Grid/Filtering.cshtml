@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Person>
+﻿@model IQueryable<Person>
 
 @{
     ViewBag.Title = "MVC.Grid filtering";
@@ -36,7 +36,7 @@
     <div class="widget-content">
 <pre>
 <code>
-@@model <span class="cls">IEnumerable</span>&lt;<span class="cls">Person</span>&gt;
+@@model <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt;
 
 @@(Html
     .Grid(Model)
