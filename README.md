@@ -1,4 +1,4 @@
-Official [MVC6.Grid](https://mvc6-grid.azurewebsites.net/) website, used for examples and documentation.
+Official [AspNetCore.Grid](https://mvc6-grid.azurewebsites.net/) website, used for examples and documentation.
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=plastic)](https://opensource.org/licenses/MIT)
 [![Semantic](https://img.shields.io/badge/sem-ver-lightgrey.svg?style=plastic)](https://semver.org/)
