@@ -1,30 +1,45 @@
+/*!
+ *  Font Awesome by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('../font-awesome/fonts/fontawesome-webfont.woff?2059218') format('woff');
-  font-weight: normal;
-  font-style: normal;
+    src: url("../font-awesome/fonts/fontawesome-webfont.woff?84850744") format("woff");
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
 }
 
- [class^="fa-"]:before, [class*=" fa-"]:before {
-  font-family: "fontawesome";
-  font-style: normal;
-  font-weight: normal;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1em;
-  margin-left: .2em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[class^="fa-"]::before,
+[class*=" fa-"]::before {
+    font-family: FontAwesome;
+    line-height: 1em;
 }
 
-.fa-bars:before { content: '\e800'; }
-.fa-refresh:before { content: '\e801'; }
-.fa-github:before { content: '\f09b'; }
-.fa-code:before { content: '\f121'; }
-.fa-info:before { content: '\f129'; }
-.fa-file-excel-o:before { content: '\f1c3'; }
+.fa-bars::before {
+    content: "\f0c9";
+}
+
+.fa-refresh::before {
+    content: "\e800";
+}
+
+.fa-cog::before {
+    content: "\e801";
+}
+
+.fa-github::before {
+    content: "\f09b";
+}
+
+.fa-code::before {
+    content: "\f121";
+}
+
+.fa-info::before {
+    content: "\f129";
+}
+
+.fa-file-excel-o::before {
+    content: "\f1c3";
+}

@@ -1,0 +1,65 @@
+﻿@model DataTable
+
+@{
+    ViewBag.Title = "Grid with Datatable source";
+}
+
+<div class="widget example">
+    <div class="widget-header">
+        <div class="fa fa-bars"></div>
+        <span>Preview</span>
+    </div>
+    <div class="widget-content">
+        @(Html
+            .Grid(Model.Rows.Cast<DataRow>())
+            .Build(columns =>
+            {
+                columns.Add(model => model["Name"] as String).Filterable(true).Sortable(true).Named("name").Titled("Name");
+                columns.Add(model => model["Surname"] as String).Filterable(true).Sortable(true).Named("surname").Titled("Surname");
+                columns.Add(model => model["MaritalStatus"] as String).Filterable(true).Sortable(true).Named("marital-status").Titled("Marital status");
+
+                columns.Add(model => model["Age"] as String).Filterable(true).Sortable(true).Named("age").Titled("Age");
+                columns.Add(model => model["Birthday"] as String).Filterable(true).Sortable(true).Named("birthday").Titled("Birthday");
+                columns.Add(model => model["IsWorking"] as String).Filterable(true).Sortable(true).Named("is-working").Titled("Is working");
+            })
+            .Empty("No data found")
+            .Pageable(pager =>
+            {
+                pager.RowsPerPage = 4;
+            })
+        )
+    </div>
+</div>
+
+<div class="widget code">
+    <div class="widget-header">
+        <div class="fa fa-code"></div>
+        <span>View</span>
+    </div>
+    <div class="widget-content">
+<pre>
+<code>
+@@model <span class="cls">DataTable</span>
+
+@@(Html
+    .Grid(Model.Rows.Cast<DataRow>())
+    .Build(columns =>
+    {
+        columns.Add(model => model[<span class="str">"Name"</span>] <span class="kwd">as</span> <span class="cls">String</span>).Filterable(<span class="kwd">true</span>).Sortable(<span class="kwd">true</span>).Named(<span class="str">"name"</span>).Titled(<span class="str">"Name"</span>);
+        columns.Add(model => model[<span class="str">"Surname"</span>] <span class="kwd">as</span> <span class="cls">String</span>).Filterable(<span class="kwd">true</span>).Sortable(<span class="kwd">true</span>).Named(<span class="str">"surname"</span>).Titled(<span class="str">"Surname"</span>);
+        columns.Add(model => model[<span class="str">"MaritalStatus"</span>] <span class="kwd">as</span> <span class="cls">String</span>).Filterable(<span class="kwd">true</span>).Sortable(<span class="kwd">true</span>).Named(<span class="str">"marital-status"</span>).Titled(<span class="str">"Marital status"</span>);
+
+        columns.Add(model => model[<span class="str">"Age"</span>] <span class="kwd">as</span> <span class="cls">String</span>).Filterable(<span class="kwd">true</span>).Sortable(<span class="kwd">true</span>).Named(<span class="str">"age"</span>).Titled(<span class="str">"Age"</span>);
+        columns.Add(model => model[<span class="str">"Birthday"</span>] <span class="kwd">as</span> <span class="cls">String</span>).Filterable(<span class="kwd">true</span>).Sortable(<span class="kwd">true</span>).Named(<span class="str">"birthday"</span>).Titled(<span class="str">"Birthday"</span>);
+        columns.Add(model => model[<span class="str">"IsWorking"</span>] <span class="kwd">as</span> <span class="cls">String</span>).Filterable(<span class="kwd">true</span>).Sortable(<span class="kwd">true</span>).Named(<span class="str">"is-working"</span>).Titled(<span class="str">"Is working"</span>);
+    })
+    .Empty(<span class="str">"No data found"</span>)
+    .Pageable(pager =>
+    {
+        pager.RowsPerPage = 4;
+    })
+)
+</code>
+</pre>
+    </div>
+</div>

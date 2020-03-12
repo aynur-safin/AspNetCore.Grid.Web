@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "MVC.Grid installation";
+    ViewBag.Title = "Grid installation";
 }
 
 <div class="widget docs">
@@ -9,7 +9,7 @@
     </div>
     <div class="widget-content">
         <p>
-            Install MVC.Grid package from nuget.
+            Install grid package from nuget.
         </p>
         <pre>> Install-Package NonFactors.Grid.Mvc6</pre>
         <p>
@@ -30,18 +30,18 @@
 &lt;Project name&gt;
     Views
         Shared
-<b class="install-note">+           MvcGrid
-+               _Grid.cshtml
-+               _Pager.cshtml</b></pre>
+<b class="install-note"><span class="diff-add">+</span>           MvcGrid
+<span class="diff-add">+</span>               _Grid.cshtml
+<span class="diff-add">+</span>               _Pager.cshtml</b></pre>
             </div>
             <div class="col">
                 <p>Razor pages application</p>
                 <pre>
 &lt;Project name&gt;
     Pages
-<b class="install-note">+       MvcGrid
-+           _Grid.cshtml
-+           _Pager.cshtml</b>
+<b class="install-note"><span class="diff-add">+</span>       MvcGrid
+<span class="diff-add">+</span>           _Grid.cshtml
+<span class="diff-add">+</span>           _Pager.cshtml</b>
                 </pre>
             </div>
         </div>
@@ -49,7 +49,8 @@
             <p>
                 Add grid extensions to known namespaces in _ViewImports.cshtml
             </p>
-            <pre>@@using NonFactors.Mvc.Grid;</pre>
+            <pre><b class="install-note"><span class="diff-add">+</span>@@using NonFactors.Mvc.Grid;</b>
+@@using System;</pre>
             <p>
                 Include grid styling sheet to your project and your page, it can be found at:
             </p>
@@ -64,7 +65,7 @@
             <pre>
 &lt;html&gt;
     &lt;head&gt;
-<b class="install-note">+       &lt;link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet"&gt;</b>
+<b class="install-note"><span class="diff-add">+</span>       &lt;link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet"&gt;</b>
     &lt;/head&gt;
     &lt;body&gt;
         @@RenderBody()
@@ -89,11 +90,11 @@
     &lt;body&gt;
         @@RenderBody()
 
-<b class="install-note">+       &lt;script src="~/js/mvc-grid/mvc-grid.js"&gt;&lt;/script&gt;</b>
+<b class="install-note"><span class="diff-add">+</span>       &lt;script src="~/js/mvc-grid/mvc-grid.js"&gt;&lt;/script&gt;</b>
     &lt;/body&gt;
 &lt;/html&gt;</pre>
             <p>
-                Initialize MVC.Grid instances after rendering grid html
+                Initialize grid instances after rendering grid html
             </p>
             <pre>
 &lt;html&gt;
@@ -105,9 +106,7 @@
 
         &lt;script src="~/js/mvc-grid/mvc-grid.js"&gt;&lt;/script&gt;
         &lt;script&gt;
-<b class="install-note">+           [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
-+               new MvcGrid(element);
-+           });</b>
+<b class="install-note"><span class="diff-add">+</span>           document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));</b>
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;

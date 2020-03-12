@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace NonFactors.Mvc.Grid.Web.Filters
 {
-    public class NumberContainsFilter : BaseGridFilter
+    public class NumberContainsFilter : AGridFilter
     {
         public override Expression? Apply(Expression expression)
         {
@@ -18,8 +18,8 @@ namespace NonFactors.Mvc.Grid.Web.Filters
         protected override Expression? Apply(Expression expression, String? value)
         {
             Expression valueExpression = Expression.Constant(value?.ToUpper());
-            MethodInfo toStringMethod = typeof(Int32).GetMethod("ToString", new Type[0])!;
-            MethodInfo containsMethod = typeof(String).GetMethod("Contains", new[] { typeof(String) })!;
+            MethodInfo toStringMethod = typeof(Int32).GetMethod(nameof(Int32.ToString), new Type[0])!;
+            MethodInfo containsMethod = typeof(String).GetMethod(nameof(String.Contains), new[] { typeof(String) })!;
 
             Expression toString = Expression.Call(expression, toStringMethod);
 

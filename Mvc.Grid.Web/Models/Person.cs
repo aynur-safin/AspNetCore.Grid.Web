@@ -20,7 +20,7 @@ namespace NonFactors.Mvc.Grid.Web.Models
         public Int32 Age { get; set; }
 
         [Display(Name = "Birthday")]
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
 
         [Display(Name = "Employed")]
         public Boolean? IsWorking { get; set; }

@@ -33,157 +33,85 @@
             <input id="SearchInput" class="sidebar-search" placeholder="Search...">
             <ul>
                 <li>
-                    <a asp-action="Index" asp-controller="Home">Quick start</a>
+                    <a asp-action="Index">Quick start</a>
                 </li>
                 <li>
-                    <a asp-action="Installation" asp-controller="Home">Installation</a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a asp-action="Ajax" asp-controller="Grid">Ajax grid</a>
-                </li>
-                <li>
-                    <a asp-action="Filtering" asp-controller="Grid">Grid filtering</a>
-                </li>
-                <li>
-                    <a asp-action="FilterModes" asp-controller="Grid">Grid filter modes</a>
-                </li>
-                <li>
-                    <a asp-action="MultiFiltering" asp-controller="Grid">Grid multi filtering</a>
-                </li>
-                <li>
-                    <a asp-action="GlobalSearch" asp-controller="Grid">Grid global search</a>
-                </li>
-                <li>
-                    <a asp-action="Sorting" asp-controller="Grid">Grid sorting</a>
-                </li>
-                <li>
-                    <a asp-action="Paging" asp-controller="Grid">Grid paging</a>
-                </li>
-                <li>
-                    <a asp-action="ManualProcessing" asp-controller="Grid">Grid manual processing</a>
-                </li>
-                <li>
-                    <a asp-action="Styling" asp-controller="Grid">Grid styling</a>
-                </li>
-                <li>
-                    <a asp-action="HtmlAttributes" asp-controller="Grid">Grid html attributes</a>
-                </li>
-                <li>
-                    <a asp-action="RowAttributes" asp-controller="Grid">Grid row attributes</a>
-                </li>
-                <li>
-                    <a asp-action="RowProcessing" asp-controller="Grid">Grid row processing</a>
-                </li>
-                <li>
-                    <a asp-action="EmptyText" asp-controller="Grid" asp-route-name-equals="Xena">Grid no data found text</a>
-                </li>
-                <li>
-                    <a asp-action="Footer" asp-controller="Grid">Grid footer</a>
-                </li>
-                <li>
-                    <a asp-action="Id" asp-controller="Grid">Grid id</a>
-                </li>
-                <li>
-                    <a asp-action="Localization" asp-controller="Grid">Grid localization</a>
-                </li>
-                <li>
-                    <a asp-action="Export" asp-controller="Grid">Grid data page export</a>
-                </li>
-                <li>
-                    <a asp-action="Multiple" asp-controller="Grid">Multiple grids</a>
-                </li>
-                <li>
-                    <a asp-action="DataTable" asp-controller="Grid">DataTable source</a>
-                </li>
-                <li>
-                    <a asp-action="Partial" asp-controller="Grid">Grid custom partial</a>
-                </li>
-                <li>
-                    <a asp-action="SourceUrl" asp-controller="Grid">Switching normal grid to ajax grid</a>
+                    <a asp-action="Installation">Installation</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <a asp-action="Title" asp-controller="Column">Column header title</a>
+                    <a asp-action="Formatting">Formatting</a>
                 </li>
                 <li>
-                    <a asp-action="RenderingValue" asp-controller="Column">Column value rendering</a>
+                    <a asp-action="Encoding">Encoding</a>
                 </li>
                 <li>
-                    <a asp-action="Formatting" asp-controller="Column">Column value formatting</a>
+                    <a asp-action="Filtering">Filtering</a>
                 </li>
                 <li>
-                    <a asp-action="Encoding" asp-controller="Column">Column html encoding</a>
+                    <a asp-action="Sorting">Sorting</a>
                 </li>
                 <li>
-                    <a asp-action="FilterOptions" asp-controller="Column">Column filter options</a>
+                    <a asp-action="Paging">Paging</a>
                 </li>
                 <li>
-                    <a asp-action="Filtering" asp-controller="Column">Column value filtering</a>
+                    <a asp-action="Footer">Footer</a>
                 </li>
                 <li>
-                    <a asp-action="MultiFiltering" asp-controller="Column">Column multi value filtering</a>
+                    <a asp-action="Export">Export</a>
                 </li>
                 <li>
-                    <a asp-action="DefaultMethod" asp-controller="Column">Column default filter method</a>
+                    <a asp-action="Events">Events</a>
                 </li>
                 <li>
-                    <a asp-action="Sorting" asp-controller="Column">Column value sorting</a>
-                </li>
-                <li>
-                    <a asp-action="InitialSort" asp-controller="Column">Column initial sort order</a>
-                </li>
-                <li>
-                    <a asp-action="FirstSort" asp-controller="Column">Column first sort order</a>
-                </li>
-                <li>
-                    <a asp-action="Styling" asp-controller="Column">Column styling</a>
-                </li>
-                <li>
-                    <a asp-action="CustomFilter" asp-controller="Column">Column custom filter</a>
+                    <a asp-action="Api">Api</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <a asp-action="PageSizes" asp-controller="Pager">Pager page sizes</a>
+                    <a asp-action="Ajax">Ajax</a>
                 </li>
                 <li>
-                    <a asp-action="CurrentPage" asp-controller="Pager">Pager initial page</a>
+                    <a asp-action="Localization">Localization</a>
                 </li>
                 <li>
-                    <a asp-action="RowsPerPage" asp-controller="Pager">Pager rows per page</a>
+                    <a asp-action="FilterModes">Filter modes</a>
                 </li>
                 <li>
-                    <a asp-action="PagesToDisplay" asp-controller="Pager">Pager pages to display</a>
+                    <a asp-action="GlobalSearch">Global search</a>
+                </li>
+                <li>
+                    <a asp-action="Multiple">Multiple grids</a>
+                </li>
+                <li>
+                    <a asp-action="Attributes">Html attributes</a>
+                </li>
+                <li>
+                    <a asp-action="Partials">Custom partials</a>
+                </li>
+                <li>
+                    <a asp-action="RowProcessing">Row processing</a>
+                </li>
+                <li>
+                    <a asp-action="Preferences">User preferences</a>
+                </li>
+                <li>
+                    <a asp-action="DataTable">DataTable source</a>
+                </li>
+                <li>
+                    <a asp-action="ManualProcessing">Manual processing</a>
+                </li>
+                <li>
+                    <a asp-action="SourceUrl">Switching normal grid to ajax grid</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <a asp-action="RequestType" asp-controller="Javascript">Reloading grid with post data</a>
+                    <a asp-action="Register">Filter registration</a>
                 </li>
                 <li>
-                    <a asp-action="RowClicked" asp-controller="Javascript">Binding row clicked event</a>
-                </li>
-                <li>
-                    <a asp-action="ReloadEvents" asp-controller="Javascript">Binding reload events</a>
-                </li>
-                <li>
-                    <a asp-action="Reload" asp-controller="Javascript">Reloading ajax grid</a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a asp-action="Register" asp-controller="Filter">Filter registration</a>
-                </li>
-                <li>
-                    <a asp-action="Unregister" asp-controller="Filter">Filter unregistration</a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a asp-action="Api" asp-controller="Javascript">Grid javascript API</a>
+                    <a asp-action="Unregister">Filter unregistration</a>
                 </li>
             </ul>
         </div>

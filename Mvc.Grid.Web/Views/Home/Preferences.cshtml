@@ -1,20 +1,23 @@
 ﻿@model IQueryable<Person>
 
 @{
-    ViewBag.Title = "Grid controls for ASP.NET Core projects";
+    ViewBag.Title = "Grid user preferences";
 }
 
 <div class="widget example">
     <div class="widget-header">
         <div class="fa fa-bars"></div>
         <span>Preview</span>
+        <div class="widget-buttons">
+            <span id="GridConfigure" class="fa fa-cog"></span>
+        </div>
     </div>
     <div class="widget-content">
         @(Html
             .Grid(Model)
             .Build(columns =>
             {
-                columns.Add(model => model.Name);
+                columns.Add(model => model.Name).Hidden();
                 columns.Add(model => model.Surname);
                 columns.Add(model => model.MaritalStatus);
 
@@ -22,7 +25,6 @@
                 columns.Add(model => model.Birthday).Formatted("{0:d}");
                 columns.Add(model => model.IsWorking);
             })
-            .Using(GridFilterMode.Header)
             .Empty("No data found")
             .Pageable(pager =>
             {
@@ -39,24 +41,6 @@
         <div class="widget code">
             <div class="widget-header">
                 <div class="fa fa-code"></div>
-                <span>MVC controller</span>
-            </div>
-            <div class="widget-content">
-<pre>
-<code>
-[<span class="cls">HttpGet</span>]
-<span class="kwd">public</span> <span class="cls">ViewResult</span> Index()
-{
-    <span class="com">// Result needs to be IQueryable in database scenarios, to make use of database side paging.</span>
-    <span class="kwd">return</span> View(Context.Set&lt;<span class="cls">Person</span>&gt;());
-}
-</code>
-</pre>
-            </div>
-        </div>
-        <div class="widget code">
-            <div class="widget-header">
-                <div class="fa fa-code"></div>
                 <span>MVC view</span>
             </div>
             <div class="widget-content">
@@ -68,7 +52,7 @@
     .Grid(Model)
     .Build(columns =>
     {
-        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
+        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>).Hidden();
         columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
         columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
 
@@ -76,8 +60,8 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
-    .Using(<span class="cls">GridFilterMode</span>.Header)
     .Empty(<span class="str">"No data found"</span>)
+    .Configure(...) <span class="com">// Load configuration from cookie/backend/etc.</span>
     .Filterable()
     .Sortable()
     .Pageable()
@@ -91,19 +75,15 @@
         <div class="widget code">
             <div class="widget-header">
                 <div class="fa fa-code"></div>
-                <span>Razor page</span>
+                <span>MVC controller</span>
             </div>
             <div class="widget-content">
 <pre>
 <code>
-<span class="kwd">public class</span> <span class="cls">IndexModel</span> : <span class="cls">PageModel</span>
+[<span class="cls">HttpGet</span>]
+<span class="kwd">public</span> <span class="cls">ViewResult</span> Index()
 {
-    <span class="kwd">public</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; People { <span class="kwd">get</span>; <span class="kwd">set</span>; }
-
-    <span class="kwd">public void</span> OnGet()
-    {
-        People = repository.GetPeople();
-    }
+    <span class="kwd">return</span> View(Context.Set&lt;<span class="cls">Person</span>&gt;());
 }
 </code>
 </pre>
@@ -112,35 +92,32 @@
         <div class="widget code">
             <div class="widget-header">
                 <div class="fa fa-code"></div>
-                <span>Razor page view</span>
+                <span>Javascript</span>
             </div>
             <div class="widget-content">
 <pre>
 <code>
-@@page
-@@model <span class="cls">IndexModel</span>
+document.getElementById(<span class="str">"GridConfigure"</span>).addEventListener(<span class="str">"click"</span>, <span class="kwd">function</span> () {
+    <span class="kwd">new</span> <span class="cls">MvcGrid</span>(document.querySelector(<span class="str">".mvc-grid"</span>)).showConfiguration(<span class="kwd">this</span>);
+});
 
-@@(Html
-    .Grid(Model.People)
-    .Build(columns =>
-    {
-        columns.Add(model => model.Name).Titled(<span class="str">"Name"</span>);
-        columns.Add(model => model.Surname).Titled(<span class="str">"Surname"</span>);
-        columns.Add(model => model.MaritalStatus).Titled(<span class="str">"Marital status"</span>);
+document.addEventListener(<span class="str">"gridconfigure"</span>, e => {
+    <span class="kwd">const</span> configuration = e.detail.grid.getConfiguration();
 
-        columns.Add(model => model.Age).Titled(<span class="str">"Age"</span>);
-        columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
-        columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
-    })
-    .Using(<span class="cls">GridFilterMode</span>.Header)
-    .Empty(<span class="str">"No data found"</span>)
-    .Filterable()
-    .Sortable()
-    .Pageable()
-)
+    <span class="com">// Save configuration to a cookie/backend/etc.</span>
+});
 </code>
 </pre>
             </div>
         </div>
     </div>
 </div>
+
+
+@section scripts {
+    <script>
+        document.getElementById("GridConfigure").addEventListener("click", function () {
+            new MvcGrid(document.querySelector(".mvc-grid")).showConfiguration(this);
+        });
+    </script>
+}
