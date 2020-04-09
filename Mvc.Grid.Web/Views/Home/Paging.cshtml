@@ -77,7 +77,7 @@
     })
     .Pageable(pager =>
     {
-        pager.PageSizes = <span class="kwd">new</span> <span class="cls">Dictionary</span><span class="cls">Int32</span>, <span class="cls">String</span>> { { 0, <span class="str">"All"</span> }, { 2, <span class="str">"2"</span> }, { 4, <span class="str">"4"</span> } };
+        pager.PageSizes = <span class="kwd">new</span> <span class="cls">Dictionary</span>&lt;<span class="cls">Int32</span>, <span class="cls">String</span>&gt; { { 0, <span class="str">"All"</span> }, { 2, <span class="str">"2"</span> }, { 4, <span class="str">"4"</span> } };
         pager.ShowPageSizes = <span class="kwd">true</span>;
         pager.PagesToDisplay = 3;
         pager.CurrentPage = 2;
