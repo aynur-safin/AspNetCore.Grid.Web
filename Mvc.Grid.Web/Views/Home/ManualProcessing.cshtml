@@ -27,6 +27,7 @@
             {
                 pager.TotalRows = ViewBag.TotalRows;
                 pager.ShowPageSizes = true;
+                pager.PageSizes.Clear();
                 pager.RowsPerPage = 3;
             })
         )
@@ -84,6 +85,7 @@
     {
         pager.TotalRows = ViewBag.TotalRows;
         pager.ShowPageSizes = <span class="kwd">true</span>;
+        pager.PageSizes.Clear();
         pager.RowsPerPage = 3;
     })
 )

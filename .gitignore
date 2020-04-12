@@ -1,3 +1,6 @@
+/Mvc.Grid.Web/wwwroot/css/page/
+/Mvc.Grid.Web/wwwroot/js/page/
+
 node_modules/
 .vscode/
 .vs/
