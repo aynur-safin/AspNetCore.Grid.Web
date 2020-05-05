@@ -91,33 +91,33 @@
 <code>
 <span class="kwd">const</span> grid = document.querySelector(<span class="str">".mvc-grid"</span>);
 
-<span class="com">// Triggered when grid's row is clicked.</span>
-grid.addEventListener(<span class="str">"rowclick"</span>, e => {
+<span class="com">// Triggered when grid's row is clicked. It's recommended to use event delegation in ajax scenarios.</span>
+document.addEventListener(<span class="str">"rowclick"</span>, e => {
     <span class="com">e.detail.data - clicked row's data from columns.</span>
     <span class="com">e.detail.grid - grid's instance.</span>
     <span class="com">e.detail.originalEvent - original tr click event which triggered the rowclick.</span>
 });
 
-<span class="com">// Triggered before grid starts loading.</span>
-grid.addEventListener(<span class="str">"reloadstart"</span>, e => {
+<span class="com">// Triggered before grid starts loading. It's recommended to use event delegation in ajax scenarios.</span>
+document.addEventListener(<span class="str">"reloadstart"</span>, e => {
     <span class="com">e.detail.grid - grid's instance.</span>
 });
 
-<span class="com">// Triggered after grid stop loading.</span>
-grid.addEventListener(<span class="str">"reloadend"</span>, e => {
+<span class="com">// Triggered after grid stop loading. It's recommended to use event delegation in ajax scenarios.</span>
+document.addEventListener(<span class="str">"reloadend"</span>, e => {
     <span class="com">e.detail.grid - grid's instance.</span>
 });
 
-<span class="com">// Triggered after grid reload fails.</span>
-grid.addEventListener(<span class="str">"reloadfail"</span>, e => {
+<span class="com">// Triggered after grid reload fails. It's recommended to use event delegation in ajax scenarios.</span>
+document.addEventListener(<span class="str">"reloadfail"</span>, e => {
     <span class="com">e.detail.reason - failed response promise reason.</span>
     <span class="com">e.detail.grid - grid's instance.</span>
 
     <span class="com">// Preventing default stops failed promise from bubbling out.</span>
 });
 
-<span class="com">// Triggered after grid configuration changes.</span>
-grid.addEventListener(<span class="str">"gridconfigure"</span>, e => {
+<span class="com">// Triggered after grid configuration changes. It's recommended to use event delegation in ajax scenarios.</span>
+document.addEventListener(<span class="str">"gridconfigure"</span>, e => {
     <span class="com">e.detail.grid - grid's instance.</span>
 });
 </code>
