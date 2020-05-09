@@ -80,6 +80,7 @@
     <span class="com">// Pager should be excluded on export if all data is needed.</span>
     grid.Pager = <span class="kwd">new</span> <span class="cls">GridPager</span>&lt;<span class="cls">Person</span>&gt;(grid);
     grid.Processors.Add(grid.Pager);
+    grid.Processors.Add(grid.Sort);
     grid.Pager.RowsPerPage = 6;
 
     <span class="kwd">foreach</span> (<span class="cls">IGridColumn</span> column <span class="kwd">in</span> grid.Columns)

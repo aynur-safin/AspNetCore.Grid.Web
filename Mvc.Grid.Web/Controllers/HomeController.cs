@@ -207,6 +207,7 @@ namespace NonFactors.Mvc.Grid.Web.Controllers
 
             grid.Pager = new GridPager<Person>(grid);
             grid.Processors.Add(grid.Pager);
+            grid.Processors.Add(grid.Sort);
             grid.Pager.RowsPerPage = 6;
 
             foreach (IGridColumn<Person> column in grid.Columns)
