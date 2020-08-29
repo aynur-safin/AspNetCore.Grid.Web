@@ -4,6 +4,10 @@
 
 @model IGrid
 
+@{
+    IGridRows<Object> rows = Model.Rows;
+}
+
 <div id="@Model.Id" class="mvc-grid mvc-grid-@(Model.FilterMode.ToString().ToLower())-mode" data-name="@Model.Name" data-filter-mode="@Model.FilterMode" data-url="@Model.Url">
     <!table@(Model.Attributes)>
         <thead>
@@ -75,7 +79,7 @@
                 {
                     String applied = (column.Filter.First ?? column.Filter.Second) == null ? "" : " applied";
 
-                <th class="filterable@(column.CssClasses)@(hidden)">
+                <th class="filterable @(column.CssClasses)@(hidden)">
                     <div>
                     @if (column.Filter.Options.Any())
                     {
@@ -127,7 +131,7 @@
         }
         </thead>
         <tbody>
-        @foreach (IGridRow<Object> row in Model.Rows)
+        @foreach (IGridRow<Object> row in rows)
         {
             <!tr@(row.Attributes)>
             @foreach (IGridColumn column in Model.Columns)
@@ -149,7 +153,7 @@
         {
             <tr class="mvc-grid-empty-row">
                 <td colspan="@Model.Columns.Count()">
-                    @Model.EmptyText
+                    @Html.Raw(Model.EmptyText)
                 </td>
             </tr>
         }
