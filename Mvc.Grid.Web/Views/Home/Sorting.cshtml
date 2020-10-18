@@ -49,7 +49,7 @@
         columns.Add(model => model.Birthday).Titled(<span class="str">"Birthday"</span>).Formatted(<span class="str">"{0:d}"</span>);
         columns.Add(model => model.IsWorking).Titled(<span class="str">"Employed"</span>);
     })
-    .Sortable() <span class="com">// Enables sorting for not explicitly configured columns.</span>
+    .Sortable() <span class="com">// Enables sorting for not explicitly configured property expression columns.</span>
 )
 </code>
 </pre>

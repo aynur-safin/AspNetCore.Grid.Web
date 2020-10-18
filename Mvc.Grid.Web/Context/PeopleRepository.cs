@@ -11,24 +11,24 @@ namespace NonFactors.Mvc.Grid.Web.Context
         public DataTable AsDataTable()
         {
             DataTable table = new DataTable();
-            table.Columns.Add(new DataColumn("Name"));
-            table.Columns.Add(new DataColumn("Surname"));
-            table.Columns.Add(new DataColumn("MaritalStatus"));
-            table.Columns.Add(new DataColumn("Age"));
-            table.Columns.Add(new DataColumn("Birthday"));
-            table.Columns.Add(new DataColumn("IsWorking"));
+            table.Columns.Add(new DataColumn("name") { Caption = "Name" });
+            table.Columns.Add(new DataColumn("surname") { Caption = "Surname" });
+            table.Columns.Add(new DataColumn("marital-status") { Caption = "Marital status" });
+            table.Columns.Add(new DataColumn("age") { Caption = "Age" });
+            table.Columns.Add(new DataColumn("birthday") { Caption = "Birthday" });
+            table.Columns.Add(new DataColumn("is-working") { Caption = "Is working" });
 
             foreach (Person person in GetPeople())
             {
                 DataRow row = table.NewRow();
 
-                row["Name"] = person.Name;
-                row["Surname"] = person.Surname;
-                row["MaritalStatus"] = person.MaritalStatus;
+                row["name"] = person.Name;
+                row["surname"] = person.Surname;
+                row["marital-status"] = person.MaritalStatus;
 
-                row["Age"] = person.Age;
-                row["Birthday"] = person.Birthday;
-                row["IsWorking"] = person.IsWorking;
+                row["age"] = person.Age;
+                row["birthday"] = person.Birthday;
+                row["is-working"] = person.IsWorking;
 
                 table.Rows.Add(row);
             }
