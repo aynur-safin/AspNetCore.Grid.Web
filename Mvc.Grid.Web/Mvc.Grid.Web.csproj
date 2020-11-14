@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <Nullable>enable</Nullable>
-    <VersionPrefix>6.2.1</VersionPrefix>
+    <VersionPrefix>6.2.2</VersionPrefix>
+    <TargetFramework>net5.0</TargetFramework>
     <GenerateFullPaths>true</GenerateFullPaths>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DebugType Condition="'$(Configuration)'=='Release'">none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="NonFactors.Grid.Mvc6" Version="6.2.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.9" />
+    <PackageReference Include="NonFactors.Grid.Mvc6" Version="6.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
   </ItemGroup>
 
   <Target Name="PrePublishScript" BeforeTargets="PrepareForPublish">
