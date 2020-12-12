@@ -78,10 +78,10 @@
 &lt;div class="mvc-grid"&gt;
     &lt;table&gt;
         &lt;thead&gt;
-            &lt;tr&gt;
+            &lt;tr class="mvc-grid-headers"&gt;
                 @@foreach (IGridColumn column in Model.Columns)
                 {
-                    &lt;th&gt;
+                    &lt;th@@(column.AsAttributes())&gt;
                         &lt;span class="mvc-grid-title"&gt;@@column.Title&lt;/span&gt;
                     &lt;/th&gt;
                 }
